@@ -1,0 +1,106 @@
+{
+ "id": "dd/arista",
+ "name": "Arista (Datadog)",
+ "vendor": "arista",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/arista.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "dd/_arista",
+  "dd/_arista-metadata",
+  "dd/_arista-queue",
+  "_base/system",
+  "dd/_generic-if",
+  "dd/_generic-ip",
+  "dd/_generic-host-resources",
+  "dd/_generic-ospf",
+  "dd/_generic-bgp4",
+  "dd/_generic-bfd",
+  "dd/_generic-tcp",
+  "dd/_generic-udp"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.30065.1.*"
+  }
+ ],
+ "tables": [
+  {
+   "name": "entPhySensorTable",
+   "columns": [
+    {
+     "name": "entPhySensorValue",
+     "oid": "1.3.6.1.2.1.99.1.1.1.4",
+     "mib": "ENTITY-SENSOR-MIB",
+     "entitySensor": {
+      "scaleOid": "1.3.6.1.2.1.99.1.1.1.2",
+      "precisionOid": "1.3.6.1.2.1.99.1.1.1.3",
+      "statusOid": "1.3.6.1.2.1.99.1.1.1.5"
+     },
+     "unitsFrom": {
+      "oid": "1.3.6.1.2.1.99.1.1.1.1",
+      "map": {
+       "1": {},
+       "2": {},
+       "3": {
+        "units": "V"
+       },
+       "4": {
+        "units": "V"
+       },
+       "5": {
+        "units": "A"
+       },
+       "6": {
+        "units": "W"
+       },
+       "7": {
+        "units": "Hz"
+       },
+       "8": {
+        "units": "degC"
+       },
+       "9": {
+        "units": "%RH"
+       },
+       "10": {
+        "units": "rpm"
+       },
+       "11": {
+        "units": "m3/min"
+       },
+       "12": {
+        "units": ""
+       }
+      }
+     }
+    },
+    {
+     "name": "entPhySensorOperStatus",
+     "oid": "1.3.6.1.2.1.99.1.1.1.5",
+     "mib": "ENTITY-SENSOR-MIB",
+     "enum": {
+      "1": "ok",
+      "2": "unavailable",
+      "3": "nonoperational"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.99.1.1.1.1"
+   },
+   "indexOid": "1.3.6.1.2.1.99.1.1.1.4"
+  }
+ ],
+ "verification": {
+  "verified": 2,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

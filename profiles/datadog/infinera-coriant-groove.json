@@ -1,0 +1,115 @@
+{
+ "id": "dd/infinera-coriant-groove",
+ "name": "Infinera Coriant Groove (Datadog)",
+ "vendor": "Nokia (formerly 'Coriant R&D GmbH')",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/infinera-coriant-groove.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.42229.1.2"
+  }
+ ],
+ "tables": [
+  {
+   "name": "shelfTable",
+   "columns": [
+    {
+     "name": "shelfInletTemperature",
+     "oid": "1.3.6.1.4.1.42229.1.2.3.1.1.1.3",
+     "mib": "CORIANT-GROOVE-MIB",
+     "description": "Datadog metric coriant.groove.shelfInletTemperature"
+    },
+    {
+     "name": "shelfOutletTemperature",
+     "oid": "1.3.6.1.4.1.42229.1.2.3.1.1.1.4",
+     "mib": "CORIANT-GROOVE-MIB",
+     "description": "Datadog metric coriant.groove.shelfOutletTemperature"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.42229.1.2.3.1.1.1.8"
+   },
+   "indexOid": "1.3.6.1.4.1.42229.1.2.3.1.1.1.3"
+  },
+  {
+   "name": "cardTable",
+   "columns": [
+    {
+     "name": "cardFanSpeedRate",
+     "oid": "1.3.6.1.4.1.42229.1.2.3.3.1.1.7",
+     "mib": "CORIANT-GROOVE-MIB",
+     "description": "Datadog metric coriant.groove.cardFanSpeedRate",
+     "units": "%"
+    },
+    {
+     "name": "cardTemperature",
+     "oid": "1.3.6.1.4.1.42229.1.2.3.3.1.1.9",
+     "mib": "CORIANT-GROOVE-MIB",
+     "description": "Datadog metric coriant.groove.cardTemperature"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.42229.1.2.3.3.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.42229.1.2.3.3.1.1.7"
+  },
+  {
+   "name": "portTable",
+   "columns": [
+    {
+     "name": "portRxOpticalPower",
+     "oid": "1.3.6.1.4.1.42229.1.2.3.6.1.1.4",
+     "mib": "CORIANT-GROOVE-MIB",
+     "description": "Datadog metric coriant.groove.portRxOpticalPower"
+    },
+    {
+     "name": "portTxOpticalPower",
+     "oid": "1.3.6.1.4.1.42229.1.2.3.6.1.1.5",
+     "mib": "CORIANT-GROOVE-MIB",
+     "description": "Datadog metric coriant.groove.portTxOpticalPower"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.42229.1.2.3.6.1.1.16"
+   },
+   "indexOid": "1.3.6.1.4.1.42229.1.2.3.6.1.1.4"
+  },
+  {
+   "name": "ochOsTable",
+   "columns": [
+    {
+     "name": "ochOsCD",
+     "oid": "1.3.6.1.4.1.42229.1.2.4.1.19.1.1.23",
+     "mib": "CORIANT-GROOVE-MIB",
+     "description": "Datadog metric coriant.groove.ochOsCD"
+    },
+    {
+     "name": "ochOsOSNR",
+     "oid": "1.3.6.1.4.1.42229.1.2.4.1.19.1.1.24",
+     "mib": "CORIANT-GROOVE-MIB",
+     "description": "Datadog metric coriant.groove.ochOsOSNR"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.42229.1.2.4.1.19.1.1.21"
+   },
+   "indexOid": "1.3.6.1.4.1.42229.1.2.4.1.19.1.1.23"
+  }
+ ],
+ "verification": {
+  "verified": 8,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "id": "dd/_generic-ucd-cpu-mem",
+ "name": "Generic Ucd Cpu Mem (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_generic-ucd-cpu-mem.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "symbols": [
+  {
+   "name": "cpu.usage",
+   "oid": "1.3.6.1.4.1.2021.10.1.5.1",
+   "mib": "UCD-SNMP-MIB",
+   "description": "laLoadInt row 1"
+  },
+  {
+   "name": "memTotalReal",
+   "oid": "1.3.6.1.4.1.2021.4.5.0",
+   "mib": "UCD-SNMP-MIB",
+   "scale": 1024,
+   "description": "Datadog metric memory.total"
+  },
+  {
+   "name": "memAvailReal",
+   "oid": "1.3.6.1.4.1.2021.4.6.0",
+   "mib": "UCD-SNMP-MIB",
+   "scale": 1024,
+   "description": "Datadog metric memory.free"
+  }
+ ],
+ "verification": {
+  "verified": 3,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

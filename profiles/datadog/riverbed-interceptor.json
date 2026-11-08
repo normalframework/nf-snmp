@@ -1,0 +1,65 @@
+{
+ "id": "dd/riverbed-interceptor",
+ "name": "Riverbed Interceptor (Datadog)",
+ "vendor": "Riverbed Technology, Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/riverbed-interceptor.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/riverbed"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.17163.1.3"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "memory.total",
+   "oid": "1.3.6.1.2.1.25.2.3.1.5.1",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageSize row 1"
+  },
+  {
+   "name": "memory.used",
+   "oid": "1.3.6.1.2.1.25.2.3.1.6.1",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageUsed row 1"
+  },
+  {
+   "name": "cpu.usage",
+   "oid": "1.3.6.1.4.1.17163.1.3.5.1.4.0",
+   "mib": "INTERCEPTOR-MIB",
+   "mibVerified": false
+  }
+ ],
+ "tables": [
+  {
+   "name": "neighborTable",
+   "columns": [
+    {
+     "name": "riverbed.interceptor.neighborConnectionCount",
+     "oid": "1.3.6.1.4.1.17163.1.3.2.6.1.4",
+     "mib": "INTERCEPTOR-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.17163.1.3.2.6.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.17163.1.3.2.6.1.4"
+  }
+ ],
+ "verification": {
+  "verified": 2,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 2,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

@@ -1,0 +1,742 @@
+{
+ "id": "dd/citrix-netscaler",
+ "name": "Citrix Netscaler (Datadog)",
+ "vendor": "Netscaler",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/citrix-netscaler.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if",
+  "dd/citrix"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.5951.1"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "resCpuUsage",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.41.1.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric cpu.usage",
+   "units": "%"
+  },
+  {
+   "name": "resMemUsage",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.41.2.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric memory.usage",
+   "units": "%"
+  },
+  {
+   "name": "haTotStateTransitions",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.23.4.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.haTotStateTransitions"
+  },
+  {
+   "name": "haTimeofLastStateTransition",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.23.5.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.haTimeofLastStateTransition"
+  },
+  {
+   "name": "svcCount",
+   "oid": "1.3.6.1.4.1.5951.4.1.2.6.1.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.svcCount"
+  },
+  {
+   "name": "serverCount",
+   "oid": "1.3.6.1.4.1.5951.4.1.2.6.2.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.serverCount"
+  },
+  {
+   "name": "svcgroupCount",
+   "oid": "1.3.6.1.4.1.5951.4.1.2.6.3.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.svcgroupCount"
+  },
+  {
+   "name": "svcgroupmemCount",
+   "oid": "1.3.6.1.4.1.5951.4.1.2.6.4.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.svcgroupmemCount"
+  },
+  {
+   "name": "syssvcCount",
+   "oid": "1.3.6.1.4.1.5951.4.1.2.6.5.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.syssvcCount"
+  },
+  {
+   "name": "sysupsvcCount",
+   "oid": "1.3.6.1.4.1.5951.4.1.2.6.6.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.sysupsvcCount"
+  },
+  {
+   "name": "sysupsvcitmCount",
+   "oid": "1.3.6.1.4.1.5951.4.1.2.6.7.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.sysupsvcitmCount"
+  },
+  {
+   "name": "curConfigVservers",
+   "oid": "1.3.6.1.4.1.5951.4.1.3.5.1.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.curConfigVservers"
+  },
+  {
+   "name": "vsvrBindCount",
+   "oid": "1.3.6.1.4.1.5951.4.1.3.5.2.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.vsvrBindCount"
+  },
+  {
+   "name": "vsvrSvcGrpBindCount",
+   "oid": "1.3.6.1.4.1.5951.4.1.3.5.3.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.vsvrSvcGrpBindCount"
+  },
+  {
+   "name": "curConfigLbVservers",
+   "oid": "1.3.6.1.4.1.5951.4.1.3.5.4.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.curConfigLbVservers"
+  },
+  {
+   "name": "curConfigGslbVservers",
+   "oid": "1.3.6.1.4.1.5951.4.1.3.5.5.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.curConfigGslbVservers"
+  },
+  {
+   "name": "totSpilloverCount",
+   "oid": "1.3.6.1.4.1.5951.4.1.3.5.6.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.totSpilloverCount"
+  },
+  {
+   "name": "sslCurSessions",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.47.296.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.sslCurSessions"
+  },
+  {
+   "name": "sslSessionsPerSec",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.47.3.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.sslSessionsPerSec",
+   "units": "s"
+  },
+  {
+   "name": "tcpCurClientConnEstablished",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.46.12.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.tcpCurClientConnEstablished"
+  },
+  {
+   "name": "tcpErrAnyPortFail",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.46.69.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.tcpErrAnyPortFail"
+  },
+  {
+   "name": "tcpErrIpPortFail",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.46.70.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.tcpErrIpPortFail"
+  },
+  {
+   "name": "tcpErrRetransmit",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.46.59.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.tcpErrRetransmit"
+  },
+  {
+   "name": "tcpTotRxPkts",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.46.61.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.tcpTotRxPkts"
+  },
+  {
+   "name": "tcpTotTxPkts",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.46.63.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.tcpTotTxPkts"
+  },
+  {
+   "name": "httpTotGets",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.45.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpTotGets"
+  },
+  {
+   "name": "httpTotPosts",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.46.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpTotPosts"
+  },
+  {
+   "name": "httpTotOthers",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.47.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpTotOthers"
+  },
+  {
+   "name": "httpTotRxRequestBytes",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.48.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpTotRxRequestBytes",
+   "units": "B"
+  },
+  {
+   "name": "httpTotRxResponseBytes",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.49.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpTotRxResponseBytes",
+   "units": "B"
+  },
+  {
+   "name": "httpTotTxRequestBytes",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.50.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpTotTxRequestBytes",
+   "units": "B"
+  },
+  {
+   "name": "httpTotTxResponseBytes",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.51.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpTotTxResponseBytes",
+   "units": "B"
+  },
+  {
+   "name": "httpTot10Requests",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.52.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpTot10Requests"
+  },
+  {
+   "name": "httpTotResponses",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.53.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpTotResponses"
+  },
+  {
+   "name": "httpTot10Responses",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.54.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpTot10Responses"
+  },
+  {
+   "name": "httpErrIncompleteRequests",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.57.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpErrIncompleteRequests"
+  },
+  {
+   "name": "httpErrIncompleteResponses",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.58.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpErrIncompleteResponses"
+  },
+  {
+   "name": "httpErrIncompleteHeaders",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.60.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpErrIncompleteHeaders"
+  },
+  {
+   "name": "httpErrServerBusy",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.48.61.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.httpErrServerBusy"
+  },
+  {
+   "name": "netscaler.svcTotalClients",
+   "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.48.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "svcTotalClients row 0"
+  },
+  {
+   "name": "netscaler.svcTotalServers",
+   "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.49.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "svcTotalServers row 0"
+  },
+  {
+   "name": "tcpCurClientConn",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.46.2.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.tcpCurClientConn"
+  },
+  {
+   "name": "tcpCurServerConnEstablished",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.46.10.0",
+   "mib": "NS-ROOT-MIB",
+   "description": "Datadog metric netscaler.tcpCurServerConnEstablished"
+  },
+  {
+   "name": "sslTotSessions",
+   "oid": "1.3.6.1.4.1.5951.4.1.1.47.204.0",
+   "mib": "NS-ROOT-MIB",
+   "type": "counter",
+   "description": "Datadog metric netscaler.sslTotSessions"
+  }
+ ],
+ "tables": [
+  {
+   "name": "vserverTable",
+   "columns": [
+    {
+     "name": "vsvrCurClntConnections",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.7",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.vsvrCurClntConnections"
+    },
+    {
+     "name": "vsvrCurSrvrConnections",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.8",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.vsvrCurSrvrConnections"
+    },
+    {
+     "name": "vsvrTotalRequests",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.30",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.vsvrTotalRequests"
+    },
+    {
+     "name": "vsvrTotalRequestBytes",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.31",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.vsvrTotalRequestBytes",
+     "units": "B"
+    },
+    {
+     "name": "vsvrTotalResponses",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.32",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.vsvrTotalResponses"
+    },
+    {
+     "name": "vsvrTotalResponseBytes",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.33",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.vsvrTotalResponseBytes",
+     "units": "B"
+    },
+    {
+     "name": "vsvrCurServicesDown",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.37",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.vsvrCurServicesDown"
+    },
+    {
+     "name": "vsvrCurServicesUp",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.41",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.vsvrCurServicesUp"
+    },
+    {
+     "name": "vsvrRequestRate",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.43",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.vsvrRequestRate"
+    },
+    {
+     "name": "vsvrRxBytesRate",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.44",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.vsvrRxBytesRate"
+    },
+    {
+     "name": "vsvrTxBytesRate",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.45",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.vsvrTxBytesRate"
+    },
+    {
+     "name": "vsvrSynfloodRate",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.46",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.vsvrSynfloodRate"
+    },
+    {
+     "name": "vsvrTotSpillOvers",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.54",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.vsvrTotSpillOvers"
+    },
+    {
+     "name": "vsvrTotalClients",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.56",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.vsvrTotalClients"
+    },
+    {
+     "name": "vsvrTotalServicesBound",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.61",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.vsvrTotalServicesBound"
+    },
+    {
+     "name": "vsvrHealth",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.62",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.vsvrHealth",
+     "units": "%"
+    },
+    {
+     "name": "vsvrTotalServers",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.65",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.vsvrTotalServers"
+    },
+    {
+     "name": "vsvrSoThreshold",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.70",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.vsvrSoThreshold"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5951.4.1.3.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.5951.4.1.3.1.1.7"
+  },
+  {
+   "name": "nsSysHealthDiskTable",
+   "columns": [
+    {
+     "name": "sysHealthDiskSize",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.41.8.1.2",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.sysHealthDiskSize",
+     "units": "B"
+    },
+    {
+     "name": "sysHealthDiskAvail",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.41.8.1.3",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.sysHealthDiskAvail",
+     "units": "B"
+    },
+    {
+     "name": "sysHealthDiskUsed",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.41.8.1.4",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.sysHealthDiskUsed",
+     "units": "B"
+    },
+    {
+     "name": "sysHealthDiskPerusage",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.41.8.1.5",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.sysHealthDiskPerusage",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5951.4.1.1.41.8.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.5951.4.1.1.41.8.1.2"
+  },
+  {
+   "name": "nsIfStatsTable",
+   "columns": [
+    {
+     "name": "ifTotRxBytes",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.54.1.3",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.ifTotRxBytes",
+     "units": "B"
+    },
+    {
+     "name": "ifRxAvgBandwidthUsage",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.54.1.4",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.ifRxAvgBandwidthUsage",
+     "units": "s"
+    },
+    {
+     "name": "ifTotTxBytes",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.54.1.7",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.ifTotTxBytes",
+     "units": "B"
+    },
+    {
+     "name": "ifTxAvgBandwidthUsage",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.54.1.8",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.ifTxAvgBandwidthUsage",
+     "units": "s"
+    },
+    {
+     "name": "ifThroughput",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.54.1.48",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.ifThroughput"
+    },
+    {
+     "name": "ifTotRxMbits",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.54.1.19",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.ifTotRxMbits"
+    },
+    {
+     "name": "ifTotTxMbits",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.54.1.20",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.ifTotTxMbits"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5951.4.1.1.54.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.5951.4.1.1.54.1.3"
+  },
+  {
+   "name": "vserverServiceTable",
+   "columns": [
+    {
+     "name": "vsvrServiceHits",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.2.1.5",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.vsvrServiceHits"
+    },
+    {
+     "name": "servicePersistentHits",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.2.1.6",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.servicePersistentHits"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5951.4.1.3.2.1.8"
+   },
+   "indexOid": "1.3.6.1.4.1.5951.4.1.3.2.1.5"
+  },
+  {
+   "name": "nsCPUTable",
+   "columns": [
+    {
+     "name": "nsCPUusage",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.41.6.1.2",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.nsCPUusage",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5951.4.1.1.41.6.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.5951.4.1.1.41.6.1.2"
+  },
+  {
+   "name": "lbvserverTable",
+   "columns": [
+    {
+     "name": "lbvsvrPersistenceTimeOut",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.6.1.3",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.lbvsvrPersistenceTimeOut"
+    },
+    {
+     "name": "lbvsvrActiveConn",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.6.1.4",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.lbvsvrActiveConn"
+    },
+    {
+     "name": "lbvsvrAvgSvrTTFB",
+     "oid": "1.3.6.1.4.1.5951.4.1.3.6.1.5",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.lbvsvrAvgSvrTTFB"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.5951.4.1.3.6.1.3"
+  },
+  {
+   "name": "sslCertKeyTable",
+   "columns": [
+    {
+     "name": "sslDaysToExpire",
+     "oid": "1.3.6.1.4.1.5951.4.1.1.56.1.1.5",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.sslDaysToExpire"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5951.4.1.1.56.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.5951.4.1.1.56.1.1.5"
+  },
+  {
+   "name": "serviceTable",
+   "columns": [
+    {
+     "name": "svcAvgTransactionTime",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.7",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.svcAvgTransactionTime"
+    },
+    {
+     "name": "svcEstablishedConn",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.8",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.svcEstablishedConn"
+    },
+    {
+     "name": "svcActiveConn",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.9",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.svcActiveConn"
+    },
+    {
+     "name": "svcSurgeCount",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.10",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.svcSurgeCount"
+    },
+    {
+     "name": "svcTotalRequests",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.30",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.svcTotalRequests"
+    },
+    {
+     "name": "svcTotalRequestBytes",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.31",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.svcTotalRequestBytes",
+     "units": "B"
+    },
+    {
+     "name": "svcTotalResponses",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.32",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.svcTotalResponses"
+    },
+    {
+     "name": "svcTotalResponseBytes",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.33",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.svcTotalResponseBytes",
+     "units": "B"
+    },
+    {
+     "name": "svcTotalPktsRecvd",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.34",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.svcTotalPktsRecvd"
+    },
+    {
+     "name": "svcTotalPktsSent",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.35",
+     "mib": "NS-ROOT-MIB",
+     "type": "counter",
+     "description": "Datadog metric netscaler.svcTotalPktsSent"
+    },
+    {
+     "name": "svcAvgSvrTTFB",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.38",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.svcAvgSvrTTFB"
+    },
+    {
+     "name": "svcCurClntConnections",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.41",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.svcCurClntConnections"
+    },
+    {
+     "name": "svcRequestRate",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.42",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.svcRequestRate"
+    },
+    {
+     "name": "svcRxBytesRate",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.43",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.svcRxBytesRate"
+    },
+    {
+     "name": "svcTxBytesRate",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.44",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.svcTxBytesRate"
+    },
+    {
+     "name": "svcActiveTransactions",
+     "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.53",
+     "mib": "NS-ROOT-MIB",
+     "description": "Datadog metric netscaler.svcActiveTransactions"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5951.4.1.2.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.5951.4.1.2.1.1.7"
+  }
+ ],
+ "verification": {
+  "verified": 96,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

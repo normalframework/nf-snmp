@@ -1,0 +1,106 @@
+{
+ "id": "dd/apc-netbotz",
+ "name": "Apc Netbotz (Datadog)",
+ "vendor": "NetBotz",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/apc-netbotz.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_apc"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.5528.100.20.*"
+  }
+ ],
+ "tables": [
+  {
+   "name": "tempSensorTable",
+   "columns": [
+    {
+     "name": "tempSensorValueInt",
+     "oid": "1.3.6.1.4.1.5528.100.4.1.1.1.8",
+     "mib": "NETBOTZV2-MIB",
+     "description": "Datadog metric netbotz.tempSensorValueInt",
+     "units": "degC"
+    },
+    {
+     "name": "tempSensorValueIntF",
+     "oid": "1.3.6.1.4.1.5528.100.4.1.1.1.9",
+     "mib": "NETBOTZV2-MIB",
+     "description": "Datadog metric netbotz.tempSensorValueIntF"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5528.100.4.1.1.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.5528.100.4.1.1.1.8"
+  },
+  {
+   "name": "humiSensorTable",
+   "columns": [
+    {
+     "name": "humiSensorValueInt",
+     "oid": "1.3.6.1.4.1.5528.100.4.1.2.1.8",
+     "mib": "NETBOTZV2-MIB",
+     "description": "Datadog metric netbotz.humiSensorValueInt",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5528.100.4.1.2.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.5528.100.4.1.2.1.8"
+  },
+  {
+   "name": "dewPointSensorTable",
+   "columns": [
+    {
+     "name": "dewPointSensorValueInt",
+     "oid": "1.3.6.1.4.1.5528.100.4.1.3.1.8",
+     "mib": "NETBOTZ410-MIB",
+     "description": "Datadog metric netbotz.dewPointSensorValueInt",
+     "units": "degC"
+    },
+    {
+     "name": "dewPointSensorValueIntF",
+     "oid": "1.3.6.1.4.1.5528.100.4.1.3.1.9",
+     "mib": "NETBOTZ410-MIB",
+     "description": "Datadog metric netbotz.dewPointSensorValueIntF"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5528.100.4.1.3.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.5528.100.4.1.3.1.8"
+  },
+  {
+   "name": "otherNumericSensorTable",
+   "columns": [
+    {
+     "name": "otherNumericSensorValueInt",
+     "oid": "1.3.6.1.4.1.5528.100.4.1.10.1.8",
+     "mib": "NETBOTZV2-MIB",
+     "description": "Datadog metric netbotz.otherNumericSensorValueInt",
+     "scale": 0.1
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5528.100.4.1.10.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.5528.100.4.1.10.1.8"
+  }
+ ],
+ "verification": {
+  "verified": 6,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

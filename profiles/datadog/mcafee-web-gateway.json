@@ -1,0 +1,288 @@
+{
+ "id": "dd/mcafee-web-gateway",
+ "name": "Mcafee Web Gateway (Datadog)",
+ "vendor": "McAFee Associates Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/mcafee-web-gateway.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.1230.2.7.1.1"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "stCPULoad",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.5.1.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "description": "Datadog metric cpu.usage",
+   "type": "counter",
+   "units": "%"
+  },
+  {
+   "name": "stMemConsumed",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.5.15.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "description": "Datadog metric memory.usage",
+   "type": "counter"
+  },
+  {
+   "name": "stMalwareDetected",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.1.2.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stMalwareDetected"
+  },
+  {
+   "name": "stConnectionsLegitimate",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.1.3.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stConnectionsLegitimate"
+  },
+  {
+   "name": "stBlockedByAntiMalware",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.1.4.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stBlockedByAntiMalware"
+  },
+  {
+   "name": "stConnectionsBlocked",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.1.5.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stConnectionsBlocked"
+  },
+  {
+   "name": "stBlockedByMediaFilter",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.1.6.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stBlockedByMediaFilter"
+  },
+  {
+   "name": "stBlockedByURLFilter",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.1.7.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stBlockedByURLFilter"
+  },
+  {
+   "name": "stMimeType",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.1.8.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stMimeType"
+  },
+  {
+   "name": "stCategories",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.1.9.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stCategories"
+  },
+  {
+   "name": "stHttpRequests",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.2.1.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stHttpRequests"
+  },
+  {
+   "name": "stHttpTraffic",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.2.2.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stHttpTraffic",
+   "units": "B"
+  },
+  {
+   "name": "stHttpBytesFromClient",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.2.3.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stHttpBytesFromClient",
+   "units": "B"
+  },
+  {
+   "name": "stHttpBytesFromServer",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.2.4.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stHttpBytesFromServer",
+   "units": "B"
+  },
+  {
+   "name": "stHttpBytesToClient",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.2.5.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stHttpBytesToClient",
+   "units": "B"
+  },
+  {
+   "name": "stHttpBytesToServer",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.2.6.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stHttpBytesToServer",
+   "units": "B"
+  },
+  {
+   "name": "stHttpsRequests",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.3.1.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stHttpsRequests"
+  },
+  {
+   "name": "stHttpsTraffic",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.3.2.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stHttpsTraffic",
+   "units": "B"
+  },
+  {
+   "name": "stHttpsBytesFromClient",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.3.3.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stHttpsBytesFromClient",
+   "units": "B"
+  },
+  {
+   "name": "stHttpsBytesFromServer",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.3.4.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stHttpsBytesFromServer",
+   "units": "B"
+  },
+  {
+   "name": "stHttpsBytesToClient",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.3.5.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stHttpsBytesToClient",
+   "units": "B"
+  },
+  {
+   "name": "stHttpsBytesToServer",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.3.6.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stHttpsBytesToServer",
+   "units": "B"
+  },
+  {
+   "name": "stFtpTraffic",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.4.1.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stFtpTraffic",
+   "units": "B"
+  },
+  {
+   "name": "stFtpBytesFromClient",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.4.2.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stFtpBytesFromClient",
+   "units": "B"
+  },
+  {
+   "name": "stFtpBytesFromServer",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.4.3.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stFtpBytesFromServer",
+   "units": "B"
+  },
+  {
+   "name": "stFtpBytesToClient",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.4.4.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stFtpBytesToClient",
+   "units": "B"
+  },
+  {
+   "name": "stFtpBytesToServer",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.4.5.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stFtpBytesToServer",
+   "units": "B"
+  },
+  {
+   "name": "stClientCount",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.5.2.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stClientCount"
+  },
+  {
+   "name": "stConnectedSockets",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.5.3.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stConnectedSockets"
+  },
+  {
+   "name": "stResolveHostViaDNS",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.5.6.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stResolveHostViaDNS"
+  },
+  {
+   "name": "stTimeConsumedByRuleEngine",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.5.7.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stTimeConsumedByRuleEngine"
+  },
+  {
+   "name": "stTimeForTransaction",
+   "oid": "1.3.6.1.4.1.1230.2.7.2.5.8.0",
+   "mib": "MCAFEE-MWG-MIB",
+   "type": "counter",
+   "description": "Datadog metric mcafee.mwg.stTimeForTransaction"
+  }
+ ],
+ "tables": [
+  {
+   "name": "stCategoriesTable",
+   "columns": [
+    {
+     "name": "stCategoryCount",
+     "oid": "1.3.6.1.4.1.1230.2.7.2.1.10.1.2",
+     "mib": "MCAFEE-MWG-MIB",
+     "type": "counter",
+     "description": "Datadog metric mcafee.mwg.stCategoryCount"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.1230.2.7.2.1.10.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.1230.2.7.2.1.10.1.2"
+  }
+ ],
+ "verification": {
+  "verified": 33,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "id": "dd/_juniper-firewall",
+ "name": "Juniper Firewall (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_juniper-firewall.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "jnxFirewallCounterTable",
+   "columns": [
+    {
+     "name": "jnxFWCounterPacketCount",
+     "oid": "1.3.6.1.4.1.2636.3.5.2.1.4",
+     "mib": "JUNIPER-FIREWALL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxFWCounterByteCount",
+     "oid": "1.3.6.1.4.1.2636.3.5.2.1.5",
+     "mib": "JUNIPER-FIREWALL-MIB",
+     "type": "counter",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2636.3.5.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.2636.3.5.2.1.4"
+  }
+ ],
+ "verification": {
+  "verified": 2,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

@@ -1,0 +1,381 @@
+{
+ "id": "dd/_generic-ip",
+ "name": "Generic Ip (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_generic-ip.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "ipSystemStatsTable",
+   "columns": [
+    {
+     "name": "ipSystemStatsHCInReceives",
+     "oid": "1.3.6.1.2.1.4.31.1.1.4",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsHCInOctets",
+     "oid": "1.3.6.1.2.1.4.31.1.1.6",
+     "mib": "IP-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ipSystemStatsInHdrErrors",
+     "oid": "1.3.6.1.2.1.4.31.1.1.7",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsInNoRoutes",
+     "oid": "1.3.6.1.2.1.4.31.1.1.8",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsInAddrErrors",
+     "oid": "1.3.6.1.2.1.4.31.1.1.9",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsInUnknownProtos",
+     "oid": "1.3.6.1.2.1.4.31.1.1.10",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsInTruncatedPkts",
+     "oid": "1.3.6.1.2.1.4.31.1.1.11",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsHCInForwDatagrams",
+     "oid": "1.3.6.1.2.1.4.31.1.1.13",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsReasmReqds",
+     "oid": "1.3.6.1.2.1.4.31.1.1.14",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsReasmOKs",
+     "oid": "1.3.6.1.2.1.4.31.1.1.15",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsReasmFails",
+     "oid": "1.3.6.1.2.1.4.31.1.1.16",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsInDiscards",
+     "oid": "1.3.6.1.2.1.4.31.1.1.17",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsHCInDelivers",
+     "oid": "1.3.6.1.2.1.4.31.1.1.19",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsHCOutRequests",
+     "oid": "1.3.6.1.2.1.4.31.1.1.21",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsOutNoRoutes",
+     "oid": "1.3.6.1.2.1.4.31.1.1.22",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsHCOutForwDatagrams",
+     "oid": "1.3.6.1.2.1.4.31.1.1.24",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsOutDiscards",
+     "oid": "1.3.6.1.2.1.4.31.1.1.25",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsOutFragReqds",
+     "oid": "1.3.6.1.2.1.4.31.1.1.26",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsOutFragOKs",
+     "oid": "1.3.6.1.2.1.4.31.1.1.27",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsOutFragFails",
+     "oid": "1.3.6.1.2.1.4.31.1.1.28",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsOutFragCreates",
+     "oid": "1.3.6.1.2.1.4.31.1.1.29",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsHCOutTransmits",
+     "oid": "1.3.6.1.2.1.4.31.1.1.31",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsHCOutOctets",
+     "oid": "1.3.6.1.2.1.4.31.1.1.33",
+     "mib": "IP-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ipSystemStatsHCInMcastPkts",
+     "oid": "1.3.6.1.2.1.4.31.1.1.35",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsHCInMcastOctets",
+     "oid": "1.3.6.1.2.1.4.31.1.1.37",
+     "mib": "IP-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ipSystemStatsHCOutMcastPkts",
+     "oid": "1.3.6.1.2.1.4.31.1.1.39",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsHCOutMcastOctets",
+     "oid": "1.3.6.1.2.1.4.31.1.1.41",
+     "mib": "IP-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ipSystemStatsHCInBcastPkts",
+     "oid": "1.3.6.1.2.1.4.31.1.1.43",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipSystemStatsHCOutBcastPkts",
+     "oid": "1.3.6.1.2.1.4.31.1.1.45",
+     "mib": "IP-MIB",
+     "type": "counter"
+    }
+   ],
+   "indexOid": "1.3.6.1.2.1.4.31.1.1.4"
+  },
+  {
+   "name": "ipIfStatsTable",
+   "columns": [
+    {
+     "name": "ipIfStatsHCInOctets",
+     "oid": "1.3.6.1.2.1.4.31.3.1.6",
+     "mib": "IP-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ipIfStatsInHdrErrors",
+     "oid": "1.3.6.1.2.1.4.31.3.1.7",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsInNoRoutes",
+     "oid": "1.3.6.1.2.1.4.31.3.1.8",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsInAddrErrors",
+     "oid": "1.3.6.1.2.1.4.31.3.1.9",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsInUnknownProtos",
+     "oid": "1.3.6.1.2.1.4.31.3.1.10",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsInTruncatedPkts",
+     "oid": "1.3.6.1.2.1.4.31.3.1.11",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsHCInForwDatagrams",
+     "oid": "1.3.6.1.2.1.4.31.3.1.13",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsReasmReqds",
+     "oid": "1.3.6.1.2.1.4.31.3.1.14",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsReasmOKs",
+     "oid": "1.3.6.1.2.1.4.31.3.1.15",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsReasmFails",
+     "oid": "1.3.6.1.2.1.4.31.3.1.16",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsInDiscards",
+     "oid": "1.3.6.1.2.1.4.31.3.1.17",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsHCInDelivers",
+     "oid": "1.3.6.1.2.1.4.31.3.1.19",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsHCOutRequests",
+     "oid": "1.3.6.1.2.1.4.31.3.1.21",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsHCOutForwDatagrams",
+     "oid": "1.3.6.1.2.1.4.31.3.1.24",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsOutDiscards",
+     "oid": "1.3.6.1.2.1.4.31.3.1.25",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsOutFragReqds",
+     "oid": "1.3.6.1.2.1.4.31.3.1.26",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsOutFragOKs",
+     "oid": "1.3.6.1.2.1.4.31.3.1.27",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsOutFragFails",
+     "oid": "1.3.6.1.2.1.4.31.3.1.28",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsOutFragCreates",
+     "oid": "1.3.6.1.2.1.4.31.3.1.29",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsHCOutTransmits",
+     "oid": "1.3.6.1.2.1.4.31.3.1.31",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsHCOutOctets",
+     "oid": "1.3.6.1.2.1.4.31.3.1.33",
+     "mib": "IP-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ipIfStatsHCInMcastPkts",
+     "oid": "1.3.6.1.2.1.4.31.3.1.35",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsHCInMcastOctets",
+     "oid": "1.3.6.1.2.1.4.31.3.1.37",
+     "mib": "IP-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ipIfStatsHCOutMcastPkts",
+     "oid": "1.3.6.1.2.1.4.31.3.1.39",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsHCOutMcastOctets",
+     "oid": "1.3.6.1.2.1.4.31.3.1.41",
+     "mib": "IP-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ipIfStatsHCInBcastPkts",
+     "oid": "1.3.6.1.2.1.4.31.3.1.43",
+     "mib": "IP-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ipIfStatsHCOutBcastPkts",
+     "oid": "1.3.6.1.2.1.4.31.3.1.45",
+     "mib": "IP-MIB",
+     "type": "counter"
+    }
+   ],
+   "indexOid": "1.3.6.1.2.1.4.31.3.1.6"
+  }
+ ],
+ "verification": {
+  "verified": 56,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

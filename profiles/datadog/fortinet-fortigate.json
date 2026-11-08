@@ -1,0 +1,261 @@
+{
+ "id": "dd/fortinet-fortigate",
+ "name": "Fortinet Fortigate (Datadog)",
+ "vendor": "fortinet",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/fortinet-fortigate.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if",
+  "dd/_fortinet-fortigate-cpu-memory",
+  "dd/_fortinet-fortigate-vpn-tunnel"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.12356.101.1.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "fgSysCpuUsage",
+   "oid": "1.3.6.1.4.1.12356.101.4.1.3.0",
+   "mib": "FORTINET-FORTIGATE-MIB",
+   "units": "%"
+  },
+  {
+   "name": "fgSysMemUsage",
+   "oid": "1.3.6.1.4.1.12356.101.4.1.4.0",
+   "mib": "FORTINET-FORTIGATE-MIB",
+   "units": "%"
+  },
+  {
+   "name": "fgSysMemCapacity",
+   "oid": "1.3.6.1.4.1.12356.101.4.1.5.0",
+   "mib": "FORTINET-FORTIGATE-MIB"
+  },
+  {
+   "name": "fgSysLowMemUsage",
+   "oid": "1.3.6.1.4.1.12356.101.4.1.9.0",
+   "mib": "FORTINET-FORTIGATE-MIB",
+   "units": "%"
+  },
+  {
+   "name": "fgSysLowMemCapacity",
+   "oid": "1.3.6.1.4.1.12356.101.4.1.10.0",
+   "mib": "FORTINET-FORTIGATE-MIB"
+  },
+  {
+   "name": "fgSysDiskUsage",
+   "oid": "1.3.6.1.4.1.12356.101.4.1.6.0",
+   "mib": "FORTINET-FORTIGATE-MIB"
+  },
+  {
+   "name": "fgSysDiskCapacity",
+   "oid": "1.3.6.1.4.1.12356.101.4.1.7.0",
+   "mib": "FORTINET-FORTIGATE-MIB"
+  },
+  {
+   "name": "fgVdNumber",
+   "oid": "1.3.6.1.4.1.12356.101.3.1.1.0",
+   "mib": "FORTINET-FORTIGATE-MIB"
+  },
+  {
+   "name": "fgVdMaxVdoms",
+   "oid": "1.3.6.1.4.1.12356.101.3.1.2.0",
+   "mib": "FORTINET-FORTIGATE-MIB"
+  },
+  {
+   "name": "fgSysSesCount",
+   "oid": "1.3.6.1.4.1.12356.101.4.1.8.0",
+   "mib": "FORTINET-FORTIGATE-MIB"
+  },
+  {
+   "name": "fgSysSesRate1",
+   "oid": "1.3.6.1.4.1.12356.101.4.1.11.0",
+   "mib": "FORTINET-FORTIGATE-MIB",
+   "units": "s"
+  },
+  {
+   "name": "fgSysSes6Count",
+   "oid": "1.3.6.1.4.1.12356.101.4.1.15.0",
+   "mib": "FORTINET-FORTIGATE-MIB"
+  },
+  {
+   "name": "fgSysSes6Rate1",
+   "oid": "1.3.6.1.4.1.12356.101.4.1.16.0",
+   "mib": "FORTINET-FORTIGATE-MIB",
+   "units": "s"
+  },
+  {
+   "name": "fgApHTTPConnections",
+   "oid": "1.3.6.1.4.1.12356.101.10.100.4.0",
+   "mib": "FORTINET-FORTIGATE-MIB"
+  },
+  {
+   "name": "fgApHTTPMaxConnections",
+   "oid": "1.3.6.1.4.1.12356.101.10.100.5.0",
+   "mib": "FORTINET-FORTIGATE-MIB"
+  }
+ ],
+ "tables": [
+  {
+   "name": "fgProcessorTable",
+   "columns": [
+    {
+     "name": "fgProcessorPktRxCount",
+     "oid": "1.3.6.1.4.1.12356.101.4.4.2.1.6",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "fgProcessorPktTxCount",
+     "oid": "1.3.6.1.4.1.12356.101.4.4.2.1.7",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "fgProcessorPktDroppedCount",
+     "oid": "1.3.6.1.4.1.12356.101.4.4.2.1.8",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "fgProcessorUsage",
+     "oid": "1.3.6.1.4.1.12356.101.4.4.2.1.2",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "units": "%"
+    },
+    {
+     "name": "fgProcessorSysUsage",
+     "oid": "1.3.6.1.4.1.12356.101.4.4.2.1.10",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.12356.101.4.4.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.12356.101.4.4.2.1.6"
+  },
+  {
+   "name": "fgHwSensorTable",
+   "columns": [
+    {
+     "name": "fgHwSensorEntValue",
+     "oid": "1.3.6.1.4.1.12356.101.4.3.2.1.3",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "regex": "/(-?\\d+(?:\\.\\d+)?)/"
+    },
+    {
+     "name": "fgHwSensorEntAlarmStatus",
+     "oid": "1.3.6.1.4.1.12356.101.4.3.2.1.4",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "enum": {
+      "0": "false",
+      "1": "true"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.12356.101.4.3.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.12356.101.4.3.2.1.3"
+  },
+  {
+   "name": "fgVdTable",
+   "columns": [
+    {
+     "name": "fgVdEntOpMode",
+     "oid": "1.3.6.1.4.1.12356.101.3.2.1.1.3",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "enum": {
+      "1": "nat",
+      "2": "transparent"
+     }
+    },
+    {
+     "name": "fgVdEntHaState",
+     "oid": "1.3.6.1.4.1.12356.101.3.2.1.1.4",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "enum": {
+      "1": "primary",
+      "2": "secondary",
+      "3": "standalone"
+     }
+    },
+    {
+     "name": "fgVdEntCpuUsage",
+     "oid": "1.3.6.1.4.1.12356.101.3.2.1.1.5",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "units": "%"
+    },
+    {
+     "name": "fgVdEntMemUsage",
+     "oid": "1.3.6.1.4.1.12356.101.3.2.1.1.6",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "units": "%"
+    },
+    {
+     "name": "fgVdEntSesCount",
+     "oid": "1.3.6.1.4.1.12356.101.3.2.1.1.7",
+     "mib": "FORTINET-FORTIGATE-MIB"
+    },
+    {
+     "name": "fgVdEntSesRate",
+     "oid": "1.3.6.1.4.1.12356.101.3.2.1.1.8",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "units": "s"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.12356.101.3.2.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.12356.101.3.2.1.1.3"
+  },
+  {
+   "name": "fgIntfTable",
+   "columns": [
+    {
+     "name": "fgIntfEntVdom",
+     "oid": "1.3.6.1.4.1.12356.101.7.2.1.1.1",
+     "mib": "FORTINET-FORTIGATE-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.31.1.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.12356.101.7.2.1.1.1"
+  },
+  {
+   "name": "fgFwPolStatsTable",
+   "columns": [
+    {
+     "name": "fgFwPolPktCount",
+     "oid": "1.3.6.1.4.1.12356.101.5.1.2.1.1.2",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "fgFwPolByteCount",
+     "oid": "1.3.6.1.4.1.12356.101.5.1.2.1.1.3",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "type": "counter",
+     "units": "B"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.12356.101.5.1.2.1.1.2"
+  }
+ ],
+ "verification": {
+  "verified": 31,
+  "renamed": 2,
+  "dropped": 2,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

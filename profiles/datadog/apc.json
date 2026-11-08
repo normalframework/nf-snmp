@@ -1,0 +1,30 @@
+{
+ "id": "dd/apc",
+ "name": "Apc (Datadog)",
+ "vendor": "American Power Conversion Corp.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/apc.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_apc-metadata",
+  "dd/_generic-tcp",
+  "dd/_generic-udp"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.318.*"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

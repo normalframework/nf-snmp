@@ -1,0 +1,78 @@
+{
+ "id": "dd/opengear-console-manager",
+ "name": "Opengear Console Manager (Datadog)",
+ "vendor": "Opengear Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/opengear-console-manager.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-entity-sensor",
+  "dd/_generic-host-resources-base",
+  "dd/_generic-if",
+  "dd/_generic-ucd",
+  "dd/_opengear"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.25049.1.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.25049.1.10"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.25049.1.11"
+  }
+ ],
+ "tables": [
+  {
+   "name": "ogSerialPortTable",
+   "columns": [
+    {
+     "name": "ogSerialPortRxBytes",
+     "oid": "1.3.6.1.4.1.25049.17.2.1.10",
+     "mib": "OG-STATUSv2-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ogSerialPortTxBytes",
+     "oid": "1.3.6.1.4.1.25049.17.2.1.11",
+     "mib": "OG-STATUSv2-MIB",
+     "type": "counter",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.25049.17.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.25049.17.2.1.10"
+  },
+  {
+   "name": "ogCellModemTable",
+   "columns": [
+    {
+     "name": "ogCellModemCounter",
+     "oid": "1.3.6.1.4.1.25049.17.17.1.16",
+     "mib": "OG-STATUSv2-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.25049.17.17.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.25049.17.17.1.16"
+  }
+ ],
+ "verification": {
+  "verified": 3,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

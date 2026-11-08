@@ -1,0 +1,238 @@
+{
+ "id": "dd/synology-disk-station",
+ "name": "Synology Disk Station (Datadog)",
+ "vendor": "Synology Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/synology-disk-station.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.6574.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "cpu.usage",
+   "oid": "1.3.6.1.4.1.2021.10.1.5.1",
+   "mib": "UCD-SNMP-MIB",
+   "description": "laLoadInt row 1"
+  },
+  {
+   "name": "memory.total",
+   "oid": "1.3.6.1.2.1.25.2.3.1.6.1",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageUsed row 1"
+  },
+  {
+   "name": "hrMemoryBuffers",
+   "oid": "1.3.6.1.2.1.25.2.3.1.6.6",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageUsed row 6"
+  },
+  {
+   "name": "hrCachedMemory",
+   "oid": "1.3.6.1.2.1.25.2.3.1.6.7",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageUsed row 7"
+  },
+  {
+   "name": "temperature",
+   "oid": "1.3.6.1.4.1.6574.1.2.0",
+   "mib": "SYNOLOGY-SYSTEM-MIB",
+   "description": "Datadog metric synology.system.temperature",
+   "units": "degC"
+  },
+  {
+   "name": "synology.gpuUtilization",
+   "oid": "1.3.6.1.4.1.6574.108.2.0",
+   "mib": "SYNOLOGY-GPUINFO-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "synology.gpuMemoryUtilization",
+   "oid": "1.3.6.1.4.1.6574.108.3.0",
+   "mib": "SYNOLOGY-GPUINFO-MIB",
+   "mibVerified": false
+  }
+ ],
+ "tables": [
+  {
+   "name": "diskTable",
+   "columns": [
+    {
+     "name": "diskTemperature",
+     "oid": "1.3.6.1.4.1.6574.2.1.1.6",
+     "mib": "SYNOLOGY-DISK-MIB",
+     "description": "Datadog metric synology.diskTemperature",
+     "units": "degC"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.6574.2.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.6574.2.1.1.6"
+  },
+  {
+   "name": "raidTable",
+   "columns": [
+    {
+     "name": "raidFreeSize",
+     "oid": "1.3.6.1.4.1.6574.3.1.1.4",
+     "mib": "SYNOLOGY-RAID-MIB",
+     "type": "counter",
+     "description": "Datadog metric synology.raidFreeSize",
+     "units": "B"
+    },
+    {
+     "name": "raidTotalSize",
+     "oid": "1.3.6.1.4.1.6574.3.1.1.5",
+     "mib": "SYNOLOGY-RAID-MIB",
+     "type": "counter",
+     "description": "Datadog metric synology.raidTotalSize",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.6574.3.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.6574.3.1.1.4"
+  },
+  {
+   "name": "diskSMARTTable",
+   "columns": [
+    {
+     "name": "synology.diskSMARTAttrCurrent",
+     "oid": "1.3.6.1.4.1.6574.5.1.1.5",
+     "mib": "SYNOLOGY-SMART-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "synology.diskSMARTAttrThreshold",
+     "oid": "1.3.6.1.4.1.6574.5.1.1.7",
+     "mib": "SYNOLOGY-SMART-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.6574.5.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.6574.5.1.1.5"
+  },
+  {
+   "name": "serviceTable",
+   "columns": [
+    {
+     "name": "synology.serviceUsers",
+     "oid": "1.3.6.1.4.1.6574.6.1.1.3",
+     "mib": "SYNOLOGY-SERVICES-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.6574.6.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.6574.6.1.1.3"
+  },
+  {
+   "name": "storageIOTable",
+   "columns": [
+    {
+     "name": "synology.storageIOReads",
+     "oid": "1.3.6.1.4.1.6574.101.1.1.5",
+     "mib": "SYNOLOGY-STORAGEIO-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "synology.storageIOWrites",
+     "oid": "1.3.6.1.4.1.6574.101.1.1.6",
+     "mib": "SYNOLOGY-STORAGEIO-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "synology.storageIOLA",
+     "oid": "1.3.6.1.4.1.6574.101.1.1.8",
+     "mib": "SYNOLOGY-STORAGEIO-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "synology.storageIONReadX",
+     "oid": "1.3.6.1.4.1.6574.101.1.1.12",
+     "mib": "SYNOLOGY-STORAGEIO-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "synology.storageIONWrittenX",
+     "oid": "1.3.6.1.4.1.6574.101.1.1.13",
+     "mib": "SYNOLOGY-STORAGEIO-MIB",
+     "type": "counter",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.6574.101.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.6574.101.1.1.5"
+  },
+  {
+   "name": "spaceIOTable",
+   "columns": [
+    {
+     "name": "synology.spaceIOReads",
+     "oid": "1.3.6.1.4.1.6574.102.1.1.5",
+     "mib": "SYNOLOGY-SPACEIO-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "synology.spaceIOWrites",
+     "oid": "1.3.6.1.4.1.6574.102.1.1.6",
+     "mib": "SYNOLOGY-SPACEIO-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "synology.spaceIOLA",
+     "oid": "1.3.6.1.4.1.6574.102.1.1.8",
+     "mib": "SYNOLOGY-SPACEIO-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "synology.spaceIONReadX",
+     "oid": "1.3.6.1.4.1.6574.102.1.1.12",
+     "mib": "SYNOLOGY-SPACEIO-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "synology.spaceIONWrittenX",
+     "oid": "1.3.6.1.4.1.6574.102.1.1.13",
+     "mib": "SYNOLOGY-SPACEIO-MIB",
+     "type": "counter",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.6574.102.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.6574.102.1.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 8,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 15,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

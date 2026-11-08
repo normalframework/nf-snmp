@@ -1,0 +1,165 @@
+{
+ "id": "dd/barracuda-cloudgen",
+ "name": "Barracuda Cloudgen (Datadog)",
+ "vendor": "Barracuda Networks AG (previous was 'phion Information Technologies')",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/barracuda-cloudgen.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/barracuda"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.10704.1.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "vpnUsers",
+   "oid": "1.3.6.1.4.1.10704.1.11.0",
+   "mib": "PHION-MIB",
+   "description": "Datadog metric phion.vpnUsers"
+  }
+ ],
+ "tables": [
+  {
+   "name": "trafficShape",
+   "columns": [
+    {
+     "name": "rate",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.2",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.rate",
+     "units": "s"
+    },
+    {
+     "name": "sessions",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.3",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.sessions"
+    },
+    {
+     "name": "class1Total",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.4",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.class1Total",
+     "units": "B"
+    },
+    {
+     "name": "class1Pakets",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.5",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.class1Pakets"
+    },
+    {
+     "name": "class1Drop",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.6",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.class1Drop"
+    },
+    {
+     "name": "class2Total",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.7",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.class2Total",
+     "units": "B"
+    },
+    {
+     "name": "class2Pakets",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.8",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.class2Pakets"
+    },
+    {
+     "name": "class2Drop",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.9",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.class2Drop"
+    },
+    {
+     "name": "class3Total",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.10",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.class3Total",
+     "units": "B"
+    },
+    {
+     "name": "class3Pakets",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.11",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.class3Pakets"
+    },
+    {
+     "name": "class3Drop",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.12",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.class3Drop"
+    },
+    {
+     "name": "noDelayTotal",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.13",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.noDelayTotal",
+     "units": "B"
+    },
+    {
+     "name": "noDelayPakets",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.14",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.noDelayPakets"
+    },
+    {
+     "name": "noDelayDrop",
+     "oid": "1.3.6.1.4.1.10704.1.12.1.15",
+     "mib": "PHION-MIB",
+     "type": "counter",
+     "description": "Datadog metric phion.trafficShape.noDelayDrop"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.10704.1.12.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.10704.1.12.1.2"
+  },
+  {
+   "name": "hwSensors",
+   "columns": [
+    {
+     "name": "hwSensorValue",
+     "oid": "1.3.6.1.4.1.10704.1.4.1.3",
+     "mib": "PHION-MIB",
+     "description": "Datadog metric phion.hwSensorValue"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.10704.1.4.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.10704.1.4.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 16,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

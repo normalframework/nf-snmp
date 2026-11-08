@@ -1,0 +1,44 @@
+{
+ "id": "dd/zyxel-switch",
+ "name": "Zyxel Switch (Datadog)",
+ "vendor": "ZyXEL Communications Corp.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/zyxel-switch.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.890.1.15"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "sysMgmtCPUUsage",
+   "oid": "1.3.6.1.4.1.890.1.15.3.2.4.0",
+   "mib": "ZYXEL-ES-COMMON",
+   "description": "Datadog metric cpu.usage",
+   "units": "%"
+  },
+  {
+   "name": "sysMgmtMemUsage",
+   "oid": "1.3.6.1.4.1.890.1.15.3.2.5.0",
+   "mib": "ZYXEL-ES-COMMON",
+   "description": "Datadog metric memory.usage",
+   "units": "%"
+  }
+ ],
+ "verification": {
+  "verified": 2,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

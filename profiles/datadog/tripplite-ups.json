@@ -1,0 +1,117 @@
+{
+ "id": "dd/tripplite-ups",
+ "name": "Tripplite UPS (Datadog)",
+ "vendor": "Tripp Lite",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/tripplite-ups.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-ups",
+  "dd/tripplite"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.850.1.1.3.1"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "tlUpsTemperature",
+   "oid": "1.3.6.1.4.1.850.100.1.13.1.0",
+   "mib": "TRIPPLITE-12X",
+   "units": "degF"
+  },
+  {
+   "name": "tlUpsBatteryAge",
+   "oid": "1.3.6.1.4.1.850.100.1.2.1.0",
+   "mib": "TRIPPLITE-12X"
+  },
+  {
+   "name": "tlUpsTemperatureF",
+   "oid": "1.3.6.1.4.1.850.100.1.2.2.0",
+   "mib": "TRIPPLITE-12X",
+   "units": "degC"
+  },
+  {
+   "name": "tlUpsExternalBatteryAge",
+   "oid": "1.3.6.1.4.1.850.100.1.2.3.0",
+   "mib": "TRIPPLITE-12X"
+  },
+  {
+   "name": "tlUpsAlarmsPresent",
+   "oid": "1.3.6.1.4.1.850.100.1.6.1.0",
+   "mib": "TRIPPLITE-12X"
+  },
+  {
+   "name": "tlEnvTemperatureC",
+   "oid": "1.3.6.1.4.1.850.101.1.1.1.0",
+   "mib": "TRIPPLITE-12X"
+  },
+  {
+   "name": "tlEnvTemperatureF",
+   "oid": "1.3.6.1.4.1.850.101.1.1.2.0",
+   "mib": "TRIPPLITE-12X"
+  },
+  {
+   "name": "tlEnvHumidity",
+   "oid": "1.3.6.1.4.1.850.101.1.2.1.0",
+   "mib": "TRIPPLITE-12X",
+   "units": "%"
+  }
+ ],
+ "tables": [
+  {
+   "name": "tlUpsInputVoltageTable",
+   "columns": [
+    {
+     "name": "tlUpsInputVoltage",
+     "oid": "1.3.6.1.4.1.850.100.1.3.2.1.3",
+     "mib": "TRIPPLITE-12X",
+     "units": "V"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.850.100.1.3.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.850.100.1.3.2.1.3"
+  },
+  {
+   "name": "tlUpsOutputCircuitTable",
+   "columns": [
+    {
+     "name": "tlUpsOutputCircuitLoadCurrent",
+     "oid": "1.3.6.1.4.1.850.100.1.4.7.1.3",
+     "mib": "TRIPPLITE-12X",
+     "scale": 0.1,
+     "units": "A"
+    },
+    {
+     "name": "tlUpsOutputCircuitVoltage",
+     "oid": "1.3.6.1.4.1.850.100.1.4.7.1.4",
+     "mib": "TRIPPLITE-12X",
+     "scale": 0.1,
+     "units": "V"
+    },
+    {
+     "name": "tlUpsOutputCircuitPower",
+     "oid": "1.3.6.1.4.1.850.100.1.4.7.1.5",
+     "mib": "TRIPPLITE-12X",
+     "units": "W"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.850.100.1.4.7.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 12,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

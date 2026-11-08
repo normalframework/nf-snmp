@@ -1,0 +1,110 @@
+{
+ "id": "dd/apc-pdu",
+ "name": "Apc PDU (Datadog)",
+ "vendor": "American Power Conversion Corp.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/apc-pdu.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/apc"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.318.1.3.4.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "rPDUPowerSupplyAlarm",
+   "oid": "1.3.6.1.4.1.318.1.1.12.4.1.3.0",
+   "mib": "PowerNet-MIB",
+   "description": "Datadog metric powernet.rPDUPowerSupplyAlarm",
+   "enum": {
+    "1": "allAvailablePowerSuppliesOK",
+    "2": "powerSupplyOneFailed",
+    "3": "powerSupplyTwoFailed",
+    "4": "powerSupplyOneandTwoFailed"
+   }
+  }
+ ],
+ "tables": [
+  {
+   "name": "rPDULoadStatusTable",
+   "columns": [
+    {
+     "name": "rPDULoadStatusLoad",
+     "oid": "1.3.6.1.4.1.318.1.1.12.2.3.1.1.2",
+     "mib": "PowerNet-MIB",
+     "description": "Datadog metric powernet.rPDULoadStatusLoad",
+     "scale": 0.1,
+     "units": "A"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.318.1.1.12.2.3.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.318.1.1.12.2.3.1.1.2"
+  },
+  {
+   "name": "rPDUOutletStatusTable",
+   "columns": [
+    {
+     "name": "rPDUOutletStatusLoad",
+     "oid": "1.3.6.1.4.1.318.1.1.12.3.5.1.1.7",
+     "mib": "PowerNet-MIB",
+     "description": "Datadog metric powernet.rPDUOutletStatusLoad",
+     "scale": 0.1,
+     "units": "A"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.318.1.1.12.3.5.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.318.1.1.12.3.5.1.1.7"
+  },
+  {
+   "name": "rPDU2SensorTempHumidityStatusTable",
+   "columns": [
+    {
+     "name": "rPDU2SensorTempHumidityStatusTempF",
+     "oid": "1.3.6.1.4.1.318.1.1.26.10.2.2.1.7",
+     "mib": "PowerNet-MIB",
+     "description": "Datadog metric powernet.rPDU2SensorTempHumidityStatusTempF",
+     "scale": 0.1,
+     "units": "degF"
+    },
+    {
+     "name": "rPDU2SensorTempHumidityStatusTempC",
+     "oid": "1.3.6.1.4.1.318.1.1.26.10.2.2.1.8",
+     "mib": "PowerNet-MIB",
+     "description": "Datadog metric powernet.rPDU2SensorTempHumidityStatusTempC",
+     "scale": 0.1,
+     "units": "degC"
+    },
+    {
+     "name": "rPDU2SensorTempHumidityStatusRelativeHumidity",
+     "oid": "1.3.6.1.4.1.318.1.1.26.10.2.2.1.10",
+     "mib": "PowerNet-MIB",
+     "description": "Datadog metric powernet.rPDU2SensorTempHumidityStatusRelativeHumidity",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.318.1.1.26.10.2.2.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.318.1.1.26.10.2.2.1.7"
+  }
+ ],
+ "verification": {
+  "verified": 6,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

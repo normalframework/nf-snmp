@@ -1,0 +1,808 @@
+{
+ "id": "dd/f5-big-ip",
+ "name": "F5 Big Ip (Datadog)",
+ "vendor": "f5",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/f5-big-ip.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if",
+  "dd/_generic-bgp4",
+  "dd/_generic-bfd",
+  "dd/_generic-ospf",
+  "dd/_generic-tcp",
+  "dd/_generic-udp",
+  "dd/_generic-ip",
+  "dd/_f5-big-ip-cpu-memory"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.3375.2.1.3.4.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "sysStatMemoryTotal",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.1.44.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysStatMemoryUsed",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.1.45.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysGlobalTmmStatMemoryTotal",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.21.28.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysGlobalTmmStatMemoryUsed",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.21.29.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysGlobalHostOtherMemoryTotal",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.20.44.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysGlobalHostOtherMemoryUsed",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.20.45.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysGlobalHostSwapTotal",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.20.46.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysGlobalHostSwapUsed",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.20.47.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysTcpStatOpen",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.12.2.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB"
+  },
+  {
+   "name": "sysTcpStatCloseWait",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.12.3.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB"
+  },
+  {
+   "name": "sysTcpStatFinWait",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.12.4.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB"
+  },
+  {
+   "name": "sysTcpStatTimeWait",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.12.5.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB"
+  },
+  {
+   "name": "sysTcpStatAccepts",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.12.6.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "sysTcpStatAcceptfails",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.12.7.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "sysTcpStatConnects",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.12.8.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "sysTcpStatConnfails",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.12.9.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "sysUdpStatOpen",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.13.2.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB"
+  },
+  {
+   "name": "sysUdpStatAccepts",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.13.3.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "sysUdpStatAcceptfails",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.13.4.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "sysUdpStatConnects",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.13.5.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "sysUdpStatConnfails",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.13.6.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "sysClientsslStatCurConns",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.9.2.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB"
+  },
+  {
+   "name": "sysClientsslStatEncryptedBytesIn",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.9.10.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysClientsslStatEncryptedBytesOut",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.9.11.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysClientsslStatDecryptedBytesIn",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.9.12.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysClientsslStatDecryptedBytesOut",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.9.13.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysClientsslStatHandshakeFailures",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.9.29.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "ltmVirtualServNumber",
+   "oid": "1.3.6.1.4.1.3375.2.2.10.1.1.0",
+   "mib": "F5-BIGIP-LOCAL-MIB"
+  },
+  {
+   "name": "ltmNodeAddrNumber",
+   "oid": "1.3.6.1.4.1.3375.2.2.4.1.1.0",
+   "mib": "F5-BIGIP-LOCAL-MIB"
+  },
+  {
+   "name": "ltmPoolNumber",
+   "oid": "1.3.6.1.4.1.3375.2.2.5.1.1.0",
+   "mib": "F5-BIGIP-LOCAL-MIB"
+  },
+  {
+   "name": "ltmPoolMemberNumber",
+   "oid": "1.3.6.1.4.1.3375.2.2.5.3.1.0",
+   "mib": "F5-BIGIP-LOCAL-MIB"
+  }
+ ],
+ "tables": [
+  {
+   "name": "sysMultiHostCpuTable",
+   "columns": [
+    {
+     "name": "sysMultiHostCpuUsageRatio",
+     "oid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.11",
+     "mib": "F5-BIGIP-SYSTEM-MIB"
+    },
+    {
+     "name": "sysMultiHostCpuUser",
+     "oid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.4",
+     "mib": "F5-BIGIP-SYSTEM-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "sysMultiHostCpuNice",
+     "oid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.5",
+     "mib": "F5-BIGIP-SYSTEM-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "sysMultiHostCpuSystem",
+     "oid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.6",
+     "mib": "F5-BIGIP-SYSTEM-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "sysMultiHostCpuIdle",
+     "oid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.7",
+     "mib": "F5-BIGIP-SYSTEM-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "sysMultiHostCpuIrq",
+     "oid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.8",
+     "mib": "F5-BIGIP-SYSTEM-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "sysMultiHostCpuSoftirq",
+     "oid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.9",
+     "mib": "F5-BIGIP-SYSTEM-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "sysMultiHostCpuIowait",
+     "oid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.10",
+     "mib": "F5-BIGIP-SYSTEM-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.11"
+  },
+  {
+   "name": "ltmVirtualServTable",
+   "columns": [
+    {
+     "name": "ltmVirtualServEnabled",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.1.2.1.9",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "enum": {
+      "0": "false",
+      "1": "true"
+     }
+    },
+    {
+     "name": "ltmVirtualServConnLimit",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.1.2.1.10",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3375.2.2.10.1.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.3375.2.2.10.1.2.1.9"
+  },
+  {
+   "name": "ltmVirtualServStatTable",
+   "columns": [
+    {
+     "name": "ltmVirtualServStatClientPktsIn",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.6",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmVirtualServStatClientBytesIn",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.7",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ltmVirtualServStatClientPktsOut",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.8",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmVirtualServStatClientBytesOut",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.9",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ltmVirtualServStatClientCurConns",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.12",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmVirtualServStatVsUsageRatio5s",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.31",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "units": "%"
+    },
+    {
+     "name": "ltmVirtualServStatVsUsageRatio1m",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.32",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "units": "%"
+    },
+    {
+     "name": "ltmVirtualServStatVsUsageRatio5m",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.33",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "units": "%"
+    },
+    {
+     "name": "ltmVirtualServStatCurrentConnsPerSec",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.34",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmVirtualServStatDurationRateExceeded",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.35",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "units": "s"
+    },
+    {
+     "name": "ltmVirtualServStatNoNodesErrors",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.5",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmVirtualServStatClientTotConns",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.11",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmVirtualServStatTotRequests",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.27",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmVirtualServStatClientEvictedConns",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.40",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmVirtualServStatClientSlowKilled",
+     "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.41",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.3375.2.2.10.2.3.1.6"
+  },
+  {
+   "name": "ltmNodeAddrTable",
+   "columns": [
+    {
+     "name": "ltmNodeAddrConnLimit",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.1.2.1.3",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmNodeAddrRatio",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.1.2.1.4",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmNodeAddrDynamicRatio",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.1.2.1.5",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmNodeAddrMonitorState",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.1.2.1.6",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "enum": {
+      "0": "unchecked",
+      "1": "checking",
+      "2": "inband",
+      "3": "forcedUp",
+      "4": "up",
+      "19": "down",
+      "20": "forcedDown",
+      "22": "iruleDown",
+      "23": "inbandDown",
+      "24": "downManualResume",
+      "25": "disabled",
+      "26": "fqdnChecking",
+      "27": "fqdnDown",
+      "28": "fqdnUp",
+      "29": "fqdnUpNoAddress"
+     }
+    },
+    {
+     "name": "ltmNodeAddrMonitorStatus",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.1.2.1.7",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "enum": {
+      "0": "unchecked",
+      "1": "checking",
+      "2": "inband",
+      "3": "forcedUp",
+      "4": "up",
+      "18": "addrDown",
+      "19": "down",
+      "20": "forcedDown",
+      "21": "maint",
+      "22": "iruleDown",
+      "23": "inbandDown",
+      "24": "downManualResume",
+      "26": "fqdnChecking",
+      "27": "fqdnDown",
+      "28": "fqdnUp",
+      "29": "fqdnUpNoAddress"
+     }
+    },
+    {
+     "name": "ltmNodeAddrSessionStatus",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.1.2.1.10",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "enum": {
+      "1": "enabled",
+      "2": "addrdisabled",
+      "3": "servdisabled",
+      "4": "disabled",
+      "5": "forceddisabled"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3375.2.2.4.1.2.1.17"
+   },
+   "indexOid": "1.3.6.1.4.1.3375.2.2.4.1.2.1.3"
+  },
+  {
+   "name": "ltmNodeAddrStatTable",
+   "columns": [
+    {
+     "name": "ltmNodeAddrStatServerPktsIn",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.2.3.1.3",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmNodeAddrStatServerBytesIn",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.2.3.1.4",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ltmNodeAddrStatServerPktsOut",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.2.3.1.5",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmNodeAddrStatServerBytesOut",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.2.3.1.6",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ltmNodeAddrStatServerCurConns",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.2.3.1.9",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmNodeAddrStatCurSessions",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.2.3.1.21",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmNodeAddrStatCurrentConnsPerSec",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.2.3.1.22",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmNodeAddrStatDurationRateExceeded",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.2.3.1.23",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "units": "s"
+    },
+    {
+     "name": "ltmNodeAddrStatServerTotConns",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.2.3.1.8",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmNodeAddrStatTotRequests",
+     "oid": "1.3.6.1.4.1.3375.2.2.4.2.3.1.17",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3375.2.2.4.2.3.1.20"
+   },
+   "indexOid": "1.3.6.1.4.1.3375.2.2.4.2.3.1.3"
+  },
+  {
+   "name": "ltmPoolTable",
+   "columns": [
+    {
+     "name": "ltmPoolActiveMemberCnt",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.1.2.1.8",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolDynamicRatioSum",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.1.2.1.16",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolMemberCnt",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.1.2.1.23",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3375.2.2.5.1.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.3375.2.2.5.1.2.1.8"
+  },
+  {
+   "name": "ltmPoolStatTable",
+   "columns": [
+    {
+     "name": "ltmPoolStatServerPktsIn",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.2",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmPoolStatServerBytesIn",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.3",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ltmPoolStatServerPktsOut",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.4",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmPoolStatServerBytesOut",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.5",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ltmPoolStatServerCurConns",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.8",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolStatConnqDepth",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.18",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolStatConnqAgeHead",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.19",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolStatCurSessions",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.31",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolStatServerTotConns",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.7",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmPoolStatConnqServiced",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.23",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmPoolStatTotRequests",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.30",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.3375.2.2.5.2.3.1.2"
+  },
+  {
+   "name": "ltmPoolMemberTable",
+   "columns": [
+    {
+     "name": "ltmPoolMemberConnLimit",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.3.2.1.5",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolMemberRatio",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.3.2.1.6",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolMemberDynamicRatio",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.3.2.1.9",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolMemberMonitorState",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.3.2.1.10",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "enum": {
+      "0": "unchecked",
+      "1": "checking",
+      "2": "inband",
+      "3": "forcedUp",
+      "4": "up",
+      "19": "down",
+      "20": "forcedDown",
+      "22": "iruleDown",
+      "23": "inbandDown",
+      "24": "downManualResume",
+      "25": "disabled"
+     }
+    },
+    {
+     "name": "ltmPoolMemberMonitorStatus",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.3.2.1.11",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "enum": {
+      "0": "unchecked",
+      "1": "checking",
+      "2": "inband",
+      "3": "forcedUp",
+      "4": "up",
+      "18": "addrDown",
+      "19": "down",
+      "20": "forcedDown",
+      "21": "maint",
+      "22": "iruleDown",
+      "23": "inbandDown",
+      "24": "downManualResume"
+     }
+    },
+    {
+     "name": "ltmPoolMemberSessionStatus",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.3.2.1.13",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "enum": {
+      "1": "enabled",
+      "2": "addrdisabled",
+      "3": "servdisabled",
+      "4": "disabled",
+      "5": "forceddisabled"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3375.2.2.5.3.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.3375.2.2.5.3.2.1.5"
+  },
+  {
+   "name": "ltmPoolMemberStatTable",
+   "columns": [
+    {
+     "name": "ltmPoolMemberStatServerPktsIn",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.5",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmPoolMemberStatServerBytesIn",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.6",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ltmPoolMemberStatServerPktsOut",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.7",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmPoolMemberStatServerBytesOut",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.8",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "ltmPoolMemberStatServerCurConns",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.11",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolMemberStatConnqDepth",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.22",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolMemberStatConnqAgeHead",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.23",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolMemberStatCurSessions",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.29",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolMemberStatCurrentConnsPerSec",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.30",
+     "mib": "F5-BIGIP-LOCAL-MIB"
+    },
+    {
+     "name": "ltmPoolMemberStatDurationRateExceeded",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.31",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "units": "s"
+    },
+    {
+     "name": "ltmPoolMemberStatServerTotConns",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.10",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmPoolMemberStatTotRequests",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.19",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ltmPoolMemberStatConnqServiced",
+     "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.27",
+     "mib": "F5-BIGIP-LOCAL-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.3375.2.2.5.4.3.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 105,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

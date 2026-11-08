@@ -1,0 +1,115 @@
+{
+ "id": "dd/aruba-switch",
+ "name": "Aruba Switch (Datadog)",
+ "vendor": "aruba",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/aruba-switch.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_aruba-base",
+  "dd/_generic-if",
+  "dd/_generic-ospf",
+  "dd/_aruba-switch-cpu-memory"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "wlsxSysExtPacketLossPercent",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.32.0",
+   "mib": "WLSX-SYSTEMEXT-MIB"
+  }
+ ],
+ "tables": [
+  {
+   "name": "wlsxSysExtFanTable",
+   "columns": [
+    {
+     "name": "sysExtFanStatus",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.17.1.2",
+     "mib": "WLSX-SYSTEMEXT-MIB",
+     "enum": {
+      "1": "active",
+      "2": "inactive"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.17.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.2.1.17.1.2"
+  },
+  {
+   "name": "wlsxSysExtPowerSupplyTable",
+   "columns": [
+    {
+     "name": "sysExtPowerSupplyStatus",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.18.1.2",
+     "mib": "WLSX-SYSTEMEXT-MIB",
+     "enum": {
+      "1": "active",
+      "2": "inactive"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.18.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.2.1.18.1.2"
+  },
+  {
+   "name": "wlsxSysExtProcessorTable",
+   "columns": [
+    {
+     "name": "sysExtProcessorLoad",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.13.1.3",
+     "mib": "WLSX-SYSTEMEXT-MIB",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.13.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.2.1.13.1.3"
+  },
+  {
+   "name": "wlsxSysExtMemoryTable",
+   "columns": [
+    {
+     "name": "sysExtMemorySize",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.15.1.2",
+     "mib": "WLSX-SYSTEMEXT-MIB"
+    },
+    {
+     "name": "sysExtMemoryUsed",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.15.1.3",
+     "mib": "WLSX-SYSTEMEXT-MIB"
+    },
+    {
+     "name": "sysExtMemoryFree",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.15.1.4",
+     "mib": "WLSX-SYSTEMEXT-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.15.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.2.1.15.1.2"
+  }
+ ],
+ "verification": {
+  "verified": 7,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

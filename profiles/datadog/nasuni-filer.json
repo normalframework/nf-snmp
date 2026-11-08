@@ -1,0 +1,390 @@
+{
+ "id": "dd/nasuni-filer",
+ "name": "Nasuni Filer (Datadog)",
+ "vendor": "Nasuni Corporation",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/nasuni-filer.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if",
+  "dd/_generic-ucd"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.42040.1.1.0"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "nasuni.filerTotalUnprotectedData",
+   "oid": "1.3.6.1.4.1.42040.1.6.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerPushesCompleted",
+   "oid": "1.3.6.1.4.1.42040.1.7.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerTotalPushed",
+   "oid": "1.3.6.1.4.1.42040.1.8.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerTotalRead",
+   "oid": "1.3.6.1.4.1.42040.1.9.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerOpensForRead",
+   "oid": "1.3.6.1.4.1.42040.1.10.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerOpensForWrite",
+   "oid": "1.3.6.1.4.1.42040.1.11.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerMergeConflicts",
+   "oid": "1.3.6.1.4.1.42040.1.12.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerReadHits",
+   "oid": "1.3.6.1.4.1.42040.1.13.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerReadMisses",
+   "oid": "1.3.6.1.4.1.42040.1.14.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerCacheTotal",
+   "oid": "1.3.6.1.4.1.42040.1.100.1.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerCacheUsed",
+   "oid": "1.3.6.1.4.1.42040.1.100.2.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerCacheFree",
+   "oid": "1.3.6.1.4.1.42040.1.100.3.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerTotalShares",
+   "oid": "1.3.6.1.4.1.42040.1.103.1.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerTotalShareLocks",
+   "oid": "1.3.6.1.4.1.42040.1.103.2.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerTotalShareClients",
+   "oid": "1.3.6.1.4.1.42040.1.103.3.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerTotalExports",
+   "oid": "1.3.6.1.4.1.42040.1.104.1.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerTotalIscsiTargets",
+   "oid": "1.3.6.1.4.1.42040.1.105.1.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerTotalIscsiClients",
+   "oid": "1.3.6.1.4.1.42040.1.105.2.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerTotalFtpdirs",
+   "oid": "1.3.6.1.4.1.42040.1.109.1.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerTotalMobileLicenses",
+   "oid": "1.3.6.1.4.1.42040.1.106.1.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerNumIOSLicenses",
+   "oid": "1.3.6.1.4.1.42040.1.106.2.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerNumAndroidLicenses",
+   "oid": "1.3.6.1.4.1.42040.1.106.3.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerCloudOut",
+   "oid": "1.3.6.1.4.1.42040.1.108.1.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerCloudIn",
+   "oid": "1.3.6.1.4.1.42040.1.108.2.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerMobileOut",
+   "oid": "1.3.6.1.4.1.42040.1.108.3.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerMobileIn",
+   "oid": "1.3.6.1.4.1.42040.1.108.4.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerUIOut",
+   "oid": "1.3.6.1.4.1.42040.1.108.5.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerUIIn",
+   "oid": "1.3.6.1.4.1.42040.1.108.6.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerClientsOut",
+   "oid": "1.3.6.1.4.1.42040.1.108.7.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerClientsIn",
+   "oid": "1.3.6.1.4.1.42040.1.108.8.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerMigrationOut",
+   "oid": "1.3.6.1.4.1.42040.1.108.9.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerMigrationIn",
+   "oid": "1.3.6.1.4.1.42040.1.108.10.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.accountLicensedCapacity",
+   "oid": "1.3.6.1.4.1.42040.3.1.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.accountUsedCapacity",
+   "oid": "1.3.6.1.4.1.42040.3.2.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.accountPercentUsedCapacity",
+   "oid": "1.3.6.1.4.1.42040.3.3.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerAmbientTemp",
+   "oid": "1.3.6.1.4.1.42040.1.102.1.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerInletTemp",
+   "oid": "1.3.6.1.4.1.42040.1.102.2.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerExhaustTemp",
+   "oid": "1.3.6.1.4.1.42040.1.102.3.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerNumPowerSupplies",
+   "oid": "1.3.6.1.4.1.42040.1.102.4.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerPowerSupplyErrors",
+   "oid": "1.3.6.1.4.1.42040.1.102.5.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerNumRaidArrays",
+   "oid": "1.3.6.1.4.1.42040.1.102.6.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerRaidArrayErrors",
+   "oid": "1.3.6.1.4.1.42040.1.102.7.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerNumRaidDisks",
+   "oid": "1.3.6.1.4.1.42040.1.102.8.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerRaidDiskErrors",
+   "oid": "1.3.6.1.4.1.42040.1.102.9.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerDiskCount",
+   "oid": "1.3.6.1.4.1.42040.1.101.10.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerPhysCpuCount",
+   "oid": "1.3.6.1.4.1.42040.1.101.6.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.filerCoreCount",
+   "oid": "1.3.6.1.4.1.42040.1.101.7.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "nasuni.volumeCount",
+   "oid": "1.3.6.1.4.1.42040.2.1.0",
+   "mib": "NASUNI-FILER-MIB",
+   "mibVerified": false
+  }
+ ],
+ "tables": [
+  {
+   "name": "volumeTable",
+   "columns": [
+    {
+     "name": "nasuni.volumeTableAccessibleData",
+     "oid": "1.3.6.1.4.1.42040.2.2.1.6",
+     "mib": "NASUNI-FILER-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "nasuni.volumeTableUnprotectedData",
+     "oid": "1.3.6.1.4.1.42040.2.2.1.7",
+     "mib": "NASUNI-FILER-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "nasuni.volumeTableLastSnapshotDuration",
+     "oid": "1.3.6.1.4.1.42040.2.2.1.10",
+     "mib": "NASUNI-FILER-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "nasuni.volumeTableLastSnapshotVersion",
+     "oid": "1.3.6.1.4.1.42040.2.2.1.11",
+     "mib": "NASUNI-FILER-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "nasuni.volumeTableQuota",
+     "oid": "1.3.6.1.4.1.42040.2.2.1.19",
+     "mib": "NASUNI-FILER-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "nasuni.volumeTableNumAVViolations",
+     "oid": "1.3.6.1.4.1.42040.2.2.1.20",
+     "mib": "NASUNI-FILER-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "nasuni.volumeTableNumFileAlerts",
+     "oid": "1.3.6.1.4.1.42040.2.2.1.21",
+     "mib": "NASUNI-FILER-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "nasuni.volumeTableNumExports",
+     "oid": "1.3.6.1.4.1.42040.2.2.1.22",
+     "mib": "NASUNI-FILER-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "nasuni.volumeTableNumShares",
+     "oid": "1.3.6.1.4.1.42040.2.2.1.23",
+     "mib": "NASUNI-FILER-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "nasuni.volumeTableNumFtpdirs",
+     "oid": "1.3.6.1.4.1.42040.2.2.1.24",
+     "mib": "NASUNI-FILER-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.42040.2.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.42040.2.2.1.6"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 58,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

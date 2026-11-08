@@ -1,0 +1,257 @@
+{
+ "id": "dd/cyberpower-pdu",
+ "name": "Cyberpower PDU (Datadog)",
+ "vendor": "Cyber Power System Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/cyberpower-pdu.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.3808.1.1.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "ePDUStatusInputVoltage",
+   "oid": "1.3.6.1.4.1.3808.1.1.3.5.7.0",
+   "mib": "CPS-MIB",
+   "description": "Datadog metric cyberpower.ePDUStatusInputVoltage",
+   "scale": 0.1,
+   "units": "V"
+  },
+  {
+   "name": "ePDUStatusInputFrequency",
+   "oid": "1.3.6.1.4.1.3808.1.1.3.5.8.0",
+   "mib": "CPS-MIB",
+   "description": "Datadog metric cyberpower.ePDUStatusInputFrequency",
+   "scale": 0.1,
+   "units": "Hz"
+  },
+  {
+   "name": "envirTemperature",
+   "oid": "1.3.6.1.4.1.3808.1.1.4.2.1.0",
+   "mib": "CPS-MIB",
+   "description": "Datadog metric cyberpower.envirTemperature",
+   "scale": 0.1,
+   "units": "degF"
+  },
+  {
+   "name": "envirTemperatureCelsius",
+   "oid": "1.3.6.1.4.1.3808.1.1.4.2.6.0",
+   "mib": "CPS-MIB",
+   "description": "Datadog metric cyberpower.envirTemperatureCelsius",
+   "scale": 0.1,
+   "units": "degC"
+  },
+  {
+   "name": "envirHumidity",
+   "oid": "1.3.6.1.4.1.3808.1.1.4.3.1.0",
+   "mib": "CPS-MIB",
+   "description": "Datadog metric cyberpower.envirHumidity"
+  }
+ ],
+ "tables": [
+  {
+   "name": "ePDULoadStatusTable",
+   "columns": [
+    {
+     "name": "ePDULoadStatusLoad",
+     "oid": "1.3.6.1.4.1.3808.1.1.3.2.3.1.1.2",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDULoadStatusLoad",
+     "scale": 0.1,
+     "units": "A"
+    },
+    {
+     "name": "ePDULoadStatusVoltage",
+     "oid": "1.3.6.1.4.1.3808.1.1.3.2.3.1.1.6",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDULoadStatusVoltage",
+     "scale": 0.1,
+     "units": "V"
+    },
+    {
+     "name": "ePDULoadStatusActivePower",
+     "oid": "1.3.6.1.4.1.3808.1.1.3.2.3.1.1.7",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDULoadStatusActivePower",
+     "units": "W"
+    },
+    {
+     "name": "ePDULoadStatusApparentPower",
+     "oid": "1.3.6.1.4.1.3808.1.1.3.2.3.1.1.8",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDULoadStatusApparentPower",
+     "units": "VA"
+    },
+    {
+     "name": "ePDULoadStatusPowerFactor",
+     "oid": "1.3.6.1.4.1.3808.1.1.3.2.3.1.1.9",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDULoadStatusPowerFactor",
+     "scale": 0.01
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3808.1.1.3.2.3.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.3808.1.1.3.2.3.1.1.2"
+  },
+  {
+   "name": "ePDUOutletStatusTable",
+   "columns": [
+    {
+     "name": "ePDUOutletStatusLoad",
+     "oid": "1.3.6.1.4.1.3808.1.1.3.3.5.1.1.7",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDUOutletStatusLoad",
+     "scale": 0.1,
+     "units": "A"
+    },
+    {
+     "name": "ePDUOutletStatusActivePower",
+     "oid": "1.3.6.1.4.1.3808.1.1.3.3.5.1.1.8",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDUOutletStatusActivePower",
+     "units": "W"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3808.1.1.3.3.5.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.3808.1.1.3.3.5.1.1.7"
+  },
+  {
+   "name": "ePDU2DeviceStatusTable",
+   "columns": [
+    {
+     "name": "ePDU2DeviceStatusCurrentLoad",
+     "oid": "1.3.6.1.4.1.3808.1.1.6.3.4.1.5",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDU2DeviceStatusCurrentLoad",
+     "scale": 0.1,
+     "units": "A"
+    },
+    {
+     "name": "ePDU2DeviceStatusCurrentPeakLoad",
+     "oid": "1.3.6.1.4.1.3808.1.1.6.3.4.1.6",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDU2DeviceStatusCurrentPeakLoad",
+     "scale": 0.1,
+     "units": "A"
+    },
+    {
+     "name": "ePDU2DeviceStatusApparentPower",
+     "oid": "1.3.6.1.4.1.3808.1.1.6.3.4.1.15",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDU2DeviceStatusApparentPower",
+     "units": "VA"
+    },
+    {
+     "name": "ePDU2DeviceStatusPowerFactor",
+     "oid": "1.3.6.1.4.1.3808.1.1.6.3.4.1.16",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDU2DeviceStatusPowerFactor",
+     "scale": 0.01
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3808.1.1.6.3.4.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.3808.1.1.6.3.4.1.5"
+  },
+  {
+   "name": "ePDU2PhaseStatusTable",
+   "columns": [
+    {
+     "name": "ePDU2PhaseStatusLoad",
+     "oid": "1.3.6.1.4.1.3808.1.1.6.4.4.1.5",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDU2PhaseStatusLoad",
+     "scale": 0.1,
+     "units": "A"
+    },
+    {
+     "name": "ePDU2PhaseStatusVoltage",
+     "oid": "1.3.6.1.4.1.3808.1.1.6.4.4.1.6",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDU2PhaseStatusVoltage",
+     "scale": 0.1,
+     "units": "V"
+    },
+    {
+     "name": "ePDU2PhaseStatusPower",
+     "oid": "1.3.6.1.4.1.3808.1.1.6.4.4.1.7",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDU2PhaseStatusPower",
+     "units": "W"
+    },
+    {
+     "name": "ePDU2PhaseStatusApparentPower",
+     "oid": "1.3.6.1.4.1.3808.1.1.6.4.4.1.8",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDU2PhaseStatusApparentPower",
+     "units": "VA"
+    },
+    {
+     "name": "ePDU2PhaseStatusPowerFactor",
+     "oid": "1.3.6.1.4.1.3808.1.1.6.4.4.1.9",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDU2PhaseStatusPowerFactor",
+     "scale": 0.01
+    },
+    {
+     "name": "ePDU2PhaseStatusPeakLoad",
+     "oid": "1.3.6.1.4.1.3808.1.1.6.4.4.1.10",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDU2PhaseStatusPeakLoad",
+     "scale": 0.1,
+     "units": "A"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3808.1.1.6.4.4.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.3808.1.1.6.4.4.1.5"
+  },
+  {
+   "name": "ePDU2BankStatusTable",
+   "columns": [
+    {
+     "name": "ePDU2BankStatusLoad",
+     "oid": "1.3.6.1.4.1.3808.1.1.6.5.4.1.5",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDU2BankStatusLoad",
+     "scale": 0.1,
+     "units": "A"
+    },
+    {
+     "name": "ePDU2BankStatusPeakLoad",
+     "oid": "1.3.6.1.4.1.3808.1.1.6.5.4.1.6",
+     "mib": "CPS-MIB",
+     "description": "Datadog metric cyberpower.ePDU2BankStatusPeakLoad",
+     "scale": 0.1,
+     "units": "A"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3808.1.1.6.5.4.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.3808.1.1.6.5.4.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 24,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

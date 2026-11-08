@@ -1,0 +1,427 @@
+{
+ "id": "dd/nvidia-cumulus-linux-switch",
+ "name": "Nvidia Cumulus Linux Switch (Datadog)",
+ "vendor": "Cumulus Networks, inc",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/nvidia-cumulus-linux-switch.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-host-resources-base",
+  "dd/_generic-ucd",
+  "dd/nvidia"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.40310"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "cumulus.l3HostTableCurrentEntries",
+   "oid": "1.3.6.1.4.1.40310.1.1.1.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.l3HostTableMaxEntries",
+   "oid": "1.3.6.1.4.1.40310.1.1.2.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.l3RoutingTableCurrentEntries",
+   "oid": "1.3.6.1.4.1.40310.1.1.3.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.l3RoutingTableMaxEntries",
+   "oid": "1.3.6.1.4.1.40310.1.1.4.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.l3NextHopTableCurrentEntries",
+   "oid": "1.3.6.1.4.1.40310.1.1.5.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.l3NextHopTableMaxEntries",
+   "oid": "1.3.6.1.4.1.40310.1.1.6.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.l3EcmpNextHopTableCurrentEntries",
+   "oid": "1.3.6.1.4.1.40310.1.1.9.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.l3EcmpNextHopTableMaxEntries",
+   "oid": "1.3.6.1.4.1.40310.1.1.10.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.ingressAclCurrentEntries",
+   "oid": "1.3.6.1.4.1.40310.1.1.11.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.ingressAclMaxEntries",
+   "oid": "1.3.6.1.4.1.40310.1.1.12.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.ingressAclCurrentCounters",
+   "oid": "1.3.6.1.4.1.40310.1.1.13.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.ingressAclMaxCounters",
+   "oid": "1.3.6.1.4.1.40310.1.1.14.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.ingressAclCurrentMeters",
+   "oid": "1.3.6.1.4.1.40310.1.1.15.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.ingressAclMaxMeters",
+   "oid": "1.3.6.1.4.1.40310.1.1.16.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.ingressAclCurrentSlices",
+   "oid": "1.3.6.1.4.1.40310.1.1.17.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.ingressAclMaxSlices",
+   "oid": "1.3.6.1.4.1.40310.1.1.18.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.egressAclCurrentEntries",
+   "oid": "1.3.6.1.4.1.40310.1.1.19.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.egressAclMaxEntries",
+   "oid": "1.3.6.1.4.1.40310.1.1.20.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.egressAclCurrentCounters",
+   "oid": "1.3.6.1.4.1.40310.1.1.21.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.egressAclMaxCounters",
+   "oid": "1.3.6.1.4.1.40310.1.1.22.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.egressAclCurrentMeters",
+   "oid": "1.3.6.1.4.1.40310.1.1.23.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.egressAclMaxMeters",
+   "oid": "1.3.6.1.4.1.40310.1.1.24.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.egressAclCurrentSlices",
+   "oid": "1.3.6.1.4.1.40310.1.1.25.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.egressAclMaxSlices",
+   "oid": "1.3.6.1.4.1.40310.1.1.26.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.l2MacTableCurrentEntries",
+   "oid": "1.3.6.1.4.1.40310.1.2.1.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.l2MacTableMaxEntries",
+   "oid": "1.3.6.1.4.1.40310.1.2.2.0",
+   "mib": "CUMULUS-RESOURCES-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.poeTotalSystemPower",
+   "oid": "1.3.6.1.4.1.40310.3.1.1.0",
+   "mib": "CUMULUS-POE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.poeTotalUsedPower",
+   "oid": "1.3.6.1.4.1.40310.3.1.2.0",
+   "mib": "CUMULUS-POE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.poeTotalAvailablePower",
+   "oid": "1.3.6.1.4.1.40310.3.1.3.0",
+   "mib": "CUMULUS-POE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cumulus.poeLastUpdateTime",
+   "oid": "1.3.6.1.4.1.40310.3.1.4.0",
+   "mib": "CUMULUS-POE-MIB",
+   "mibVerified": false
+  }
+ ],
+ "tables": [
+  {
+   "name": "discardClCountersTable",
+   "columns": [
+    {
+     "name": "cumulus.clL3v4InDiscards",
+     "oid": "1.3.6.1.4.1.40310.2.1.2.1.2",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clBufferOverflowDiscards",
+     "oid": "1.3.6.1.4.1.40310.2.1.2.1.3",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clL3AclDiscards",
+     "oid": "1.3.6.1.4.1.40310.2.1.2.1.4",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clEgressQOverflowDiscards",
+     "oid": "1.3.6.1.4.1.40310.2.1.2.1.6",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clEgressNonQDiscards",
+     "oid": "1.3.6.1.4.1.40310.2.1.2.1.7",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.40310.2.1.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.40310.2.1.2.1.2"
+  },
+  {
+   "name": "interfaceClCountersTable",
+   "columns": [
+    {
+     "name": "cumulus.clIntInOctets",
+     "oid": "1.3.6.1.4.1.40310.2.2.2.1.2",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntInUcastPkts",
+     "oid": "1.3.6.1.4.1.40310.2.2.2.1.3",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntInBcastPkts",
+     "oid": "1.3.6.1.4.1.40310.2.2.2.1.4",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntInMcastPkts",
+     "oid": "1.3.6.1.4.1.40310.2.2.2.1.5",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutOctets",
+     "oid": "1.3.6.1.4.1.40310.2.2.2.1.6",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutUcastPkts",
+     "oid": "1.3.6.1.4.1.40310.2.2.2.1.7",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutBcastPkts",
+     "oid": "1.3.6.1.4.1.40310.2.2.2.1.8",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutMcastPkts",
+     "oid": "1.3.6.1.4.1.40310.2.2.2.1.9",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.40310.2.2.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.40310.2.2.2.1.2"
+  },
+  {
+   "name": "pfcClCountersTable",
+   "columns": [
+    {
+     "name": "cumulus.clIntInPausePkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.2",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutPausePkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.3",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntInPfc0Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.4",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutPfc0Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.5",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntInPfc1Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.6",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutPfc1Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.7",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntInPfc2Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.8",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutPfc2Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.9",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntInPfc3Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.10",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutPfc3Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.11",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntInPfc4Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.12",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutPfc4Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.13",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntInPfc5Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.14",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutPfc5Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.15",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntInPfc6Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.16",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutPfc6Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.17",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntInPfc7Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.18",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cumulus.clIntOutPfc7Pkt",
+     "oid": "1.3.6.1.4.1.40310.2.2.3.1.19",
+     "mib": "CUMULUS-COUNTERS-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.40310.2.2.3.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.40310.2.2.3.1.2"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 61,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

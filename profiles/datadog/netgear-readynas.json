@@ -1,0 +1,133 @@
+{
+ "id": "dd/netgear-readynas",
+ "name": "Netgear Readynas (Datadog)",
+ "vendor": "Netgear",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/netgear-readynas.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-ucd",
+  "dd/netgear"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.4526.100.16.*"
+  }
+ ],
+ "tables": [
+  {
+   "name": "diskTable",
+   "columns": [
+    {
+     "name": "netgear.readynasos.ataError",
+     "oid": "1.3.6.1.4.1.4526.22.3.1.6",
+     "mib": "READYNASOS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netgear.readynasos.diskCapacity",
+     "oid": "1.3.6.1.4.1.4526.22.3.1.7",
+     "mib": "READYNASOS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netgear.readynasos.diskTemperature",
+     "oid": "1.3.6.1.4.1.4526.22.3.1.10",
+     "mib": "READYNASOS-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.4526.22.3.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.4526.22.3.1.6"
+  },
+  {
+   "name": "fanTable",
+   "columns": [
+    {
+     "name": "netgear.readynasos.fanRPM",
+     "oid": "1.3.6.1.4.1.4526.22.4.1.2",
+     "mib": "READYNASOS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netgear.readynasos.fanStatus",
+     "oid": "1.3.6.1.4.1.4526.22.4.1.3",
+     "mib": "READYNASOS-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.4526.22.4.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.4526.22.4.1.2"
+  },
+  {
+   "name": "temperatureTable",
+   "columns": [
+    {
+     "name": "netgear.readynasos.temperatureValue",
+     "oid": "1.3.6.1.4.1.4526.22.5.1.2",
+     "mib": "READYNASOS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netgear.readynasos.temperatureMin",
+     "oid": "1.3.6.1.4.1.4526.22.5.1.4",
+     "mib": "READYNASOS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netgear.readynasos.temperatureMax",
+     "oid": "1.3.6.1.4.1.4526.22.5.1.5",
+     "mib": "READYNASOS-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.4526.22.5.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.4526.22.5.1.2"
+  },
+  {
+   "name": "volumeTable",
+   "columns": [
+    {
+     "name": "netgear.readynasos.volumeRAIDLevel",
+     "oid": "1.3.6.1.4.1.4526.22.7.1.3",
+     "mib": "READYNASOS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netgear.readynasos.volumeSize",
+     "oid": "1.3.6.1.4.1.4526.22.7.1.5",
+     "mib": "READYNASOS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netgear.readynasos.volumeFreeSpace",
+     "oid": "1.3.6.1.4.1.4526.22.7.1.6",
+     "mib": "READYNASOS-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.4526.22.7.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.4526.22.7.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 11,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

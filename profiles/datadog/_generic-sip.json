@@ -1,0 +1,103 @@
+{
+ "id": "dd/_generic-sip",
+ "name": "Generic Sip (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_generic-sip.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "sipCommonCfgTable",
+   "columns": [
+    {
+     "name": "sipCommonCfgServiceOperStatus",
+     "oid": "1.3.6.1.2.1.149.1.1.1.1.2",
+     "mib": "SIP-COMMON-MIB",
+     "mibVerified": false
+    }
+   ],
+   "indexOid": "1.3.6.1.2.1.149.1.1.1.1.2"
+  },
+  {
+   "name": "sipCommonSummaryStatsTable",
+   "columns": [
+    {
+     "name": "sipCommonSummaryInRequests",
+     "oid": "1.3.6.1.2.1.149.1.3.1.1.1",
+     "mib": "SIP-COMMON-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "sipCommonSummaryOutRequests",
+     "oid": "1.3.6.1.2.1.149.1.3.1.1.2",
+     "mib": "SIP-COMMON-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "sipCommonSummaryInResponses",
+     "oid": "1.3.6.1.2.1.149.1.3.1.1.3",
+     "mib": "SIP-COMMON-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "sipCommonSummaryOutResponses",
+     "oid": "1.3.6.1.2.1.149.1.3.1.1.4",
+     "mib": "SIP-COMMON-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "sipCommonSummaryTotalTransactions",
+     "oid": "1.3.6.1.2.1.149.1.3.1.1.5",
+     "mib": "SIP-COMMON-MIB",
+     "mibVerified": false
+    }
+   ],
+   "indexOid": "1.3.6.1.2.1.149.1.3.1.1.1"
+  },
+  {
+   "name": "sipCommonStatusCodeTable",
+   "columns": [
+    {
+     "name": "sipCommonStatusCodeIns",
+     "oid": "1.3.6.1.2.1.149.1.5.1.1.3",
+     "mib": "SIP-COMMON-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "sipCommonStatusCodeOuts",
+     "oid": "1.3.6.1.2.1.149.1.5.1.1.4",
+     "mib": "SIP-COMMON-MIB",
+     "mibVerified": false
+    }
+   ],
+   "indexOid": "1.3.6.1.2.1.149.1.5.1.1.3"
+  },
+  {
+   "name": "sipCommonTransCurrentTable",
+   "columns": [
+    {
+     "name": "sipCommonTransCurrentactions",
+     "oid": "1.3.6.1.2.1.149.1.6.1.1.1",
+     "mib": "SIP-COMMON-MIB",
+     "mibVerified": false
+    }
+   ],
+   "indexOid": "1.3.6.1.2.1.149.1.6.1.1.1"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 9,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

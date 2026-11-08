@@ -1,0 +1,161 @@
+{
+ "id": "dd/juniper-pulse-secure",
+ "name": "Juniper Pulse Secure (Datadog)",
+ "vendor": "Neoteris, Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/juniper-pulse-secure.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-host-resources-base",
+  "dd/_generic-if",
+  "dd/_generic-ucd",
+  "dd/_juniper"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.12532.256.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "juniper.ive.logFullPercent",
+   "oid": "1.3.6.1.4.1.12532.1.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.signedInWebUsers",
+   "oid": "1.3.6.1.4.1.12532.2.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.signedInMailUsers",
+   "oid": "1.3.6.1.4.1.12532.3.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cpu.usage",
+   "oid": "1.3.6.1.4.1.12532.10.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "memory.usage",
+   "oid": "1.3.6.1.4.1.12532.11.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.iveConcurrentUsers",
+   "oid": "1.3.6.1.4.1.12532.12.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.clusterConcurrentUsers",
+   "oid": "1.3.6.1.4.1.12532.13.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.iveTotalHits",
+   "oid": "1.3.6.1.4.1.12532.14.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "type": "counter",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.iveFileHits",
+   "oid": "1.3.6.1.4.1.12532.15.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "type": "counter",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.iveWebHits",
+   "oid": "1.3.6.1.4.1.12532.16.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "type": "counter",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.iveAppletHits",
+   "oid": "1.3.6.1.4.1.12532.17.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "type": "counter",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.ivetermHits",
+   "oid": "1.3.6.1.4.1.12532.18.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "type": "counter",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.iveSAMHits",
+   "oid": "1.3.6.1.4.1.12532.19.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "type": "counter",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.iveNCHits",
+   "oid": "1.3.6.1.4.1.12532.20.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "type": "counter",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.meetingHits",
+   "oid": "1.3.6.1.4.1.12532.21.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "type": "counter",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.iveSwapUtil",
+   "oid": "1.3.6.1.4.1.12532.24.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.diskFullPercent",
+   "oid": "1.3.6.1.4.1.12532.25.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.iveTemperature",
+   "oid": "1.3.6.1.4.1.12532.42.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.iveVPNTunnels",
+   "oid": "1.3.6.1.4.1.12532.43.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "juniper.ive.iveSSLConnections",
+   "oid": "1.3.6.1.4.1.12532.44.0",
+   "mib": "JUNIPER-IVE-MIB",
+   "mibVerified": false
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 20,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

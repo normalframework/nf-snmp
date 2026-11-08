@@ -1,0 +1,70 @@
+{
+ "id": "dd/_cisco-catalyst",
+ "name": "Cisco Catalyst (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_cisco-catalyst.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "entSensorValueTable",
+   "columns": [
+    {
+     "name": "entSensorValue",
+     "oid": "1.3.6.1.4.1.9.9.91.1.1.1.1.4",
+     "mib": "CISCO-ENTITY-SENSOR-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.91.1.1.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.91.1.1.1.1.4"
+  },
+  {
+   "name": "cieIfPacketStatsTable",
+   "columns": [
+    {
+     "name": "cieIfLastInTime",
+     "oid": "1.3.6.1.4.1.9.9.276.1.1.1.1.1",
+     "mib": "CISCO-IF-EXTENSION-MIB"
+    },
+    {
+     "name": "cieIfLastOutTime",
+     "oid": "1.3.6.1.4.1.9.9.276.1.1.1.1.2",
+     "mib": "CISCO-IF-EXTENSION-MIB"
+    },
+    {
+     "name": "cieIfInputQueueDrops",
+     "oid": "1.3.6.1.4.1.9.9.276.1.1.1.1.10",
+     "mib": "CISCO-IF-EXTENSION-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cieIfOutputQueueDrops",
+     "oid": "1.3.6.1.4.1.9.9.276.1.1.1.1.11",
+     "mib": "CISCO-IF-EXTENSION-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.31.1.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.276.1.1.1.1.1"
+  }
+ ],
+ "verification": {
+  "verified": 5,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

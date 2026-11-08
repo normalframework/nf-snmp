@@ -1,0 +1,243 @@
+{
+ "id": "dd/servertech-pdu4",
+ "name": "Servertech PDU4 (Datadog)",
+ "vendor": "Server Technology Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/servertech-pdu4.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/servertech"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.1718.4"
+  }
+ ],
+ "tables": [
+  {
+   "name": "st4InputCordMonitorTable",
+   "columns": [
+    {
+     "name": "st4InputCordActivePower",
+     "oid": "1.3.6.1.4.1.1718.4.1.3.3.1.3",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4InputCordActivePower",
+     "units": "W"
+    },
+    {
+     "name": "st4InputCordApparentPower",
+     "oid": "1.3.6.1.4.1.1718.4.1.3.3.1.5",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4InputCordApparentPower",
+     "units": "VA"
+    },
+    {
+     "name": "st4InputCordPowerUtilized",
+     "oid": "1.3.6.1.4.1.1718.4.1.3.3.1.7",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4InputCordPowerUtilized",
+     "scale": 0.1,
+     "units": "%"
+    },
+    {
+     "name": "st4InputCordPowerFactor",
+     "oid": "1.3.6.1.4.1.1718.4.1.3.3.1.8",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4InputCordPowerFactor",
+     "scale": 0.01
+    },
+    {
+     "name": "st4InputCordEnergy",
+     "oid": "1.3.6.1.4.1.1718.4.1.3.3.1.10",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4InputCordEnergy",
+     "scale": 0.1,
+     "units": "kWh"
+    },
+    {
+     "name": "st4InputCordFrequency",
+     "oid": "1.3.6.1.4.1.1718.4.1.3.3.1.11",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4InputCordFrequency",
+     "scale": 0.1,
+     "units": "Hz"
+    },
+    {
+     "name": "st4InputCordOutOfBalance",
+     "oid": "1.3.6.1.4.1.1718.4.1.3.3.1.12",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4InputCordOutOfBalance",
+     "scale": 0.1,
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.1718.4.1.3.2.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.1718.4.1.3.3.1.3"
+  },
+  {
+   "name": "st4LineMonitorTable",
+   "columns": [
+    {
+     "name": "st4LineCurrent",
+     "oid": "1.3.6.1.4.1.1718.4.1.4.3.1.3",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4LineCurrent",
+     "scale": 0.01,
+     "units": "A"
+    },
+    {
+     "name": "st4LineCurrentUtilized",
+     "oid": "1.3.6.1.4.1.1718.4.1.4.3.1.5",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4LineCurrentUtilized",
+     "scale": 0.1,
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.1718.4.1.4.2.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.1718.4.1.4.3.1.3"
+  },
+  {
+   "name": "st4PhaseMonitorTable",
+   "columns": [
+    {
+     "name": "st4PhaseVoltage",
+     "oid": "1.3.6.1.4.1.1718.4.1.5.3.1.3",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4PhaseVoltage",
+     "scale": 0.1,
+     "units": "V"
+    },
+    {
+     "name": "st4PhaseVoltageDeviation",
+     "oid": "1.3.6.1.4.1.1718.4.1.5.3.1.5",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4PhaseVoltageDeviation",
+     "scale": 0.1,
+     "units": "%"
+    },
+    {
+     "name": "st4PhaseCurrent",
+     "oid": "1.3.6.1.4.1.1718.4.1.5.3.1.6",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4PhaseCurrent",
+     "scale": 0.01,
+     "units": "A"
+    },
+    {
+     "name": "st4PhaseCurrentCrestFactor",
+     "oid": "1.3.6.1.4.1.1718.4.1.5.3.1.7",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4PhaseCurrentCrestFactor",
+     "scale": 0.1
+    },
+    {
+     "name": "st4PhaseActivePower",
+     "oid": "1.3.6.1.4.1.1718.4.1.5.3.1.8",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4PhaseActivePower",
+     "units": "W"
+    },
+    {
+     "name": "st4PhaseApparentPower",
+     "oid": "1.3.6.1.4.1.1718.4.1.5.3.1.9",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4PhaseApparentPower",
+     "units": "VA"
+    },
+    {
+     "name": "st4PhasePowerFactor",
+     "oid": "1.3.6.1.4.1.1718.4.1.5.3.1.10",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4PhasePowerFactor",
+     "scale": 0.01
+    },
+    {
+     "name": "st4PhaseEnergy",
+     "oid": "1.3.6.1.4.1.1718.4.1.5.3.1.13",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4PhaseEnergy",
+     "scale": 0.1,
+     "units": "kWh"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.1718.4.1.5.2.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.1718.4.1.5.3.1.3"
+  },
+  {
+   "name": "st4BranchMonitorTable",
+   "columns": [
+    {
+     "name": "st4BranchCurrent",
+     "oid": "1.3.6.1.4.1.1718.4.1.7.3.1.3",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4BranchCurrent",
+     "scale": 0.01,
+     "units": "A"
+    },
+    {
+     "name": "st4BranchCurrentUtilized",
+     "oid": "1.3.6.1.4.1.1718.4.1.7.3.1.5",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4BranchCurrentUtilized",
+     "scale": 0.1,
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.1718.4.1.7.2.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.1718.4.1.7.3.1.3"
+  },
+  {
+   "name": "st4TempSensorMonitorTable",
+   "columns": [
+    {
+     "name": "st4TempSensorValue",
+     "oid": "1.3.6.1.4.1.1718.4.1.9.3.1.1",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4TempSensorValue",
+     "scale": 0.1
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.1718.4.1.9.2.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.1718.4.1.9.3.1.1"
+  },
+  {
+   "name": "st4HumidSensorMonitorTable",
+   "columns": [
+    {
+     "name": "st4HumidSensorValue",
+     "oid": "1.3.6.1.4.1.1718.4.1.10.3.1.1",
+     "mib": "Sentry4-MIB",
+     "description": "Datadog metric servertech.sentry4.st4HumidSensorValue",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.1718.4.1.10.2.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.1718.4.1.10.3.1.1"
+  }
+ ],
+ "verification": {
+  "verified": 21,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

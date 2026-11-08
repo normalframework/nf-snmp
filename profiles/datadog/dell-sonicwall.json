@@ -1,0 +1,122 @@
+{
+ "id": "dd/dell-sonicwall",
+ "name": "Dell Sonicwall (Datadog)",
+ "vendor": "SonicWALL, Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/dell-sonicwall.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_dell",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.8741.1"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "sonicCurrentCPUUtil",
+   "oid": "1.3.6.1.4.1.8741.1.3.1.3.0",
+   "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB",
+   "description": "Datadog metric cpu.usage",
+   "units": "%"
+  },
+  {
+   "name": "sonicCurrentRAMUtil",
+   "oid": "1.3.6.1.4.1.8741.1.3.1.4.0",
+   "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB",
+   "description": "Datadog metric memory.usage",
+   "units": "%"
+  },
+  {
+   "name": "sonicMaxConnCacheEntries",
+   "oid": "1.3.6.1.4.1.8741.1.3.1.1.0",
+   "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB"
+  },
+  {
+   "name": "sonicCurrentConnCacheEntries",
+   "oid": "1.3.6.1.4.1.8741.1.3.1.2.0",
+   "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB"
+  },
+  {
+   "name": "sonicNatTranslationCount",
+   "oid": "1.3.6.1.4.1.8741.1.3.1.5.0",
+   "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB"
+  },
+  {
+   "name": "sonicDpiSslConnCountCur",
+   "oid": "1.3.6.1.4.1.8741.1.3.5.1.0",
+   "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB"
+  },
+  {
+   "name": "sonicDpiSslConnCountHighWater",
+   "oid": "1.3.6.1.4.1.8741.1.3.5.2.0",
+   "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB"
+  },
+  {
+   "name": "sonicDpiSslConnCountMax",
+   "oid": "1.3.6.1.4.1.8741.1.3.5.3.0",
+   "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB"
+  }
+ ],
+ "tables": [
+  {
+   "name": "sonicSAStatTable",
+   "columns": [
+    {
+     "name": "sonicSAStatEncryptPktCount",
+     "oid": "1.3.6.1.4.1.8741.1.3.2.1.1.1.8",
+     "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "sonicSAStatEncryptByteCount",
+     "oid": "1.3.6.1.4.1.8741.1.3.2.1.1.1.9",
+     "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "sonicSAStatDecryptPktCount",
+     "oid": "1.3.6.1.4.1.8741.1.3.2.1.1.1.10",
+     "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "sonicSAStatDecryptByteCount",
+     "oid": "1.3.6.1.4.1.8741.1.3.2.1.1.1.11",
+     "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "sonicSAStatInFragPktCount",
+     "oid": "1.3.6.1.4.1.8741.1.3.2.1.1.1.12",
+     "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "sonicSAStatOutFragPktCount",
+     "oid": "1.3.6.1.4.1.8741.1.3.2.1.1.1.13",
+     "mib": "SONICWALL-FIREWALL-IP-STATISTICS-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.8741.1.3.2.1.1.1.14"
+   },
+   "indexOid": "1.3.6.1.4.1.8741.1.3.2.1.1.1.8"
+  }
+ ],
+ "verification": {
+  "verified": 14,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

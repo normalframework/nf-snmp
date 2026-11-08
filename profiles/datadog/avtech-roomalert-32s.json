@@ -1,0 +1,463 @@
+{
+ "id": "dd/avtech-roomalert-32s",
+ "name": "Avtech Roomalert 32S (Datadog)",
+ "vendor": "AVTECH Software, Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/avtech-roomalert-32s.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/avtech"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.20916.1.11"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "internal-tempf",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.1.1.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.internal_tempf",
+   "units": "degF"
+  },
+  {
+   "name": "internal-tempc",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.1.1.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.internal_tempc",
+   "units": "degC"
+  },
+  {
+   "name": "internal-humidity",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.1.2.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.internal_humidity",
+   "units": "%"
+  },
+  {
+   "name": "internal-heat-index",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.1.4.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.internal_heat_index",
+   "units": "degF"
+  },
+  {
+   "name": "internal-heat-indexC",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.1.4.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.internal_heat_indexC",
+   "units": "degC"
+  },
+  {
+   "name": "internal-analog1",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.1.5.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.internal_analog1"
+  },
+  {
+   "name": "internal-analog2",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.1.5.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.internal_analog2"
+  },
+  {
+   "name": "internal-relay1",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.1.6.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.internal_relay1"
+  },
+  {
+   "name": "internal-relay2",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.1.6.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.internal_relay2"
+  },
+  {
+   "name": "internal-dew-point-c",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.1.7.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.internal_dew_point_c",
+   "units": "degC"
+  },
+  {
+   "name": "internal-dew-point-f",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.1.7.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.internal_dew_point_f",
+   "units": "degF"
+  },
+  {
+   "name": "digital-sen1-1",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.1.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen1_1",
+   "units": "degC"
+  },
+  {
+   "name": "digital-sen1-2",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.1.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen1_2",
+   "units": "degF"
+  },
+  {
+   "name": "digital-sen1-3",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.1.3.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen1_3",
+   "units": "%"
+  },
+  {
+   "name": "digital-sen1-4",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.1.4.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen1_4"
+  },
+  {
+   "name": "digital-sen1-5",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.1.5.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen1_5"
+  },
+  {
+   "name": "digital-sen1-6",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.1.6.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen1_6"
+  },
+  {
+   "name": "digital-sen1-7",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.1.7.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen1_7"
+  },
+  {
+   "name": "digital-sen2-1",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.2.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen2_1",
+   "units": "degC"
+  },
+  {
+   "name": "digital-sen2-2",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.2.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen2_2",
+   "units": "degF"
+  },
+  {
+   "name": "digital-sen2-3",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.2.3.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen2_3",
+   "units": "%"
+  },
+  {
+   "name": "digital-sen2-4",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.2.4.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen2_4"
+  },
+  {
+   "name": "digital-sen2-5",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.2.5.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen2_5"
+  },
+  {
+   "name": "digital-sen2-6",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.2.6.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen2_6"
+  },
+  {
+   "name": "digital-sen2-7",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.2.7.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen2_7"
+  },
+  {
+   "name": "digital-sen3-1",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.3.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen3_1",
+   "units": "degC"
+  },
+  {
+   "name": "digital-sen3-2",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.3.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen3_2",
+   "units": "degF"
+  },
+  {
+   "name": "digital-sen3-3",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.3.3.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen3_3",
+   "units": "%"
+  },
+  {
+   "name": "digital-sen3-4",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.3.4.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen3_4"
+  },
+  {
+   "name": "digital-sen3-5",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.3.5.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen3_5"
+  },
+  {
+   "name": "digital-sen3-6",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.3.6.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen3_6"
+  },
+  {
+   "name": "digital-sen3-7",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.3.7.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen3_7"
+  },
+  {
+   "name": "digital-sen4-1",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.4.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen4_1",
+   "units": "degC"
+  },
+  {
+   "name": "digital-sen4-2",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.4.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen4_2",
+   "units": "degF"
+  },
+  {
+   "name": "digital-sen4-3",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.4.3.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen4_3",
+   "units": "%"
+  },
+  {
+   "name": "digital-sen4-4",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.4.4.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen4_4"
+  },
+  {
+   "name": "digital-sen4-5",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.4.5.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen4_5"
+  },
+  {
+   "name": "digital-sen4-6",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.4.6.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen4_6"
+  },
+  {
+   "name": "digital-sen4-7",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.4.7.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen4_7"
+  },
+  {
+   "name": "digital-sen5-1",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.5.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen5_1",
+   "units": "degC"
+  },
+  {
+   "name": "digital-sen5-2",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.5.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen5_2",
+   "units": "degF"
+  },
+  {
+   "name": "digital-sen5-3",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.5.3.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen5_3",
+   "units": "%"
+  },
+  {
+   "name": "digital-sen5-4",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.5.4.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen5_4"
+  },
+  {
+   "name": "digital-sen5-5",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.5.5.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen5_5"
+  },
+  {
+   "name": "digital-sen5-6",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.5.6.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen5_6"
+  },
+  {
+   "name": "digital-sen5-7",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.5.7.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen5_7"
+  },
+  {
+   "name": "digital-sen6-1",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.6.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen6_1",
+   "units": "degC"
+  },
+  {
+   "name": "digital-sen6-2",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.6.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen6_2",
+   "units": "degF"
+  },
+  {
+   "name": "digital-sen6-3",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.6.3.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen6_3",
+   "units": "%"
+  },
+  {
+   "name": "digital-sen6-4",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.6.4.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen6_4"
+  },
+  {
+   "name": "digital-sen6-5",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.6.5.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen6_5"
+  },
+  {
+   "name": "digital-sen6-6",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.6.6.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen6_6"
+  },
+  {
+   "name": "digital-sen6-7",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.6.7.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen6_7"
+  },
+  {
+   "name": "digital-sen7-1",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.7.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen7_1",
+   "units": "degC"
+  },
+  {
+   "name": "digital-sen7-2",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.7.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen7_2",
+   "units": "degF"
+  },
+  {
+   "name": "digital-sen7-3",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.7.3.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen7_3",
+   "units": "%"
+  },
+  {
+   "name": "digital-sen7-4",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.7.4.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen7_4"
+  },
+  {
+   "name": "digital-sen7-5",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.7.5.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen7_5"
+  },
+  {
+   "name": "digital-sen7-6",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.7.6.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen7_6"
+  },
+  {
+   "name": "digital-sen7-7",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.7.7.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen7_7"
+  },
+  {
+   "name": "digital-sen8-1",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.8.1.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen8_1",
+   "units": "degC"
+  },
+  {
+   "name": "digital-sen8-2",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.8.2.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen8_2",
+   "units": "degF"
+  },
+  {
+   "name": "digital-sen8-3",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.8.3.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen8_3",
+   "units": "%"
+  },
+  {
+   "name": "digital-sen8-4",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.8.4.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen8_4"
+  },
+  {
+   "name": "digital-sen8-5",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.8.5.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen8_5"
+  },
+  {
+   "name": "digital-sen8-6",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.8.6.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen8_6"
+  },
+  {
+   "name": "digital-sen8-7",
+   "oid": "1.3.6.1.4.1.20916.1.11.1.2.8.7.0",
+   "mib": "ROOMALERT32S-MIB",
+   "description": "Datadog metric roomalert.32s.digital_sen8_7"
+  }
+ ],
+ "verification": {
+  "verified": 67,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

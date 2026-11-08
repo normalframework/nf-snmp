@@ -1,0 +1,207 @@
+{
+ "id": "dd/apc_ups",
+ "name": "Apc UPS (Datadog)",
+ "vendor": "apc",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/apc_ups.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/apc"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.318.1.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "upsAdvBatteryNumOfBattPacks",
+   "oid": "1.3.6.1.4.1.318.1.1.1.2.2.5.0",
+   "mib": "PowerNet-MIB"
+  },
+  {
+   "name": "upsAdvBatteryNumOfBadBattPacks",
+   "oid": "1.3.6.1.4.1.318.1.1.1.2.2.6.0",
+   "mib": "PowerNet-MIB"
+  },
+  {
+   "name": "upsAdvBatteryReplaceIndicator",
+   "oid": "1.3.6.1.4.1.318.1.1.1.2.2.4.0",
+   "mib": "PowerNet-MIB",
+   "enum": {
+    "1": "noBatteryNeedsReplacing",
+    "2": "batteryNeedsReplacing"
+   }
+  },
+  {
+   "name": "upsAdvBatteryRunTimeRemaining",
+   "oid": "1.3.6.1.4.1.318.1.1.1.2.2.3.0",
+   "mib": "PowerNet-MIB"
+  },
+  {
+   "name": "upsAdvBatteryTemperature",
+   "oid": "1.3.6.1.4.1.318.1.1.1.2.2.2.0",
+   "mib": "PowerNet-MIB",
+   "units": "degC"
+  },
+  {
+   "name": "upsAdvBatteryCapacity",
+   "oid": "1.3.6.1.4.1.318.1.1.1.2.2.1.0",
+   "mib": "PowerNet-MIB",
+   "units": "%"
+  },
+  {
+   "name": "upsHighPrecBatteryTemperature",
+   "oid": "1.3.6.1.4.1.318.1.1.1.2.3.2.0",
+   "mib": "PowerNet-MIB",
+   "scale": 0.1,
+   "units": "degC"
+  },
+  {
+   "name": "upsAdvInputLineVoltage",
+   "oid": "1.3.6.1.4.1.318.1.1.1.3.2.1.0",
+   "mib": "PowerNet-MIB",
+   "units": "V"
+  },
+  {
+   "name": "upsAdvInputFrequency",
+   "oid": "1.3.6.1.4.1.318.1.1.1.3.2.4.0",
+   "mib": "PowerNet-MIB",
+   "units": "Hz"
+  },
+  {
+   "name": "upsHighPrecInputFrequency",
+   "oid": "1.3.6.1.4.1.318.1.1.1.3.3.4.0",
+   "mib": "PowerNet-MIB",
+   "scale": 0.1,
+   "units": "Hz"
+  },
+  {
+   "name": "upsHighPrecInputLineVoltage",
+   "oid": "1.3.6.1.4.1.318.1.1.1.3.3.1.0",
+   "mib": "PowerNet-MIB",
+   "scale": 0.1,
+   "units": "V"
+  },
+  {
+   "name": "upsHighPrecOutputCurrent",
+   "oid": "1.3.6.1.4.1.318.1.1.1.4.3.4.0",
+   "mib": "PowerNet-MIB",
+   "scale": 0.1,
+   "units": "A"
+  },
+  {
+   "name": "upsAdvInputLineFailCause",
+   "oid": "1.3.6.1.4.1.318.1.1.1.3.2.5.0",
+   "mib": "PowerNet-MIB",
+   "enum": {
+    "1": "noTransfer",
+    "2": "highLineVoltage",
+    "3": "brownout",
+    "4": "blackout",
+    "5": "smallMomentarySag",
+    "6": "deepMomentarySag",
+    "7": "smallMomentarySpike",
+    "8": "largeMomentarySpike",
+    "9": "selfTest",
+    "10": "rateOfVoltageChange"
+   }
+  },
+  {
+   "name": "upsAdvOutputVoltage",
+   "oid": "1.3.6.1.4.1.318.1.1.1.4.2.1.0",
+   "mib": "PowerNet-MIB",
+   "units": "V"
+  },
+  {
+   "name": "upsAdvOutputFrequency",
+   "oid": "1.3.6.1.4.1.318.1.1.1.4.2.2.0",
+   "mib": "PowerNet-MIB",
+   "units": "Hz"
+  },
+  {
+   "name": "upsAdvOutputLoad",
+   "oid": "1.3.6.1.4.1.318.1.1.1.4.2.3.0",
+   "mib": "PowerNet-MIB",
+   "units": "%"
+  },
+  {
+   "name": "upsAdvOutputCurrent",
+   "oid": "1.3.6.1.4.1.318.1.1.1.4.2.4.0",
+   "mib": "PowerNet-MIB",
+   "units": "A"
+  },
+  {
+   "name": "upsAdvOutputActivePower",
+   "oid": "1.3.6.1.4.1.318.1.1.1.4.2.8.0",
+   "mib": "PowerNet-MIB"
+  },
+  {
+   "name": "upsAdvOutputApparentPower",
+   "oid": "1.3.6.1.4.1.318.1.1.1.4.2.9.0",
+   "mib": "PowerNet-MIB",
+   "units": "VA"
+  },
+  {
+   "name": "upsAdvOutputEnergyUsage",
+   "oid": "1.3.6.1.4.1.318.1.1.1.4.2.12.0",
+   "mib": "PowerNet-MIB",
+   "units": "kWh"
+  },
+  {
+   "name": "upsBasicBatteryTimeOnBattery",
+   "oid": "1.3.6.1.4.1.318.1.1.1.2.1.2.0",
+   "mib": "PowerNet-MIB"
+  },
+  {
+   "name": "upsAdvTestDiagnosticsResults",
+   "oid": "1.3.6.1.4.1.318.1.1.1.7.2.3.0",
+   "mib": "PowerNet-MIB",
+   "enum": {
+    "1": "ok",
+    "2": "failed",
+    "3": "invalidTest",
+    "4": "testInProgress"
+   }
+  },
+  {
+   "name": "uioSensorStatusTemperatureDegC",
+   "oid": "1.3.6.1.4.1.318.1.1.25.1.2.1.6.0",
+   "mib": "PowerNet-MIB",
+   "units": "degC"
+  }
+ ],
+ "tables": [
+  {
+   "name": "upsOutletGroupStatusTable",
+   "columns": [
+    {
+     "name": "upsOutletGroupStatusGroupState",
+     "oid": "1.3.6.1.4.1.318.1.1.1.12.1.2.1.3",
+     "mib": "PowerNet-MIB",
+     "enum": {
+      "1": "upsOutletGroupStatusOn",
+      "2": "upsOutletGroupStatusOff",
+      "3": "upsOutletGroupStatusUnknown"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.318.1.1.1.12.1.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.318.1.1.1.12.1.2.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 24,
+  "renamed": 1,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

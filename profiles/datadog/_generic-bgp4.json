@@ -1,0 +1,138 @@
+{
+ "id": "dd/_generic-bgp4",
+ "name": "Generic BGP4 (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_generic-bgp4.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "bgpPeerTable",
+   "columns": [
+    {
+     "name": "bgpPeerAdminStatus",
+     "oid": "1.3.6.1.2.1.15.3.1.3",
+     "mib": "BGP4-MIB",
+     "enum": {
+      "1": "stop",
+      "2": "start"
+     }
+    },
+    {
+     "name": "bgpPeerNegotiatedVersion",
+     "oid": "1.3.6.1.2.1.15.3.1.4",
+     "mib": "BGP4-MIB"
+    },
+    {
+     "name": "bgpPeerRemoteAs",
+     "oid": "1.3.6.1.2.1.15.3.1.9",
+     "mib": "BGP4-MIB"
+    },
+    {
+     "name": "bgpPeerState",
+     "oid": "1.3.6.1.2.1.15.3.1.2",
+     "mib": "BGP4-MIB",
+     "enum": {
+      "1": "idle",
+      "2": "connect",
+      "3": "active",
+      "4": "opensent",
+      "5": "openconfirm",
+      "6": "established"
+     }
+    },
+    {
+     "name": "bgpPeerInUpdates",
+     "oid": "1.3.6.1.2.1.15.3.1.10",
+     "mib": "BGP4-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "bgpPeerOutUpdates",
+     "oid": "1.3.6.1.2.1.15.3.1.11",
+     "mib": "BGP4-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "bgpPeerInTotalMessages",
+     "oid": "1.3.6.1.2.1.15.3.1.12",
+     "mib": "BGP4-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "bgpPeerOutTotalMessages",
+     "oid": "1.3.6.1.2.1.15.3.1.13",
+     "mib": "BGP4-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "bgpPeerFsmEstablishedTransitions",
+     "oid": "1.3.6.1.2.1.15.3.1.15",
+     "mib": "BGP4-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "bgpPeerFsmEstablishedTime",
+     "oid": "1.3.6.1.2.1.15.3.1.16",
+     "mib": "BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "bgpPeerConnectRetryInterval",
+     "oid": "1.3.6.1.2.1.15.3.1.17",
+     "mib": "BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "bgpPeerHoldTime",
+     "oid": "1.3.6.1.2.1.15.3.1.18",
+     "mib": "BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "bgpPeerKeepAlive",
+     "oid": "1.3.6.1.2.1.15.3.1.19",
+     "mib": "BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "bgpPeerHoldTimeConfigured",
+     "oid": "1.3.6.1.2.1.15.3.1.20",
+     "mib": "BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "bgpPeerKeepAliveConfigured",
+     "oid": "1.3.6.1.2.1.15.3.1.21",
+     "mib": "BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "bgpPeerMinASOriginationInterval",
+     "oid": "1.3.6.1.2.1.15.3.1.22",
+     "mib": "BGP4-MIB",
+     "units": "s"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.15.3.1.9"
+   },
+   "indexOid": "1.3.6.1.2.1.15.3.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 16,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

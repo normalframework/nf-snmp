@@ -1,0 +1,78 @@
+{
+ "id": "dd/alcatel-lucent-ent",
+ "name": "Alcatel Lucent Ent (Datadog)",
+ "vendor": "Alcatel-Lucent Enterprise",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/alcatel-lucent-ent.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/alcatel-lucent"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.6486.801.1.1.2.1.*"
+  }
+ ],
+ "tables": [
+  {
+   "name": "healthModuleTable",
+   "columns": [
+    {
+     "name": "cpu.usage",
+     "oid": "1.3.6.1.4.1.6486.801.1.2.1.16.1.1.1.1.1.11",
+     "mib": "ALCATEL-ENT1-HEALTH-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "memory.usage",
+     "oid": "1.3.6.1.4.1.6486.801.1.2.1.16.1.1.1.1.1.8",
+     "mib": "ALCATEL-ENT1-HEALTH-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.6486.801.1.2.1.16.1.1.1.1.1.14"
+   },
+   "indexOid": "1.3.6.1.4.1.6486.801.1.2.1.16.1.1.1.1.1.11"
+  },
+  {
+   "name": "chasEntTemperatureTable",
+   "columns": [
+    {
+     "name": "alcatel.ent.chasEntTempCurrent",
+     "oid": "1.3.6.1.4.1.6486.801.1.1.1.1.1.2.1.1",
+     "mib": "ALCATEL-ENT1-CHASSIS-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.47.1.1.1.1.7"
+   },
+   "indexOid": "1.3.6.1.4.1.6486.801.1.1.1.1.1.2.1.1"
+  },
+  {
+   "name": "alaChasEntPhysFanTable",
+   "columns": [
+    {
+     "name": "alcatel.ent.alaChasEntPhysFanSpeed",
+     "oid": "1.3.6.1.4.1.6486.801.1.1.1.3.1.1.11.1.4",
+     "mib": "ALCATEL-ENT1-CHASSIS-MIB",
+     "mibVerified": false
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.6486.801.1.1.1.3.1.1.11.1.4"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 4,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

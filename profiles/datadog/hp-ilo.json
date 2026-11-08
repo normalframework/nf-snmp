@@ -1,0 +1,225 @@
+{
+ "id": "dd/hp-ilo",
+ "name": "Hp ILO (Datadog)",
+ "vendor": "Compaq",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/hp-ilo.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_hp",
+  "dd/_hp-base",
+  "dd/_hp-compaq-health",
+  "dd/_hp-driver-stats"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.232.9.4.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "cpqSm2CntlrServerPowerState",
+   "oid": "1.3.6.1.4.1.232.9.2.2.32.0",
+   "mib": "CPQSM2-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cpqSm2CntlrBatteryStatus",
+   "oid": "1.3.6.1.4.1.232.9.2.2.5.0",
+   "mib": "CPQSM2-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cpqSm2CntlrBatteryPercentCharged",
+   "oid": "1.3.6.1.4.1.232.9.2.2.6.0",
+   "mib": "CPQSM2-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cpqSm2CntlrSelfTestErrors",
+   "oid": "1.3.6.1.4.1.232.9.2.2.9.0",
+   "mib": "CPQSM2-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cpqSm2CntlrRemoteSessionStatus",
+   "oid": "1.3.6.1.4.1.232.9.2.2.16.0",
+   "mib": "CPQSM2-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cpqSm2CntlrInterfaceStatus",
+   "oid": "1.3.6.1.4.1.232.9.2.2.17.0",
+   "mib": "CPQSM2-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cpqSm2EventTotalEntries",
+   "oid": "1.3.6.1.4.1.232.9.2.3.1.0",
+   "mib": "CPQSM2-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "cpqNicVtVirusActivity",
+   "oid": "1.3.6.1.4.1.232.18.2.5.3.0",
+   "mib": "CPQNIC-MIB",
+   "mibVerified": false
+  }
+ ],
+ "tables": [
+  {
+   "name": "cpqSm2NicStatsTable",
+   "columns": [
+    {
+     "name": "cpqSm2NicXmitBytes",
+     "oid": "1.3.6.1.4.1.232.9.2.5.2.1.2",
+     "mib": "CPQSM2-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqSm2NicXmitTotalPackets",
+     "oid": "1.3.6.1.4.1.232.9.2.5.2.1.3",
+     "mib": "CPQSM2-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqSm2NicXmitDiscardPackets",
+     "oid": "1.3.6.1.4.1.232.9.2.5.2.1.6",
+     "mib": "CPQSM2-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqSm2NicXmitErrorPackets",
+     "oid": "1.3.6.1.4.1.232.9.2.5.2.1.7",
+     "mib": "CPQSM2-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqSm2NicXmitQueueLength",
+     "oid": "1.3.6.1.4.1.232.9.2.5.2.1.8",
+     "mib": "CPQSM2-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqSm2NicRecvBytes",
+     "oid": "1.3.6.1.4.1.232.9.2.5.2.1.9",
+     "mib": "CPQSM2-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqSm2NicRecvTotalPackets",
+     "oid": "1.3.6.1.4.1.232.9.2.5.2.1.10",
+     "mib": "CPQSM2-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqSm2NicRecvDiscardPackets",
+     "oid": "1.3.6.1.4.1.232.9.2.5.2.1.13",
+     "mib": "CPQSM2-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqSm2NicRecvErrorPackets",
+     "oid": "1.3.6.1.4.1.232.9.2.5.2.1.14",
+     "mib": "CPQSM2-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqSm2NicRecvUnknownPackets",
+     "oid": "1.3.6.1.4.1.232.9.2.5.2.1.15",
+     "mib": "CPQSM2-MIB",
+     "type": "counter",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.9.2.5.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.232.9.2.5.2.1.2"
+  },
+  {
+   "name": "cpqNicIfPhysAdapterTable",
+   "columns": [
+    {
+     "name": "cpqNicIfPhysAdapterGoodTransmits",
+     "oid": "1.3.6.1.4.1.232.18.2.3.1.1.16",
+     "mib": "CPQNIC-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqNicIfPhysAdapterGoodReceives",
+     "oid": "1.3.6.1.4.1.232.18.2.3.1.1.17",
+     "mib": "CPQNIC-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqNicIfPhysAdapterBadTransmits",
+     "oid": "1.3.6.1.4.1.232.18.2.3.1.1.18",
+     "mib": "CPQNIC-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqNicIfPhysAdapterBadReceives",
+     "oid": "1.3.6.1.4.1.232.18.2.3.1.1.19",
+     "mib": "CPQNIC-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqNicIfPhysAdapterInOctets",
+     "oid": "1.3.6.1.4.1.232.18.2.3.1.1.37",
+     "mib": "CPQNIC-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqNicIfPhysAdapterOutOctets",
+     "oid": "1.3.6.1.4.1.232.18.2.3.1.1.38",
+     "mib": "CPQNIC-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqNicIfPhysAdapterSpeed",
+     "oid": "1.3.6.1.4.1.232.18.2.3.1.1.33",
+     "mib": "CPQNIC-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqNicIfPhysAdapterSpeedMbps",
+     "oid": "1.3.6.1.4.1.232.18.2.3.1.1.36",
+     "mib": "CPQNIC-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.18.2.3.1.1.39"
+   },
+   "indexOid": "1.3.6.1.4.1.232.18.2.3.1.1.16"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 26,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

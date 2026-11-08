@@ -1,0 +1,81 @@
+{
+ "id": "dd/cisco-nexus",
+ "name": "Cisco Nexus (Datadog)",
+ "vendor": "cisco",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/cisco-nexus.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_cisco-generic"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1216"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1217"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1915"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1923"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1924"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1925"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.12.3.1.3.*"
+  }
+ ],
+ "tables": [
+  {
+   "name": "entSensorValueTable",
+   "columns": [
+    {
+     "name": "entSensorValue",
+     "oid": "1.3.6.1.4.1.9.9.91.1.1.1.1.4",
+     "mib": "CISCO-ENTITY-SENSOR-MIB"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.9.9.91.1.1.1.1.4"
+  },
+  {
+   "name": "cempMemPoolTable",
+   "columns": [
+    {
+     "name": "cempMemPoolHCUsed",
+     "oid": "1.3.6.1.4.1.9.9.221.1.1.1.1.18",
+     "mib": "CISCO-ENHANCED-MEMPOOL-MIB",
+     "description": "Datadog metric memory.used",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "cempMemPoolHCFree",
+     "oid": "1.3.6.1.4.1.9.9.221.1.1.1.1.20",
+     "mib": "CISCO-ENHANCED-MEMPOOL-MIB",
+     "description": "Datadog metric memory.free",
+     "type": "counter",
+     "units": "B"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.9.9.221.1.1.1.1.18"
+  }
+ ],
+ "verification": {
+  "verified": 3,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

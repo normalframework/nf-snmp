@@ -1,0 +1,253 @@
+{
+ "id": "dd/cisco-asr",
+ "name": "Cisco Asr (Datadog)",
+ "vendor": "cisco",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/cisco-asr.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_cisco-generic"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.403"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.923"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.924"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.925"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1017"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1018"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1036"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1037"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1116"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1165"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1166"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1441"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1457"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1498"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1499"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1500"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1501"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1502"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1503"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1504"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1505"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1506"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1521"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1522"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1525"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1538"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1639"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1640"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1688"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1709"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1724"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1725"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1726"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1727"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1762"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1818"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1819"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1820"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1821"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1822"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1861"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1897"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2098"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2099"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2100"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2101"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2102"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2143"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2144"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2155"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2156"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2157"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2158"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2159"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2160"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2247"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2252"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2320"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2321"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2322"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2323"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2324"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2325"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2348"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2390"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2480"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2502"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2503"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2504"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2572"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2658"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2678"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2679"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2705"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3075"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3090"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

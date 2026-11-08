@@ -1,0 +1,63 @@
+{
+ "id": "dd/hp-icf-switch",
+ "name": "Hp Icf Switch (Datadog)",
+ "vendor": "Hewlett-Packard",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/hp-icf-switch.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if",
+  "dd/_hp"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.11.2.3.7.11.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "hpSwitchCpuStat",
+   "oid": "1.3.6.1.4.1.11.2.14.11.5.1.9.6.1.0",
+   "mib": "STATISTICS-MIB",
+   "description": "Datadog metric cpu.usage",
+   "units": "%"
+  }
+ ],
+ "tables": [
+  {
+   "name": "hpLocalMemTable",
+   "columns": [
+    {
+     "name": "hpLocalMemTotalBytes",
+     "oid": "1.3.6.1.4.1.11.2.14.11.5.1.1.2.1.1.1.5",
+     "mib": "NETSWITCH-MIB",
+     "description": "Datadog metric memory.total",
+     "units": "B"
+    },
+    {
+     "name": "hpLocalMemFreeBytes",
+     "oid": "1.3.6.1.4.1.11.2.14.11.5.1.1.2.1.1.1.6",
+     "mib": "NETSWITCH-MIB",
+     "description": "Datadog metric memory.free",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.11.2.14.11.5.1.1.2.1.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.11.2.14.11.5.1.1.2.1.1.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 3,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

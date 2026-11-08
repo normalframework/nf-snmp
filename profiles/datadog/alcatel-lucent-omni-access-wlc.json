@@ -1,0 +1,101 @@
+{
+ "id": "dd/alcatel-lucent-omni-access-wlc",
+ "name": "Alcatel Lucent Omni Access WLC (Datadog)",
+ "vendor": "Alcatel-Lucent Enterprise",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/alcatel-lucent-omni-access-wlc.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/alcatel-lucent"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.6486.800.1.1.2.2.2.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "wlsxSwitchTotalNumAccessPoints",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.1.0",
+   "mib": "WLSX-SWITCH-MIB"
+  },
+  {
+   "name": "wlsxSwitchTotalNumStationsAssociated",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.2.0",
+   "mib": "WLSX-SWITCH-MIB"
+  }
+ ],
+ "tables": [
+  {
+   "name": "wlsxSysXProcessorTable",
+   "columns": [
+    {
+     "name": "sysXProcessorLoad",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.1.9.1.3",
+     "mib": "WLSX-SWITCH-MIB",
+     "description": "Datadog metric cpu.usage",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.2.2.1.1.1.9.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.1.1.9.1.3"
+  },
+  {
+   "name": "wlsxSysXStorageTable",
+   "columns": [
+    {
+     "name": "sysXStorageSize",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.1.10.1.3",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "sysXStorageUsed",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.1.10.1.4",
+     "mib": "WLSX-SWITCH-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.2.2.1.1.1.10.1.5"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.1.1.10.1.3"
+  },
+  {
+   "name": "wlsxSysXMemoryTable",
+   "columns": [
+    {
+     "name": "sysXMemorySize",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.1.11.1.2",
+     "mib": "WLSX-SWITCH-MIB",
+     "description": "Datadog metric memory.total"
+    },
+    {
+     "name": "sysXMemoryUsed",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.1.11.1.3",
+     "mib": "WLSX-SWITCH-MIB",
+     "description": "Datadog metric memory.used"
+    },
+    {
+     "name": "sysXMemoryFree",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.1.11.1.4",
+     "mib": "WLSX-SWITCH-MIB",
+     "description": "Datadog metric memory.free"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.1.1.11.1.2"
+  }
+ ],
+ "verification": {
+  "verified": 8,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

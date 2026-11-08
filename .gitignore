@@ -6,3 +6,5 @@ coverage/
 local/*
 !local/.gitkeep
 difftest/out/
+sims/generated/spec.json
+sims/generated/report.json

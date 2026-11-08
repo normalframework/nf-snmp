@@ -1,0 +1,160 @@
+{
+ "id": "dd/_generic-ospf",
+ "name": "Generic Ospf (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_generic-ospf.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "ospfNbrTable",
+   "columns": [
+    {
+     "name": "ospfNbrState",
+     "oid": "1.3.6.1.2.1.14.10.1.6",
+     "mib": "OSPF-MIB",
+     "enum": {
+      "1": "down",
+      "2": "attempt",
+      "3": "init",
+      "4": "twoWay",
+      "5": "exchangeStart",
+      "6": "exchange",
+      "7": "loading",
+      "8": "full"
+     }
+    },
+    {
+     "name": "ospfNbrEvents",
+     "oid": "1.3.6.1.2.1.14.10.1.7",
+     "mib": "OSPF-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ospfNbrLsRetransQLen",
+     "oid": "1.3.6.1.2.1.14.10.1.8",
+     "mib": "OSPF-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.14.10.1.3"
+   },
+   "indexOid": "1.3.6.1.2.1.14.10.1.6"
+  },
+  {
+   "name": "ospfVirtNbrTable",
+   "columns": [
+    {
+     "name": "ospfVirtNbrState",
+     "oid": "1.3.6.1.2.1.14.11.1.5",
+     "mib": "OSPF-MIB",
+     "enum": {
+      "1": "down",
+      "2": "attempt",
+      "3": "init",
+      "4": "twoWay",
+      "5": "exchangeStart",
+      "6": "exchange",
+      "7": "loading",
+      "8": "full"
+     }
+    },
+    {
+     "name": "ospfVirtNbrEvents",
+     "oid": "1.3.6.1.2.1.14.11.1.6",
+     "mib": "OSPF-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ospfVirtNbrLsRetransQLen",
+     "oid": "1.3.6.1.2.1.14.11.1.7",
+     "mib": "OSPF-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.14.11.1.3"
+   },
+   "indexOid": "1.3.6.1.2.1.14.11.1.5"
+  },
+  {
+   "name": "ospfIfTable",
+   "columns": [
+    {
+     "name": "ospfIfRetransInterval",
+     "oid": "1.3.6.1.2.1.14.7.1.8",
+     "mib": "OSPF-MIB",
+     "displayHint": "d-0",
+     "units": "s"
+    },
+    {
+     "name": "ospfIfState",
+     "oid": "1.3.6.1.2.1.14.7.1.12",
+     "mib": "OSPF-MIB",
+     "enum": {
+      "1": "down",
+      "2": "loopback",
+      "3": "waiting",
+      "4": "pointToPoint",
+      "5": "designatedRouter",
+      "6": "backupDesignatedRouter",
+      "7": "otherDesignatedRouter"
+     }
+    },
+    {
+     "name": "ospfIfLsaCount",
+     "oid": "1.3.6.1.2.1.14.7.1.21",
+     "mib": "OSPF-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.14.7.1.1"
+   },
+   "indexOid": "1.3.6.1.2.1.14.7.1.8"
+  },
+  {
+   "name": "ospfVirtIfTable",
+   "columns": [
+    {
+     "name": "ospfVirtIfRetransInterval",
+     "oid": "1.3.6.1.2.1.14.9.1.4",
+     "mib": "OSPF-MIB",
+     "displayHint": "d-0",
+     "units": "s"
+    },
+    {
+     "name": "ospfVirtIfState",
+     "oid": "1.3.6.1.2.1.14.9.1.7",
+     "mib": "OSPF-MIB",
+     "enum": {
+      "1": "down",
+      "4": "pointToPoint"
+     }
+    },
+    {
+     "name": "ospfVirtIfLsaCount",
+     "oid": "1.3.6.1.2.1.14.9.1.12",
+     "mib": "OSPF-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.14.11.1.2"
+   },
+   "indexOid": "1.3.6.1.2.1.14.9.1.4"
+  }
+ ],
+ "verification": {
+  "verified": 12,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

@@ -1,0 +1,428 @@
+{
+ "id": "dd/cisco-ironport-email",
+ "name": "Cisco Ironport Email (Datadog)",
+ "vendor": "IronPort Systems, Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/cisco-ironport-email.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if",
+  "dd/_cisco-metadata"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.15497.1.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.15497.1.2"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "perCentMemoryUtilization",
+   "oid": "1.3.6.1.4.1.15497.1.1.1.1.0",
+   "mib": "ASYNCOS-MAIL-MIB",
+   "description": "Datadog metric memory.usage"
+  },
+  {
+   "name": "perCentCPUUtilization",
+   "oid": "1.3.6.1.4.1.15497.1.1.1.2.0",
+   "mib": "ASYNCOS-MAIL-MIB",
+   "description": "Datadog metric cpu.usage",
+   "units": "s"
+  },
+  {
+   "name": "oldestMessageAge",
+   "oid": "1.3.6.1.4.1.15497.1.1.1.14.0",
+   "mib": "ASYNCOS-MAIL-MIB",
+   "description": "Datadog metric ironport.oldestMessageAge",
+   "units": "s"
+  },
+  {
+   "name": "perCentDiskIOUtilization",
+   "oid": "1.3.6.1.4.1.15497.1.1.1.3.0",
+   "mib": "ASYNCOS-MAIL-MIB",
+   "description": "Datadog metric ironport.perCentDiskIOUtilization",
+   "units": "s"
+  },
+  {
+   "name": "perCentQueueUtilization",
+   "oid": "1.3.6.1.4.1.15497.1.1.1.4.0",
+   "mib": "ASYNCOS-MAIL-MIB",
+   "description": "Datadog metric ironport.perCentQueueUtilization",
+   "units": "%"
+  },
+  {
+   "name": "workQueueMessages",
+   "oid": "1.3.6.1.4.1.15497.1.1.1.11.0",
+   "mib": "ASYNCOS-MAIL-MIB",
+   "description": "Datadog metric ironport.workQueueMessages"
+  },
+  {
+   "name": "outstandingDNSRequests",
+   "oid": "1.3.6.1.4.1.15497.1.1.1.15.0",
+   "mib": "ASYNCOS-MAIL-MIB",
+   "description": "Datadog metric ironport.outstandingDNSRequests"
+  },
+  {
+   "name": "pendingDNSRequests",
+   "oid": "1.3.6.1.4.1.15497.1.1.1.16.0",
+   "mib": "ASYNCOS-MAIL-MIB",
+   "description": "Datadog metric ironport.pendingDNSRequests"
+  },
+  {
+   "name": "raidEvents",
+   "oid": "1.3.6.1.4.1.15497.1.1.1.17.0",
+   "mib": "ASYNCOS-MAIL-MIB",
+   "description": "Datadog metric ironport.raidEvents",
+   "type": "counter"
+  },
+  {
+   "name": "openFilesOrSockets",
+   "oid": "1.3.6.1.4.1.15497.1.1.1.19.0",
+   "mib": "ASYNCOS-MAIL-MIB",
+   "description": "Datadog metric ironport.openFilesOrSockets",
+   "units": "s"
+  },
+  {
+   "name": "mailTransferThreads",
+   "oid": "1.3.6.1.4.1.15497.1.1.1.20.0",
+   "mib": "ASYNCOS-MAIL-MIB",
+   "description": "Datadog metric ironport.mailTransferThreads"
+  },
+  {
+   "name": "cacheClientRequests",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.2.2.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheClientRequests",
+   "type": "counter"
+  },
+  {
+   "name": "cacheClientErrors",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.2.4.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheClientErrors",
+   "type": "counter"
+  },
+  {
+   "name": "cacheClientIdleConns",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.2.7.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheClientIdleConns",
+   "type": "counter"
+  },
+  {
+   "name": "cacheClientTotalConns",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.2.8.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheClientTotalConns"
+  },
+  {
+   "name": "cacheClientMaxConns",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.2.9.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheClientMaxConns",
+   "type": "counter"
+  },
+  {
+   "name": "cacheClientAccepts",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.2.10.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheClientAccepts",
+   "type": "counter"
+  },
+  {
+   "name": "cacheClientReqDenials",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.2.17.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheClientReqDenials",
+   "type": "counter"
+  },
+  {
+   "name": "cacheServerRequests",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.3.2.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheServerRequests",
+   "type": "counter"
+  },
+  {
+   "name": "cacheServerSockets",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.3.3.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheServerSockets",
+   "type": "counter"
+  },
+  {
+   "name": "cacheServerErrors",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.3.4.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheServerErrors",
+   "type": "counter"
+  },
+  {
+   "name": "cacheServerIdleConns",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.3.7.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheServerIdleConns",
+   "type": "counter"
+  },
+  {
+   "name": "cacheServerTotalConns",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.3.8.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheServerTotalConns",
+   "type": "counter"
+  },
+  {
+   "name": "cacheServerCloseIdleConns",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.3.9.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheServerCloseIdleConns",
+   "type": "counter"
+  },
+  {
+   "name": "cacheServerLimitIdleConns",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.3.10.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheServerLimitIdleConns",
+   "type": "counter"
+  },
+  {
+   "name": "cacheServerConnsThresh",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.3.11.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheServerConnsThresh",
+   "type": "counter"
+  },
+  {
+   "name": "cacheTotalHttpReqs",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.6.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheTotalHttpReqs"
+  },
+  {
+   "name": "cacheMeanRespTime",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.6.2.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheMeanRespTime"
+  },
+  {
+   "name": "cacheMeanMissRespTime",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.6.3.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheMeanMissRespTime"
+  },
+  {
+   "name": "cacheMeanHitRespTime",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.6.4.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheMeanHitRespTime"
+  },
+  {
+   "name": "cacheMeanHitRatio",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.6.5.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheMeanHitRatio"
+  },
+  {
+   "name": "cacheMeanByteHitRatio",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.6.6.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheMeanByteHitRatio"
+  },
+  {
+   "name": "cacheTotalBandwidthSaving",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.6.7.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheTotalBandwidthSaving",
+   "units": "s"
+  },
+  {
+   "name": "cacheDuration",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.6.8.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheDuration"
+  },
+  {
+   "name": "cacheCltReplyErrPct",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.6.9.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheCltReplyErrPct",
+   "units": "%"
+  },
+  {
+   "name": "cacheThruputNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.1.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheThruputNow",
+   "units": "min"
+  },
+  {
+   "name": "cacheBwidthSavingNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.2.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheBwidthSavingNow",
+   "units": "s"
+  },
+  {
+   "name": "cacheBwidthSpentNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.3.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheBwidthSpentNow",
+   "units": "s"
+  },
+  {
+   "name": "cacheBwidthTotalNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.4.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheBwidthTotalNow",
+   "units": "s"
+  },
+  {
+   "name": "cacheHitsNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.5.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheHitsNow",
+   "units": "min"
+  },
+  {
+   "name": "cacheMissesNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.6.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheMissesNow",
+   "units": "min"
+  },
+  {
+   "name": "cacheHitRespTimeNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.7.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheHitRespTimeNow",
+   "units": "min"
+  },
+  {
+   "name": "cacheMissRespTimeNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.8.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheMissRespTimeNow",
+   "units": "min"
+  },
+  {
+   "name": "cacheTotalRespTimeNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.9.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheTotalRespTimeNow",
+   "units": "min"
+  },
+  {
+   "name": "cacheErrsNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.10.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheErrsNow",
+   "units": "min"
+  },
+  {
+   "name": "cacheDeniedNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.11.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheDeniedNow",
+   "units": "min"
+  },
+  {
+   "name": "cacheErrRespTimeNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.12.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheErrRespTimeNow",
+   "units": "min"
+  },
+  {
+   "name": "cacheDeniedRespTimeNow",
+   "oid": "1.3.6.1.4.1.15497.1.2.3.7.13.1.0",
+   "mib": "ASYNCOSWEBSECURITYAPPLIANCE-MIB",
+   "description": "Datadog metric ironport.cacheDeniedRespTimeNow",
+   "units": "min"
+  }
+ ],
+ "tables": [
+  {
+   "name": "temperatureTable",
+   "columns": [
+    {
+     "name": "degreesCelsius",
+     "oid": "1.3.6.1.4.1.15497.1.1.1.9.1.2",
+     "mib": "ASYNCOS-MAIL-MIB",
+     "description": "Datadog metric ironport.degreesCelsius"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.15497.1.1.1.9.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.15497.1.1.1.9.1.2"
+  },
+  {
+   "name": "fanTable",
+   "columns": [
+    {
+     "name": "fanRPMs",
+     "oid": "1.3.6.1.4.1.15497.1.1.1.10.1.2",
+     "mib": "ASYNCOS-MAIL-MIB",
+     "description": "Datadog metric ironport.fanRPMs"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.15497.1.1.1.10.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.15497.1.1.1.10.1.2"
+  },
+  {
+   "name": "keyExpirationTable",
+   "columns": [
+    {
+     "name": "keySecondsUntilExpire",
+     "oid": "1.3.6.1.4.1.15497.1.1.1.12.1.4",
+     "mib": "ASYNCOS-MAIL-MIB",
+     "description": "Datadog metric ironport.keySecondsUntilExpire",
+     "units": "s"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.15497.1.1.1.12.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.15497.1.1.1.12.1.4"
+  },
+  {
+   "name": "updateTable",
+   "columns": [
+    {
+     "name": "updates",
+     "oid": "1.3.6.1.4.1.15497.1.1.1.13.1.3",
+     "mib": "ASYNCOS-MAIL-MIB",
+     "description": "Datadog metric ironport.updates",
+     "type": "counter"
+    },
+    {
+     "name": "updateFailures",
+     "oid": "1.3.6.1.4.1.15497.1.1.1.13.1.4",
+     "mib": "ASYNCOS-MAIL-MIB",
+     "description": "Datadog metric ironport.updateFailures",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.15497.1.1.1.13.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.15497.1.1.1.13.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 53,
+  "renamed": 0,
+  "dropped": 1,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

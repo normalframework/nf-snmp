@@ -1,0 +1,148 @@
+{
+ "id": "dd/fireeye",
+ "name": "Fireeye (Datadog)",
+ "vendor": "FireEye Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/fireeye.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.25597.1"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "memory.total",
+   "oid": "1.3.6.1.2.1.25.2.3.1.6.1",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageUsed row 1"
+  },
+  {
+   "name": "feMemoryBuffers",
+   "oid": "1.3.6.1.2.1.25.2.3.1.6.6",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageUsed row 6"
+  },
+  {
+   "name": "feCachedMemory",
+   "oid": "1.3.6.1.2.1.25.2.3.1.6.7",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageUsed row 7"
+  },
+  {
+   "name": "feTotalEmailCount",
+   "oid": "1.3.6.1.4.1.25597.13.1.1.0",
+   "mib": "FE-FIREEYE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "feInfectedEmailCount",
+   "oid": "1.3.6.1.4.1.25597.13.1.4.0",
+   "mib": "FE-FIREEYE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "feAnalyzedEmailCount",
+   "oid": "1.3.6.1.4.1.25597.13.1.7.0",
+   "mib": "FE-FIREEYE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "feTotalUrlCount",
+   "oid": "1.3.6.1.4.1.25597.13.1.10.0",
+   "mib": "FE-FIREEYE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "feInfectedUrlCount",
+   "oid": "1.3.6.1.4.1.25597.13.1.13.0",
+   "mib": "FE-FIREEYE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "feAnalyzedUrlCount",
+   "oid": "1.3.6.1.4.1.25597.13.1.16.0",
+   "mib": "FE-FIREEYE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "feTotalAttachmentCount",
+   "oid": "1.3.6.1.4.1.25597.13.1.19.0",
+   "mib": "FE-FIREEYE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "feInfectedAttachmentCount",
+   "oid": "1.3.6.1.4.1.25597.13.1.22.0",
+   "mib": "FE-FIREEYE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "feAnalyzedAttachmentCount",
+   "oid": "1.3.6.1.4.1.25597.13.1.25.0",
+   "mib": "FE-FIREEYE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "feeQuarantineUsage",
+   "oid": "1.3.6.1.4.1.25597.13.1.40.0",
+   "mib": "FE-FIREEYE-MIB",
+   "units": "%"
+  },
+  {
+   "name": "feDeferredEmailCount",
+   "oid": "1.3.6.1.4.1.25597.13.1.44.0",
+   "mib": "FE-FIREEYE-MIB"
+  },
+  {
+   "name": "feHoldQueueEmailCount",
+   "oid": "1.3.6.1.4.1.25597.13.1.45.0",
+   "mib": "FE-FIREEYE-MIB"
+  },
+  {
+   "name": "feTotalObjectAnalyzedCount",
+   "oid": "1.3.6.1.4.1.25597.15.1.1.0",
+   "mib": "FE-FIREEYE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "feTotalMaliciousObjectCount",
+   "oid": "1.3.6.1.4.1.25597.15.1.4.0",
+   "mib": "FE-FIREEYE-MIB",
+   "type": "counter"
+  }
+ ],
+ "tables": [
+  {
+   "name": "hrProcessorTable",
+   "columns": [
+    {
+     "name": "hrProcessorLoad",
+     "oid": "1.3.6.1.2.1.25.3.3.1.2",
+     "mib": "HOST-RESOURCES-MIB",
+     "description": "Datadog metric cpu.usage",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.25.3.3.1.1"
+   },
+   "indexOid": "1.3.6.1.2.1.25.3.3.1.2"
+  }
+ ],
+ "verification": {
+  "verified": 18,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

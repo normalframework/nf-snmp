@@ -1,0 +1,333 @@
+{
+ "id": "dd/ixsystems-truenas",
+ "name": "Ixsystems Truenas (Datadog)",
+ "vendor": "iXsystems",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/ixsystems-truenas.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-host-resources-base",
+  "dd/_generic-if",
+  "dd/_generic-ucd"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.50536.3.2"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "zfsArcSize",
+   "oid": "1.3.6.1.4.1.50536.1.4.1.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsArcSize"
+  },
+  {
+   "name": "zfsArcCacheMissRatio",
+   "oid": "1.3.6.1.4.1.50536.1.4.10.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsArcCacheMissRatio"
+  },
+  {
+   "name": "zfsArcMeta",
+   "oid": "1.3.6.1.4.1.50536.1.4.2.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsArcMeta"
+  },
+  {
+   "name": "zfsArcData",
+   "oid": "1.3.6.1.4.1.50536.1.4.3.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsArcData"
+  },
+  {
+   "name": "zfsArcHits",
+   "oid": "1.3.6.1.4.1.50536.1.4.4.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsArcHits"
+  },
+  {
+   "name": "zfsArcMisses",
+   "oid": "1.3.6.1.4.1.50536.1.4.5.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsArcMisses"
+  },
+  {
+   "name": "zfsArcC",
+   "oid": "1.3.6.1.4.1.50536.1.4.6.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsArcC"
+  },
+  {
+   "name": "zfsArcP",
+   "oid": "1.3.6.1.4.1.50536.1.4.7.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsArcP"
+  },
+  {
+   "name": "zfsArcMissPercent",
+   "oid": "1.3.6.1.4.1.50536.1.4.8.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsArcMissPercent"
+  },
+  {
+   "name": "zfsArcCacheHitRatio",
+   "oid": "1.3.6.1.4.1.50536.1.4.9.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsArcCacheHitRatio"
+  },
+  {
+   "name": "zfsL2ArcHits",
+   "oid": "1.3.6.1.4.1.50536.1.5.1.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsL2ArcHits",
+   "type": "counter"
+  },
+  {
+   "name": "zfsL2ArcMisses",
+   "oid": "1.3.6.1.4.1.50536.1.5.2.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsL2ArcMisses",
+   "type": "counter"
+  },
+  {
+   "name": "zfsL2ArcRead",
+   "oid": "1.3.6.1.4.1.50536.1.5.3.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsL2ArcRead",
+   "type": "counter"
+  },
+  {
+   "name": "zfsL2ArcWrite",
+   "oid": "1.3.6.1.4.1.50536.1.5.4.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsL2ArcWrite",
+   "type": "counter"
+  },
+  {
+   "name": "zfsL2ArcSize",
+   "oid": "1.3.6.1.4.1.50536.1.5.5.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsL2ArcSize"
+  },
+  {
+   "name": "zfsZilstatOps1sec",
+   "oid": "1.3.6.1.4.1.50536.1.6.1.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsZilstatOps1sec",
+   "type": "counter"
+  },
+  {
+   "name": "zfsZilstatOps5sec",
+   "oid": "1.3.6.1.4.1.50536.1.6.2.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsZilstatOps5sec",
+   "type": "counter"
+  },
+  {
+   "name": "zfsZilstatOps10sec",
+   "oid": "1.3.6.1.4.1.50536.1.6.3.0",
+   "mib": "FREENAS-MIB",
+   "description": "Datadog metric freenas.zfsZilstatOps10sec",
+   "type": "counter"
+  }
+ ],
+ "tables": [
+  {
+   "name": "zpoolTable",
+   "columns": [
+    {
+     "name": "zpoolReadBytes",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.10",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolReadBytes",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "zpoolWriteBytes",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.11",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolWriteBytes",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "zpoolReadOps1sec",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.12",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolReadOps1sec",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "zpoolWriteOps1sec",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.13",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolWriteOps1sec",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "zpoolReadBytes1sec",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.14",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolReadBytes1sec",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "zpoolWriteBytes1sec",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.15",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolWriteBytes1sec",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "zpoolAllocationUnits",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.3",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolAllocationUnits",
+     "units": "B"
+    },
+    {
+     "name": "zpoolSize",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.4",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolSize"
+    },
+    {
+     "name": "zpoolUsed",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.5",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolUsed"
+    },
+    {
+     "name": "zpoolAvailable",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.6",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolAvailable"
+    },
+    {
+     "name": "zpoolHealth",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.7",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolHealth",
+     "enum": {
+      "0": "online",
+      "1": "degraded",
+      "2": "faulted",
+      "3": "offline",
+      "4": "unavail",
+      "5": "removed"
+     }
+    },
+    {
+     "name": "zpoolReadOps",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.8",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolReadOps",
+     "type": "counter"
+    },
+    {
+     "name": "zpoolWriteOps",
+     "oid": "1.3.6.1.4.1.50536.1.1.1.1.9",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zpoolWriteOps",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.50536.1.1.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.50536.1.1.1.1.10"
+  },
+  {
+   "name": "datasetTable",
+   "columns": [
+    {
+     "name": "datasetAllocationUnits",
+     "oid": "1.3.6.1.4.1.50536.1.2.1.1.3",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.datasetAllocationUnits",
+     "units": "B"
+    },
+    {
+     "name": "datasetSize",
+     "oid": "1.3.6.1.4.1.50536.1.2.1.1.4",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.datasetSize"
+    },
+    {
+     "name": "datasetUsed",
+     "oid": "1.3.6.1.4.1.50536.1.2.1.1.5",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.datasetUsed"
+    },
+    {
+     "name": "datasetAvailable",
+     "oid": "1.3.6.1.4.1.50536.1.2.1.1.6",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.datasetAvailable"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.50536.1.2.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.50536.1.2.1.1.3"
+  },
+  {
+   "name": "zvolTable",
+   "columns": [
+    {
+     "name": "zvolAllocationUnits",
+     "oid": "1.3.6.1.4.1.50536.1.3.1.1.3",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zvolAllocationUnits",
+     "units": "B"
+    },
+    {
+     "name": "zvolSize",
+     "oid": "1.3.6.1.4.1.50536.1.3.1.1.4",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zvolSize"
+    },
+    {
+     "name": "zvolUsed",
+     "oid": "1.3.6.1.4.1.50536.1.3.1.1.5",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zvolUsed"
+    },
+    {
+     "name": "zvolAvailable",
+     "oid": "1.3.6.1.4.1.50536.1.3.1.1.6",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zvolAvailable"
+    },
+    {
+     "name": "zvolReferenced",
+     "oid": "1.3.6.1.4.1.50536.1.3.1.1.7",
+     "mib": "FREENAS-MIB",
+     "description": "Datadog metric freenas.zvolReferenced"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.50536.1.3.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.50536.1.3.1.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 40,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

@@ -1,0 +1,17 @@
+nf-snmp
+Copyright (c) 2026 Normal Software, Inc.
+Licensed under the GNU General Public License v3.0 or later (see LICENSE).
+
+This product includes third-party material:
+
+- profiles/datadog/ — converted from Datadog SNMP profiles
+  (https://github.com/DataDog/integrations-core, snmp/datadog_checks/snmp/data/default_profiles,
+  commit recorded in vendor/datadog-profiles/SOURCE_COMMIT), Copyright (c) 2016, Datadog, Inc.,
+  BSD-3-Clause (vendor/datadog-profiles/LICENSE, profiles/datadog/LICENSE-datadog). The originals are
+  in vendor/datadog-profiles/. Converted with tools/import-datadog.mjs and verified/enriched against
+  the vendor MIBs with tools/verify-profiles.mjs; each converted file records its source.
+- mibs/ — MIB modules from the LibreNMS collection (https://github.com/librenms/librenms, commit in
+  vendor/librenms/SOURCE_COMMIT). Each MIB remains under its author's copyright and terms. Used by
+  tests and tooling only.
+- data/enterprises.tsv — derived from the IANA Private Enterprise Numbers registry
+  (https://www.iana.org/assignments/enterprise-numbers/), organization names only.

@@ -1,0 +1,134 @@
+{
+ "id": "dd/_hp-driver-stats",
+ "name": "Hp Driver Stats (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_hp-driver-stats.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "cpqDaPhyDrvTable",
+   "columns": [
+    {
+     "name": "cpqDaPhyDrvUsedReallocs",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.8",
+     "mib": "CPQIDA-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cpqDaPhyDrvRefHours",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.9",
+     "mib": "CPQIDA-MIB",
+     "type": "counter",
+     "units": "h"
+    },
+    {
+     "name": "cpqDaPhyDrvHardReadErrs",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.16",
+     "mib": "CPQIDA-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cpqDaPhyDrvRecvReadErrs",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.17",
+     "mib": "CPQIDA-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cpqDaPhyDrvHardWriteErrs",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.18",
+     "mib": "CPQIDA-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cpqDaPhyDrvRecvWriteErrs",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.19",
+     "mib": "CPQIDA-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cpqDaPhyDrvHSeekErrs",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.20",
+     "mib": "CPQIDA-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cpqDaPhyDrvSeekErrs",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.21",
+     "mib": "CPQIDA-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cpqDaPhyDrvStatus",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.6",
+     "mib": "CPQIDA-MIB",
+     "enum": {
+      "1": "other",
+      "2": "ok",
+      "3": "failed",
+      "4": "predictiveFailure",
+      "5": "erasing",
+      "6": "eraseDone",
+      "7": "eraseQueued",
+      "8": "ssdWearOut",
+      "9": "notAuthenticated"
+     }
+    },
+    {
+     "name": "cpqDaPhyDrvFactReallocs",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.7",
+     "mib": "CPQIDA-MIB"
+    },
+    {
+     "name": "cpqDaPhyDrvSpinupTime",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.22",
+     "mib": "CPQIDA-MIB",
+     "scale": 0.1,
+     "units": "s"
+    },
+    {
+     "name": "cpqDaPhyDrvSize",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.45",
+     "mib": "CPQIDA-MIB",
+     "units": "B"
+    },
+    {
+     "name": "cpqDaPhyDrvSmartStatus",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.57",
+     "mib": "CPQIDA-MIB",
+     "enum": {
+      "1": "other",
+      "2": "ok",
+      "3": "replaceDrive",
+      "4": "replaceDriveSSDWearOut"
+     }
+    },
+    {
+     "name": "cpqDaPhyDrvCurrentTemperature",
+     "oid": "1.3.6.1.4.1.232.3.2.5.1.1.70",
+     "mib": "CPQIDA-MIB",
+     "units": "degC"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.3.2.5.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.232.3.2.5.1.1.8"
+  }
+ ],
+ "verification": {
+  "verified": 14,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

@@ -1,0 +1,76 @@
+{
+ "id": "dd/sinetica-eagle-i",
+ "name": "Sinetica Eagle I (Datadog)",
+ "vendor": "SINETICA",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/sinetica-eagle-i.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.3711.24"
+  }
+ ],
+ "tables": [
+  {
+   "name": "ipTHATable",
+   "columns": [
+    {
+     "name": "ipTHAValue",
+     "oid": "1.3.6.1.4.1.3711.24.1.1.1.2.2.1.7",
+     "mib": "HAWK-I2-MIB",
+     "description": "Datadog metric hawk.i2.ipTHAValue"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3711.24.1.1.1.2.2.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.3711.24.1.1.1.2.2.1.7"
+  },
+  {
+   "name": "pduMonTable",
+   "columns": [
+    {
+     "name": "pduRMSVoltsValue",
+     "oid": "1.3.6.1.4.1.3711.24.1.1.7.3.1.1.3",
+     "mib": "HAWK-I2-MIB",
+     "description": "Datadog metric hawk.i2.pduRMSVoltsValue",
+     "units": "V"
+    },
+    {
+     "name": "pduRMSAmpsValue",
+     "oid": "1.3.6.1.4.1.3711.24.1.1.7.3.1.1.4",
+     "mib": "HAWK-I2-MIB",
+     "description": "Datadog metric hawk.i2.pduRMSAmpsValue",
+     "scale": 0.1,
+     "units": "A"
+    },
+    {
+     "name": "pduTotalEnergyValue",
+     "oid": "1.3.6.1.4.1.3711.24.1.1.7.3.1.1.5",
+     "mib": "HAWK-I2-MIB",
+     "description": "Datadog metric hawk.i2.pduTotalEnergyValue",
+     "scale": 0.1,
+     "units": "kWh"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3711.24.1.1.7.1.2.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.3711.24.1.1.7.3.1.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 4,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

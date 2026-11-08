@@ -28,7 +28,7 @@ const DEVICES = [
   ['e2e-ups', '172.31.161.12', { version: '3', user: 'shaaes', authProtocol: 'sha', privProtocol: 'aes', ...AUTH }, '_generic/ups-mib'],
   ['e2e-pdu', '172.31.161.13', { version: '3', user: 'sha256aes', authProtocol: 'sha256', privProtocol: 'aes', ...AUTH }, 'raritan/px-pdu2'],
   ['e2e-crac', '172.31.161.14', { version: '1', community: 'public', writeCommunity: 'private' }, 'vertiv/liebert-gp-env'],
-  ['e2e-switch', '172.31.161.15', { version: '2c', community: 'public' }, '_generic/switch'],
+  ['e2e-switch', '172.31.161.15', { version: '2c', community: 'public' }, 'dd/cisco-catalyst'],
   ['e2e-quirky', '172.31.161.16', { version: '2c', community: 'public', writeCommunity: 'private', maxOidsPerGet: 20, retries: 2 }, 'nfsnmp-test/quirky'],
 ];
 

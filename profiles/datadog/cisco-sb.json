@@ -1,0 +1,199 @@
+{
+ "id": "dd/cisco-sb",
+ "name": "Cisco Sb (Datadog)",
+ "vendor": "ciscoSystems",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/cisco-sb.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.6.1.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.6.1.88.26.1"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.6.1.1004.52.5"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3210"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3211"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3212"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3213"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3214"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3215"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3216"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3217"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3218"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3219"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3220"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3221"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3222"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3223"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3224"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3225"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3226"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3227"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3228"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3229"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3230"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3231"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3232"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3233"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3234"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3235"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3236"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3237"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3238"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3239"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3240"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3241"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3242"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3243"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3244"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3245"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3246"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3247"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3248"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3249"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3250"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3251"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3252"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3253"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3410"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3411"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3412"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3413"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3414"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3415"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3416"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.3417"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "rlCpuUtilDuringLastMinute",
+   "oid": "1.3.6.1.4.1.9.6.1.101.1.8.0",
+   "mib": "CISCOSB-rndMng",
+   "description": "Datadog metric cpu.usage",
+   "units": "%"
+  }
+ ],
+ "verification": {
+  "verified": 1,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

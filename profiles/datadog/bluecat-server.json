@@ -1,0 +1,60 @@
+{
+ "id": "dd/bluecat-server",
+ "name": "Bluecat Server (Datadog)",
+ "vendor": "BlueCat Networks",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/bluecat-server.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if",
+  "dd/_generic-host-resources-base",
+  "dd/_generic-ucd"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.13315.2.*"
+  }
+ ],
+ "tables": [
+  {
+   "name": "bcnDhcpv4SubnetTable",
+   "columns": [
+    {
+     "name": "bcnDhcpv4SubnetFreeAddresses",
+     "oid": "1.3.6.1.4.1.13315.3.1.1.2.2.2.1.4",
+     "mib": "BCN-DHCPV4-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.13315.3.1.1.2.2.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.13315.3.1.1.2.2.2.1.4"
+  },
+  {
+   "name": "bcnDhcpv4PoolTable",
+   "columns": [
+    {
+     "name": "bcnDhcpv4PoolFreeAddresses",
+     "oid": "1.3.6.1.4.1.13315.3.1.1.2.2.3.1.5",
+     "mib": "BCN-DHCPV4-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.13315.3.1.1.2.2.3.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.13315.3.1.1.2.2.3.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 2,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

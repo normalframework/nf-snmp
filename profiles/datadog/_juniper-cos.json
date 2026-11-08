@@ -1,0 +1,374 @@
+{
+ "id": "dd/_juniper-cos",
+ "name": "Juniper Cos (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_juniper-cos.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "jnxCosIfsetQstatTable",
+   "columns": [
+    {
+     "name": "jnxCosIfsetQstatQedPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.3",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatQedBytes",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.5",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxCosIfsetQstatTxedPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.7",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatTxedBytes",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.9",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxCosIfsetQstatTailDropPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.11",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatTotalRedDropPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.13",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatLpNonTcpRedDropPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.15",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatLpTcpRedDropPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.17",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatHpNonTcpRedDropPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.19",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatHpTcpRedDropPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.21",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatTotalRedDropBytes",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.23",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxCosIfsetQstatLpNonTcpRedDropBytes",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.25",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxCosIfsetQstatLpTcpRedDropBytes",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.27",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxCosIfsetQstatHpNonTcpRedDropBytes",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.29",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxCosIfsetQstatHpTcpRedDropBytes",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.31",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxCosIfsetQstatLpRedDropPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.33",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatMLpRedDropPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.35",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatMHpRedDropPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.37",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatHpRedDropPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.39",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatLpRedDropBytes",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.41",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxCosIfsetQstatMLpRedDropBytes",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.43",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxCosIfsetQstatMHpRedDropBytes",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.45",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxCosIfsetQstatHpRedDropBytes",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.47",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxCosIfsetQstatRateLimitDropPkts",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.49",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxCosIfsetQstatRateLimitDropBytes",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.51",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxCosIfsetQstatQedPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.4",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatQedByteRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.6",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatTxedPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.8",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatTxedByteRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.10",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatTailDropPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.12",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatTotalRedDropPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.14",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatLpNonTcpRDropPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.16",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatLpTcpRedDropPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.18",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatHpNonTcpRDropPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.20",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatHpTcpRedDropPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.22",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatTotalRedDropByteRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.24",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatLpNonTcpRDropByteRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.26",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatLpTcpRedDropByteRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.28",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatHpNonTcpRDropByteRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.30",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatHpTcpRedDropByteRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.32",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatLpRedDropPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.34",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatMLpRedDropPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.36",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatMHpRedDropPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.38",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatHpRedDropPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.40",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatLpRedDropByteRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.42",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatMLpRedDropByteRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.44",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatMHpRedDropByteRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.46",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatHpRedDropByteRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.48",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatRateLimitDropPktRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.50",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxCosIfsetQstatRateLimitDropByteRate",
+     "oid": "1.3.6.1.4.1.2636.3.15.10.1.52",
+     "mib": "JUNIPER-COS-MIB",
+     "type": "counter",
+     "units": "s"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2636.3.15.9.1.2",
+    "indexParts": [
+     0
+    ]
+   },
+   "indexOid": "1.3.6.1.4.1.2636.3.15.10.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 50,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

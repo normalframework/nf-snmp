@@ -1,0 +1,318 @@
+{
+ "id": "dd/_hp-compaq-health",
+ "name": "Hp Compaq Health (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_hp-compaq-health.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "symbols": [
+  {
+   "name": "cpqHeSysUtilLifeTime",
+   "oid": "1.3.6.1.4.1.232.6.2.8.1.0",
+   "mib": "CPQHLTH-MIB",
+   "units": "min"
+  },
+  {
+   "name": "cpqHeSysUtilEisaBusMin",
+   "oid": "1.3.6.1.4.1.232.6.2.8.2.0",
+   "mib": "CPQHLTH-MIB",
+   "units": "%"
+  },
+  {
+   "name": "cpqHeCritLogCondition",
+   "oid": "1.3.6.1.4.1.232.6.2.2.2.0",
+   "mib": "CPQHLTH-MIB",
+   "enum": {
+    "1": "other",
+    "2": "ok",
+    "3": "degraded",
+    "4": "failed"
+   }
+  },
+  {
+   "name": "cpqHeCorrMemLogStatus",
+   "oid": "1.3.6.1.4.1.232.6.2.3.1.0",
+   "mib": "CPQHLTH-MIB",
+   "enum": {
+    "1": "other",
+    "2": "notSupported",
+    "3": "disabled",
+    "4": "enabled"
+   }
+  },
+  {
+   "name": "cpqHeCorrMemLogCondition",
+   "oid": "1.3.6.1.4.1.232.6.2.3.2.0",
+   "mib": "CPQHLTH-MIB",
+   "enum": {
+    "1": "other",
+    "2": "ok",
+    "3": "degraded",
+    "4": "failed"
+   }
+  },
+  {
+   "name": "cpqHeCorrMemTotalErrs",
+   "oid": "1.3.6.1.4.1.232.6.2.3.3.0",
+   "mib": "CPQHLTH-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "cpqHeAsrStatus",
+   "oid": "1.3.6.1.4.1.232.6.2.5.1.0",
+   "mib": "CPQHLTH-MIB",
+   "enum": {
+    "1": "other",
+    "2": "notAvailable",
+    "3": "disabled",
+    "4": "enabled"
+   }
+  },
+  {
+   "name": "cpqHeAsrPost",
+   "oid": "1.3.6.1.4.1.232.6.2.5.6.0",
+   "mib": "CPQHLTH-MIB",
+   "enum": {
+    "1": "other",
+    "2": "failed",
+    "3": "ok"
+   }
+  },
+  {
+   "name": "cpqHeAsrRebootCount",
+   "oid": "1.3.6.1.4.1.232.6.2.5.10.0",
+   "mib": "CPQHLTH-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "cpqHeAsrCondition",
+   "oid": "1.3.6.1.4.1.232.6.2.5.17.0",
+   "mib": "CPQHLTH-MIB",
+   "enum": {
+    "1": "other",
+    "2": "ok",
+    "3": "degraded",
+    "4": "failed"
+   }
+  },
+  {
+   "name": "cpqHeAsrNetworkAccessStatus",
+   "oid": "1.3.6.1.4.1.232.6.2.5.21.0",
+   "mib": "CPQHLTH-MIB",
+   "enum": {
+    "1": "other",
+    "2": "disabled",
+    "3": "enabled"
+   }
+  },
+  {
+   "name": "cpqHeThermalTempStatus",
+   "oid": "1.3.6.1.4.1.232.6.2.6.3.0",
+   "mib": "CPQHLTH-MIB",
+   "enum": {
+    "1": "other",
+    "2": "ok",
+    "3": "degraded",
+    "4": "failed"
+   }
+  },
+  {
+   "name": "cpqHeThermalSystemFanStatus",
+   "oid": "1.3.6.1.4.1.232.6.2.6.4.0",
+   "mib": "CPQHLTH-MIB",
+   "enum": {
+    "1": "other",
+    "2": "ok",
+    "3": "degraded",
+    "4": "failed"
+   }
+  },
+  {
+   "name": "cpqHeThermalCpuFanStatus",
+   "oid": "1.3.6.1.4.1.232.6.2.6.5.0",
+   "mib": "CPQHLTH-MIB",
+   "enum": {
+    "1": "other",
+    "2": "ok",
+    "4": "failed"
+   }
+  },
+  {
+   "name": "cpqHePowerMeterCurrReading",
+   "oid": "1.3.6.1.4.1.232.6.2.15.3.0",
+   "mib": "CPQHLTH-MIB",
+   "units": "W"
+  },
+  {
+   "name": "cpqHeThermalCondition",
+   "oid": "1.3.6.1.4.1.232.6.2.6.1.0",
+   "mib": "CPQHLTH-MIB",
+   "enum": {
+    "1": "other",
+    "2": "ok",
+    "3": "degraded",
+    "4": "failed"
+   }
+  },
+  {
+   "name": "cpqHeFltTolPwrSupplyStatus",
+   "oid": "1.3.6.1.4.1.232.6.2.9.2.0",
+   "mib": "CPQHLTH-MIB",
+   "enum": {
+    "1": "other",
+    "2": "notSupported",
+    "3": "notInstalled",
+    "4": "installed"
+   }
+  }
+ ],
+ "tables": [
+  {
+   "name": "cpqHeTemperatureTable",
+   "columns": [
+    {
+     "name": "cpqHeTemperatureCelsius",
+     "oid": "1.3.6.1.4.1.232.6.2.6.8.1.4",
+     "mib": "CPQHLTH-MIB",
+     "units": "degC"
+    },
+    {
+     "name": "cpqHeTemperatureCondition",
+     "oid": "1.3.6.1.4.1.232.6.2.6.8.1.6",
+     "mib": "CPQHLTH-MIB",
+     "enum": {
+      "1": "other",
+      "2": "ok",
+      "3": "degraded",
+      "4": "failed"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.6.2.6.8.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.232.6.2.6.8.1.4"
+  },
+  {
+   "name": "cpqHeSysBatteryTable",
+   "columns": [
+    {
+     "name": "cpqHeSysBatteryCondition",
+     "oid": "1.3.6.1.4.1.232.6.2.17.2.1.4",
+     "mib": "CPQHLTH-MIB",
+     "enum": {
+      "1": "other",
+      "2": "ok",
+      "3": "degraded",
+      "4": "failed"
+     }
+    },
+    {
+     "name": "cpqHeSysBatteryStatus",
+     "oid": "1.3.6.1.4.1.232.6.2.17.2.1.5",
+     "mib": "CPQHLTH-MIB",
+     "enum": {
+      "1": "noError",
+      "2": "generalFailure",
+      "3": "shutdownHighResistance",
+      "4": "shutdownLowVoltage",
+      "5": "shutdownShortCircuit",
+      "6": "shutdownChargeTimeout",
+      "7": "shutdownOverTemperature",
+      "8": "shutdownDischargeMinVoltage",
+      "9": "shutdownDischargeCurrent",
+      "10": "shutdownLoadCountHigh",
+      "11": "shutdownEnablePin",
+      "12": "shutdownOverCurrent",
+      "13": "shutdownPermanentFailure",
+      "14": "shutdownBackupTimeExceeded"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.6.2.17.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.232.6.2.17.2.1.4"
+  },
+  {
+   "name": "cpqHeResMem2ModuleTable",
+   "columns": [
+    {
+     "name": "cpqHeResMem2ModuleCondition",
+     "oid": "1.3.6.1.4.1.232.6.2.14.13.1.20",
+     "mib": "CPQHLTH-MIB",
+     "enum": {
+      "1": "other",
+      "2": "ok",
+      "3": "degraded",
+      "4": "degradedModuleIndexUnknown"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.6.2.14.13.1.15"
+   },
+   "indexOid": "1.3.6.1.4.1.232.6.2.14.13.1.20"
+  },
+  {
+   "name": "cpqHeFltTolPowerSupplyTable",
+   "columns": [
+    {
+     "name": "cpqHeFltTolPowerSupplyStatus",
+     "oid": "1.3.6.1.4.1.232.6.2.9.3.1.5",
+     "mib": "CPQHLTH-MIB",
+     "enum": {
+      "1": "noError",
+      "2": "generalFailure",
+      "3": "bistFailure",
+      "4": "fanFailure",
+      "5": "tempFailure",
+      "6": "interlockOpen",
+      "7": "epromFailed",
+      "8": "vrefFailed",
+      "9": "dacFailed",
+      "10": "ramTestFailed",
+      "11": "voltageChannelFailed",
+      "12": "orringdiodeFailed",
+      "13": "brownOut",
+      "14": "giveupOnStartup",
+      "15": "nvramInvalid",
+      "16": "calibrationTableInvalid",
+      "17": "noPowerInput"
+     }
+    },
+    {
+     "name": "cpqHeFltTolPowerSupplyCapacityUsed",
+     "oid": "1.3.6.1.4.1.232.6.2.9.3.1.7",
+     "mib": "CPQHLTH-MIB",
+     "units": "W"
+    },
+    {
+     "name": "cpqHeFltTolPowerSupplyCapacityMaximum",
+     "oid": "1.3.6.1.4.1.232.6.2.9.3.1.8",
+     "mib": "CPQHLTH-MIB",
+     "units": "W"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.6.2.9.3.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.232.6.2.9.3.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 25,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

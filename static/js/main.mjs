@@ -321,10 +321,15 @@ async function renderTraps() {
 
 // ------------------------------------------------------------------ profiles
 async function renderProfiles() {
-  view.innerHTML = `<div class="card"><h2>Device profiles</h2><div class="table-wrap"><table><thead><tr><th>Profile</th><th>Vendor</th><th>Matches</th><th class="num">Symbols</th><th class="num">Tables</th><th></th></tr></thead><tbody>
-    ${profiles.filter((p) => !p.abstract).map((p) => `<tr><td><b>${esc(p.name)}</b><div class="small mono muted">${esc(p.id)}</div></td><td>${esc(p.vendor)}</td>
-      <td class="small mono">${esc(p.match.map((m) => Object.entries(m).map(([k, v]) => `${k}=${v}`).join(' & ')).join(' | '))}</td><td class="num">${p.symbols}</td><td class="num">${p.tables}</td>
+  const list = profiles.filter((p) => !p.abstract);
+  view.innerHTML = `<div class="card"><div class="row"><h2 style="margin-right:auto">Device profiles (${list.length})</h2><input id="pf" placeholder="Filter: vendor, model, sysObjectID…" style="min-width:280px"></div><div class="table-wrap"><table><thead><tr><th>Profile</th><th>Vendor</th><th>Matches</th><th class="num">Symbols</th><th class="num">Tables</th><th></th></tr></thead><tbody>
+    ${list.map((p) => `<tr data-q="${esc(`${p.id} ${p.name} ${p.vendor} ${JSON.stringify(p.match)}`.toLowerCase())}"><td><b>${esc(p.name)}</b>${p.user ? ' <span class="pill ok">user</span>' : p.id.startsWith('dd/') ? ' <span class="pill muted">Datadog</span>' : ''}<div class="small mono muted">${esc(p.id)}</div></td><td>${esc(p.vendor)}</td>
+      <td class="small mono" title="${esc(p.match.map((m) => Object.values(m).join(' ')).join('\n'))}">${esc(p.match.slice(0, 3).map((m) => Object.entries(m).map(([k, v]) => `${k}=${v}`).join(' & ')).join(' | '))}${p.match.length > 3 ? ` <span class="muted">+${p.match.length - 3} more</span>` : ''}</td><td class="num">${p.symbols}</td><td class="num">${p.tables}</td>
       <td><button class="btn" data-id="${esc(p.id)}">Show</button></td></tr>`).join('')}</tbody></table></div><div id="pv"></div></div>`;
+  $('#pf').oninput = (ev) => {
+    const q = ev.target.value.trim().toLowerCase();
+    view.querySelectorAll('tr[data-q]').forEach((tr) => tr.classList.toggle('hidden', !!q && !tr.dataset.q.includes(q)));
+  };
   view.querySelectorAll('button[data-id]').forEach((b) => (b.onclick = () => guard(async () => {
     const r = await admin('profile', { id: b.dataset.id });
     $('#pv').innerHTML = `<pre>${esc(JSON.stringify(r.profile, null, 2))}</pre>`;

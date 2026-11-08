@@ -1,0 +1,62 @@
+{
+ "id": "dd/kyocera-printer",
+ "name": "Kyocera Printer (Datadog)",
+ "vendor": "KYOCERA Corporation",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/kyocera-printer.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.1347.41"
+  }
+ ],
+ "tables": [
+  {
+   "name": "kcprtAlertStateTable",
+   "columns": [
+    {
+     "name": "kcprtAlertStateCode",
+     "oid": "1.3.6.1.4.1.1347.43.18.2.1.3",
+     "mib": "KYOCERA-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.1347.43.18.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.1347.43.18.2.1.3"
+  },
+  {
+   "name": "kcprtMemoryDeviceTable",
+   "columns": [
+    {
+     "name": "kcprtMemoryDeviceTotalSize",
+     "oid": "1.3.6.1.4.1.1347.43.20.1.1.4",
+     "mib": "KYOCERA-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "kcprtMemoryDeviceUsedSize",
+     "oid": "1.3.6.1.4.1.1347.43.20.1.1.5",
+     "mib": "KYOCERA-MIB",
+     "mibVerified": false
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.1347.43.20.1.1.4"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 3,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

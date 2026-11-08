@@ -164,8 +164,17 @@ Symbol/column fields: `oid`; `scale` (multiply); `offset` (add after scale); `de
 `units`; `class` (NF point class hint); `writable`; `point` (false = helper only, not published);
 `sentinels` (raw values meaning "not available").
 
-Match precedence: longest `sysObjectID` prefix match, then `sysDescr` regex, then `probe`
-(`{"oid": ..., "exists": true}`). Generic fallbacks live in `profiles/_generic/`.
+Match precedence: longest `sysObjectID` prefix match (100/arc, +50 for exact), then `sysDescr` regex
+(+50), then `probe` (+10, the OID or any row under it exists), plus the profile's `priority`
+(hand-written generics 1..5, imported −5). `sysObjectID` may contain `*` wildcards (Datadog style,
+scored by the fixed arcs before the first `*`); a wildcard that does not fix the enterprise number
+scores 1 (catch-all). Generic fallbacks live in `profiles/_generic/`.
+
+Other profile keys: `source` (provenance of imported profiles), `verification` (verify summary),
+`description`; symbol keys `mib` (module for verification) and `mibVerified: false` (MIB unavailable).
+
+At sync, objects the device answers noSuch* for are dropped (warning), and text-valued symbols become
+attributes of the device point (NF trends numbers only).
 
 ## 5. NF integration
 

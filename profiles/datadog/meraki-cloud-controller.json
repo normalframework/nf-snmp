@@ -1,0 +1,91 @@
+{
+ "id": "dd/meraki-cloud-controller",
+ "name": "Meraki Cloud Controller (Datadog)",
+ "vendor": "meraki",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/meraki-cloud-controller.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.29671.1"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.29671.1.*"
+  }
+ ],
+ "tables": [
+  {
+   "name": "devTable",
+   "columns": [
+    {
+     "name": "devStatus",
+     "oid": "1.3.6.1.4.1.29671.1.1.4.1.3",
+     "mib": "MERAKI-CLOUD-CONTROLLER-MIB",
+     "enum": {
+      "0": "offline",
+      "1": "online"
+     }
+    },
+    {
+     "name": "devClientCount",
+     "oid": "1.3.6.1.4.1.29671.1.1.4.1.5",
+     "mib": "MERAKI-CLOUD-CONTROLLER-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.29671.1.1.4.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.29671.1.1.4.1.3"
+  },
+  {
+   "name": "devInterfaceTable",
+   "columns": [
+    {
+     "name": "devInterfaceSentPkts",
+     "oid": "1.3.6.1.4.1.29671.1.1.5.1.4",
+     "mib": "MERAKI-CLOUD-CONTROLLER-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "devInterfaceRecvPkts",
+     "oid": "1.3.6.1.4.1.29671.1.1.5.1.5",
+     "mib": "MERAKI-CLOUD-CONTROLLER-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "devInterfaceSentBytes",
+     "oid": "1.3.6.1.4.1.29671.1.1.5.1.6",
+     "mib": "MERAKI-CLOUD-CONTROLLER-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "devInterfaceRecvBytes",
+     "oid": "1.3.6.1.4.1.29671.1.1.5.1.7",
+     "mib": "MERAKI-CLOUD-CONTROLLER-MIB",
+     "type": "counter",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.29671.1.1.5.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.29671.1.1.5.1.4"
+  }
+ ],
+ "verification": {
+  "verified": 6,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

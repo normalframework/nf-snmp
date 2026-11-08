@@ -4,20 +4,30 @@
   "description": "SNMP driver plugin for Normal Framework: device profiles, discovery, polling via NF's poll service, traps and SET.",
   "type": "commonjs",
   "main": "lib/engine/index.js",
-  "bin": { "nf-snmp": "bin/nf-snmp.js" },
-  "engines": { "node": ">=20" },
+  "bin": {
+    "nf-snmp": "bin/nf-snmp.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "vitest run test/unit",
     "test:e2e": "vitest run test/e2e",
     "check:syntax": "find lib hooks bin tools -name '*.js' -print0 | xargs -0 -n1 node --check",
     "validate": "node bin/nf-snmp.js validate-profiles",
-    "install:nf": "node tools/install.mjs"
+    "install:nf": "node tools/install.mjs",
+    "test:smoke": "SMOKE=1 vitest run test/profiles",
+    "test:difftest": "difftest/run.sh",
+    "sims:up": "BUILDX_BUILDER=default docker compose -f sims/docker-compose.yml up -d --build --wait",
+    "profiles:import": "node tools/import-datadog.mjs && node tools/fetch-mibs.mjs --profiles && node tools/verify-profiles.mjs",
+    "profiles:smoke": "node tools/smoke-profiles.mjs"
   },
   "dependencies": {
     "net-snmp": "3.29.2"
   },
   "devDependencies": {
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "yaml": "^2.9.1"
   },
   "license": "GPL-3.0-or-later",
   "private": true

@@ -1,0 +1,263 @@
+{
+ "id": "dd/cisco-load-balancer",
+ "name": "Cisco Load Balancer (Datadog)",
+ "vendor": "ciscoSystems",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/cisco-load-balancer.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/cisco"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.824"
+  }
+ ],
+ "tables": [
+  {
+   "name": "slbStatsTable",
+   "columns": [
+    {
+     "name": "slbStatsCreatedConnections",
+     "oid": "1.3.6.1.4.1.9.9.161.1.1.1.1.6",
+     "mib": "CISCO-SLB-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "slbStatsCreatedHCConnections",
+     "oid": "1.3.6.1.4.1.9.9.161.1.1.1.1.7",
+     "mib": "CISCO-SLB-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "slbStatsEstablishedConnections",
+     "oid": "1.3.6.1.4.1.9.9.161.1.1.1.1.8",
+     "mib": "CISCO-SLB-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "slbStatsEstablishedHCConnections",
+     "oid": "1.3.6.1.4.1.9.9.161.1.1.1.1.9",
+     "mib": "CISCO-SLB-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "slbStatsDestroyedConnections",
+     "oid": "1.3.6.1.4.1.9.9.161.1.1.1.1.10",
+     "mib": "CISCO-SLB-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "slbStatsDestroyedHCConnections",
+     "oid": "1.3.6.1.4.1.9.9.161.1.1.1.1.11",
+     "mib": "CISCO-SLB-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "slbStatsReassignedConnections",
+     "oid": "1.3.6.1.4.1.9.9.161.1.1.1.1.12",
+     "mib": "CISCO-SLB-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "slbStatsReassignedHCConnections",
+     "oid": "1.3.6.1.4.1.9.9.161.1.1.1.1.13",
+     "mib": "CISCO-SLB-MIB",
+     "type": "counter"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.9.9.161.1.1.1.1.6"
+  },
+  {
+   "name": "cslbxStatsTable",
+   "columns": [
+    {
+     "name": "cslbxStatsCurrConnections",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.3",
+     "mib": "CISCO-SLB-EXT-MIB"
+    },
+    {
+     "name": "cslbxStatsFailedConns",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.5",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsL4PolicyConns",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.7",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsL7PolicyConns",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.8",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsDroppedL4PolicyConns",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.9",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsDroppedL7PolicyConns",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.10",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsFtpConns",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.11",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsHttpRedirectConns",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.12",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsDroppedRedirectConns",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.13",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsNoMatchPolicyRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.14",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsNoCfgPolicyRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.15",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsNoActiveServerRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.16",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsAclDenyRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.17",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsMaxParseLenRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.18",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsBadSslFormatRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.19",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsL7ParserErrorRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.20",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsVerMismatchRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.21",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsOutOfMemoryRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.22",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsTimedOutConnections",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.23",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsTcpChecksumErrorPkts",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.24",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsIpChecksumErrorPkts",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.25",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsL4PolicyHCConns",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.26",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsL7PolicyHCConns",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.27",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsDroppedL4PolicyHCConns",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.28",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsDroppedL7PolicyHCConns",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.29",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsNoMatchPolicyHCRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.30",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsNoCfgPolicyHCRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.31",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsAclDenyHCRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.32",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cslbxStatsVerMismatchHCRejects",
+     "oid": "1.3.6.1.4.1.9.9.254.1.1.1.1.33",
+     "mib": "CISCO-SLB-EXT-MIB",
+     "type": "counter"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.9.9.254.1.1.1.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 37,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

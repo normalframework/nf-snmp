@@ -1,0 +1,241 @@
+{
+ "id": "dd/_generic-ucd-base",
+ "name": "Generic Ucd Base (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_generic-ucd-base.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "symbols": [
+  {
+   "name": "memTotalSwap",
+   "oid": "1.3.6.1.4.1.2021.4.3.0",
+   "mib": "UCD-SNMP-MIB",
+   "description": "Datadog metric ucd.memTotalSwap"
+  },
+  {
+   "name": "memAvailSwap",
+   "oid": "1.3.6.1.4.1.2021.4.4.0",
+   "mib": "UCD-SNMP-MIB",
+   "description": "Datadog metric ucd.memAvailSwap"
+  },
+  {
+   "name": "memTotalFree",
+   "oid": "1.3.6.1.4.1.2021.4.11.0",
+   "mib": "UCD-SNMP-MIB",
+   "description": "Datadog metric ucd.memTotalFree"
+  },
+  {
+   "name": "memMinimumSwap",
+   "oid": "1.3.6.1.4.1.2021.4.12.0",
+   "mib": "UCD-SNMP-MIB",
+   "description": "Datadog metric ucd.memMinimumSwap"
+  },
+  {
+   "name": "memShared",
+   "oid": "1.3.6.1.4.1.2021.4.13.0",
+   "mib": "UCD-SNMP-MIB",
+   "description": "Datadog metric ucd.memShared"
+  },
+  {
+   "name": "memBuffer",
+   "oid": "1.3.6.1.4.1.2021.4.14.0",
+   "mib": "UCD-SNMP-MIB",
+   "description": "Datadog metric ucd.memBuffer"
+  },
+  {
+   "name": "memCached",
+   "oid": "1.3.6.1.4.1.2021.4.15.0",
+   "mib": "UCD-SNMP-MIB",
+   "description": "Datadog metric ucd.memCached"
+  },
+  {
+   "name": "ssCpuUser",
+   "oid": "1.3.6.1.4.1.2021.11.9.0",
+   "mib": "UCD-SNMP-MIB",
+   "description": "Datadog metric ucd.ssCpuUser",
+   "units": "%"
+  },
+  {
+   "name": "ssCpuSystem",
+   "oid": "1.3.6.1.4.1.2021.11.10.0",
+   "mib": "UCD-SNMP-MIB",
+   "description": "Datadog metric ucd.ssCpuSystem",
+   "units": "%"
+  },
+  {
+   "name": "ssCpuIdle",
+   "oid": "1.3.6.1.4.1.2021.11.11.0",
+   "mib": "UCD-SNMP-MIB",
+   "description": "Datadog metric ucd.ssCpuIdle",
+   "units": "%"
+  },
+  {
+   "name": "ssCpuRawUser",
+   "oid": "1.3.6.1.4.1.2021.11.50.0",
+   "mib": "UCD-SNMP-MIB",
+   "type": "counter",
+   "description": "Datadog metric ucd.ssCpuRawUser"
+  },
+  {
+   "name": "ssCpuRawNice",
+   "oid": "1.3.6.1.4.1.2021.11.51.0",
+   "mib": "UCD-SNMP-MIB",
+   "type": "counter",
+   "description": "Datadog metric ucd.ssCpuRawNice"
+  },
+  {
+   "name": "ssCpuRawSystem",
+   "oid": "1.3.6.1.4.1.2021.11.52.0",
+   "mib": "UCD-SNMP-MIB",
+   "type": "counter",
+   "description": "Datadog metric ucd.ssCpuRawSystem"
+  },
+  {
+   "name": "ssCpuRawIdle",
+   "oid": "1.3.6.1.4.1.2021.11.53.0",
+   "mib": "UCD-SNMP-MIB",
+   "type": "counter",
+   "description": "Datadog metric ucd.ssCpuRawIdle"
+  },
+  {
+   "name": "ssCpuRawWait",
+   "oid": "1.3.6.1.4.1.2021.11.54.0",
+   "mib": "UCD-SNMP-MIB",
+   "type": "counter",
+   "description": "Datadog metric ucd.ssCpuRawWait"
+  },
+  {
+   "name": "ssCpuRawKernel",
+   "oid": "1.3.6.1.4.1.2021.11.55.0",
+   "mib": "UCD-SNMP-MIB",
+   "type": "counter",
+   "description": "Datadog metric ucd.ssCpuRawKernel"
+  },
+  {
+   "name": "ssCpuRawInterrupt",
+   "oid": "1.3.6.1.4.1.2021.11.56.0",
+   "mib": "UCD-SNMP-MIB",
+   "type": "counter",
+   "description": "Datadog metric ucd.ssCpuRawInterrupt"
+  }
+ ],
+ "tables": [
+  {
+   "name": "dskTable",
+   "columns": [
+    {
+     "name": "dskTotal",
+     "oid": "1.3.6.1.4.1.2021.9.1.6",
+     "mib": "UCD-SNMP-MIB",
+     "description": "Datadog metric ucd.dskTotal",
+     "units": "B"
+    },
+    {
+     "name": "dskAvail",
+     "oid": "1.3.6.1.4.1.2021.9.1.7",
+     "mib": "UCD-SNMP-MIB",
+     "description": "Datadog metric ucd.dskAvail"
+    },
+    {
+     "name": "dskUsed",
+     "oid": "1.3.6.1.4.1.2021.9.1.8",
+     "mib": "UCD-SNMP-MIB",
+     "description": "Datadog metric ucd.dskUsed"
+    },
+    {
+     "name": "dskPercent",
+     "oid": "1.3.6.1.4.1.2021.9.1.9",
+     "mib": "UCD-SNMP-MIB",
+     "description": "Datadog metric ucd.dskPercent",
+     "units": "%"
+    },
+    {
+     "name": "dskPercentNode",
+     "oid": "1.3.6.1.4.1.2021.9.1.10",
+     "mib": "UCD-SNMP-MIB",
+     "description": "Datadog metric ucd.dskPercentNode",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2021.9.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.2021.9.1.6"
+  },
+  {
+   "name": "diskIOTable",
+   "columns": [
+    {
+     "name": "diskIOReads",
+     "oid": "1.3.6.1.4.1.2021.13.15.1.1.5",
+     "mib": "UCD-DISKIO-MIB",
+     "type": "counter",
+     "description": "Datadog metric ucd.diskIOReads"
+    },
+    {
+     "name": "diskIOWrites",
+     "oid": "1.3.6.1.4.1.2021.13.15.1.1.6",
+     "mib": "UCD-DISKIO-MIB",
+     "type": "counter",
+     "description": "Datadog metric ucd.diskIOWrites"
+    },
+    {
+     "name": "diskIOLA1",
+     "oid": "1.3.6.1.4.1.2021.13.15.1.1.9",
+     "mib": "UCD-DISKIO-MIB",
+     "description": "Datadog metric ucd.diskIOLA1",
+     "units": "%"
+    },
+    {
+     "name": "diskIOLA5",
+     "oid": "1.3.6.1.4.1.2021.13.15.1.1.10",
+     "mib": "UCD-DISKIO-MIB",
+     "description": "Datadog metric ucd.diskIOLA5",
+     "units": "%"
+    },
+    {
+     "name": "diskIOLA15",
+     "oid": "1.3.6.1.4.1.2021.13.15.1.1.11",
+     "mib": "UCD-DISKIO-MIB",
+     "description": "Datadog metric ucd.diskIOLA15",
+     "units": "%"
+    },
+    {
+     "name": "diskIONReadX",
+     "oid": "1.3.6.1.4.1.2021.13.15.1.1.12",
+     "mib": "UCD-DISKIO-MIB",
+     "type": "counter",
+     "description": "Datadog metric ucd.diskIONReadX",
+     "units": "B"
+    },
+    {
+     "name": "diskIONWrittenX",
+     "oid": "1.3.6.1.4.1.2021.13.15.1.1.13",
+     "mib": "UCD-DISKIO-MIB",
+     "type": "counter",
+     "description": "Datadog metric ucd.diskIONWrittenX",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2021.13.15.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.2021.13.15.1.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 29,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

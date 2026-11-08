@@ -1,0 +1,193 @@
+{
+ "id": "dd/hpe-nimble",
+ "name": "Hpe Nimble (Datadog)",
+ "vendor": "Nimble Storage",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/hpe-nimble.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_hp",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.37447.3.1"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "ioReads",
+   "oid": "1.3.6.1.4.1.37447.1.3.2.0",
+   "mib": "NIMBLE-MIB",
+   "type": "counter",
+   "description": "Datadog metric nimble.ioReads"
+  },
+  {
+   "name": "ioWrites",
+   "oid": "1.3.6.1.4.1.37447.1.3.4.0",
+   "mib": "NIMBLE-MIB",
+   "type": "counter",
+   "description": "Datadog metric nimble.ioWrites"
+  },
+  {
+   "name": "ioReadTimeMicrosec",
+   "oid": "1.3.6.1.4.1.37447.1.3.6.0",
+   "mib": "NIMBLE-MIB",
+   "type": "counter",
+   "description": "Datadog metric nimble.ioReadTimeMicrosec"
+  },
+  {
+   "name": "ioWriteTimeMicrosec",
+   "oid": "1.3.6.1.4.1.37447.1.3.7.0",
+   "mib": "NIMBLE-MIB",
+   "type": "counter",
+   "description": "Datadog metric nimble.ioWriteTimeMicrosec"
+  },
+  {
+   "name": "ioReadBytes",
+   "oid": "1.3.6.1.4.1.37447.1.3.8.0",
+   "mib": "NIMBLE-MIB",
+   "type": "counter",
+   "description": "Datadog metric nimble.ioReadBytes",
+   "units": "B"
+  },
+  {
+   "name": "ioSeqReadBytes",
+   "oid": "1.3.6.1.4.1.37447.1.3.9.0",
+   "mib": "NIMBLE-MIB",
+   "type": "counter",
+   "description": "Datadog metric nimble.ioSeqReadBytes",
+   "units": "B"
+  },
+  {
+   "name": "ioWriteBytes",
+   "oid": "1.3.6.1.4.1.37447.1.3.10.0",
+   "mib": "NIMBLE-MIB",
+   "type": "counter",
+   "description": "Datadog metric nimble.ioWriteBytes",
+   "units": "B"
+  },
+  {
+   "name": "ioSeqWriteBytes",
+   "oid": "1.3.6.1.4.1.37447.1.3.11.0",
+   "mib": "NIMBLE-MIB",
+   "type": "counter",
+   "description": "Datadog metric nimble.ioSeqWriteBytes",
+   "units": "B"
+  },
+  {
+   "name": "diskVolBytesUsedLow",
+   "oid": "1.3.6.1.4.1.37447.1.3.12.0",
+   "mib": "NIMBLE-MIB",
+   "description": "Datadog metric nimble.diskVolBytesUsedLow",
+   "units": "B"
+  },
+  {
+   "name": "diskVolBytesUsedHigh",
+   "oid": "1.3.6.1.4.1.37447.1.3.13.0",
+   "mib": "NIMBLE-MIB",
+   "description": "Datadog metric nimble.diskVolBytesUsedHigh",
+   "units": "B"
+  },
+  {
+   "name": "diskSnapBytesUsedLow",
+   "oid": "1.3.6.1.4.1.37447.1.3.14.0",
+   "mib": "NIMBLE-MIB",
+   "description": "Datadog metric nimble.diskSnapBytesUsedLow",
+   "units": "B"
+  },
+  {
+   "name": "diskSnapBytesUsedHigh",
+   "oid": "1.3.6.1.4.1.37447.1.3.15.0",
+   "mib": "NIMBLE-MIB",
+   "description": "Datadog metric nimble.diskSnapBytesUsedHigh",
+   "units": "B"
+  },
+  {
+   "name": "ioNonseqReadHits",
+   "oid": "1.3.6.1.4.1.37447.1.3.16.0",
+   "mib": "NIMBLE-MIB",
+   "type": "counter",
+   "description": "Datadog metric nimble.ioNonseqReadHits"
+  }
+ ],
+ "tables": [
+  {
+   "name": "volTable",
+   "columns": [
+    {
+     "name": "volSizeLow",
+     "oid": "1.3.6.1.4.1.37447.1.2.1.4",
+     "mib": "NIMBLE-MIB",
+     "description": "Datadog metric nimble.volSizeLow",
+     "units": "B"
+    },
+    {
+     "name": "volSizeHigh",
+     "oid": "1.3.6.1.4.1.37447.1.2.1.5",
+     "mib": "NIMBLE-MIB",
+     "description": "Datadog metric nimble.volSizeHigh",
+     "units": "B"
+    },
+    {
+     "name": "volUsageLow",
+     "oid": "1.3.6.1.4.1.37447.1.2.1.6",
+     "mib": "NIMBLE-MIB",
+     "description": "Datadog metric nimble.volUsageLow",
+     "units": "B"
+    },
+    {
+     "name": "volUsageHigh",
+     "oid": "1.3.6.1.4.1.37447.1.2.1.7",
+     "mib": "NIMBLE-MIB",
+     "description": "Datadog metric nimble.volUsageHigh",
+     "units": "B"
+    },
+    {
+     "name": "volReserveLow",
+     "oid": "1.3.6.1.4.1.37447.1.2.1.8",
+     "mib": "NIMBLE-MIB",
+     "description": "Datadog metric nimble.volReserveLow",
+     "units": "B"
+    },
+    {
+     "name": "volReserveHigh",
+     "oid": "1.3.6.1.4.1.37447.1.2.1.9",
+     "mib": "NIMBLE-MIB",
+     "description": "Datadog metric nimble.volReserveHigh",
+     "units": "B"
+    },
+    {
+     "name": "volIoReads",
+     "oid": "1.3.6.1.4.1.37447.1.2.1.13",
+     "mib": "NIMBLE-MIB",
+     "type": "counter",
+     "description": "Datadog metric nimble.volIoReads"
+    },
+    {
+     "name": "volIoWrites",
+     "oid": "1.3.6.1.4.1.37447.1.2.1.34",
+     "mib": "NIMBLE-MIB",
+     "type": "counter",
+     "description": "Datadog metric nimble.volIoWrites"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.37447.1.2.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.37447.1.2.1.4"
+  }
+ ],
+ "verification": {
+  "verified": 21,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

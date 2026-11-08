@@ -1,0 +1,57 @@
+{
+ "id": "dd/_arista-queue",
+ "name": "Arista Queue (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_arista-queue.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "aristaIngressQueueTable",
+   "columns": [
+    {
+     "name": "aristaIngressQueuePktsDropped",
+     "oid": "1.3.6.1.4.1.30065.3.6.1.1.1.3",
+     "mib": "ARISTA-QUEUE-MIB",
+     "type": "counter",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.30065.3.6.1.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.30065.3.6.1.1.1.3"
+  },
+  {
+   "name": "aristaEgressQueueTable",
+   "columns": [
+    {
+     "name": "aristaEgressQueuePktsDropped",
+     "oid": "1.3.6.1.4.1.30065.3.6.1.2.1.6",
+     "mib": "ARISTA-QUEUE-MIB",
+     "type": "counter",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.30065.3.6.1.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.30065.3.6.1.2.1.6"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 2,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

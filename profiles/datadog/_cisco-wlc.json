@@ -1,0 +1,102 @@
+{
+ "id": "dd/_cisco-wlc",
+ "name": "Cisco WLC (Datadog)",
+ "vendor": "cisco",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_cisco-wlc.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "bsnAPIfTable",
+   "columns": [
+    {
+     "name": "bsnApIfNoOfUsers",
+     "oid": "1.3.6.1.4.1.14179.2.2.2.1.15",
+     "mib": "AIRESPACE-WIRELESS-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14179.2.2.1.1.3",
+    "indexParts": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "indexOid": "1.3.6.1.4.1.14179.2.2.2.1.15"
+  },
+  {
+   "name": "bsnAPIfLoadParametersTable",
+   "columns": [
+    {
+     "name": "bsnAPIfLoadRxUtilization",
+     "oid": "1.3.6.1.4.1.14179.2.2.13.1.1",
+     "mib": "AIRESPACE-WIRELESS-MIB",
+     "units": "%"
+    },
+    {
+     "name": "bsnAPIfLoadTxUtilization",
+     "oid": "1.3.6.1.4.1.14179.2.2.13.1.2",
+     "mib": "AIRESPACE-WIRELESS-MIB",
+     "units": "%"
+    },
+    {
+     "name": "bsnAPIfPoorSNRClients",
+     "oid": "1.3.6.1.4.1.14179.2.2.13.1.24",
+     "mib": "AIRESPACE-WIRELESS-MIB"
+    },
+    {
+     "name": "bsnAPIfLoadChannelUtilization",
+     "oid": "1.3.6.1.4.1.14179.2.2.13.1.3",
+     "mib": "AIRESPACE-WIRELESS-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14179.2.2.1.1.3",
+    "indexParts": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   "indexOid": "1.3.6.1.4.1.14179.2.2.13.1.1"
+  },
+  {
+   "name": "bsnDot11EssTable",
+   "columns": [
+    {
+     "name": "bsnDot11EssNumberOfMobileStations",
+     "oid": "1.3.6.1.4.1.14179.2.1.1.1.38",
+     "mib": "AIRESPACE-WIRELESS-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14179.2.1.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.14179.2.1.1.1.38"
+  }
+ ],
+ "verification": {
+  "verified": 6,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

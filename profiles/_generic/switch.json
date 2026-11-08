@@ -7,9 +7,5 @@
     "_generic/if-mib",
     "_generic/entity-sensor"
   ],
-  "match": [
-    {
-      "sysObjectID": "1.3.6.1.4.1.9.1"
-    }
-  ]
+  "description": "IF-MIB interfaces + ENTITY-SENSOR hardware sensors. Not auto-matched (vendor profiles cover most switches); select it explicitly for unprofiled switches."
 }

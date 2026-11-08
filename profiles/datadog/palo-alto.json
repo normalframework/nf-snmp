@@ -1,0 +1,144 @@
+{
+ "id": "dd/palo-alto",
+ "name": "Palo Alto (Datadog)",
+ "vendor": "paloaltonetworks",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/palo-alto.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_palo-alto",
+  "dd/_generic-if",
+  "dd/_generic-host-resources",
+  "dd/_generic-ospf",
+  "dd/_generic-tcp",
+  "dd/_generic-udp",
+  "dd/_generic-ip",
+  "dd/_generic-entity-sensor"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.25461.2.3.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "panSessionUtilization",
+   "oid": "1.3.6.1.4.1.25461.2.1.2.3.1.0",
+   "mib": "PAN-COMMON-MIB",
+   "units": "%"
+  },
+  {
+   "name": "panSessionMax",
+   "oid": "1.3.6.1.4.1.25461.2.1.2.3.2.0",
+   "mib": "PAN-COMMON-MIB"
+  },
+  {
+   "name": "panSessionActive",
+   "oid": "1.3.6.1.4.1.25461.2.1.2.3.3.0",
+   "mib": "PAN-COMMON-MIB"
+  },
+  {
+   "name": "panSessionActiveTcp",
+   "oid": "1.3.6.1.4.1.25461.2.1.2.3.4.0",
+   "mib": "PAN-COMMON-MIB"
+  },
+  {
+   "name": "panSessionActiveUdp",
+   "oid": "1.3.6.1.4.1.25461.2.1.2.3.5.0",
+   "mib": "PAN-COMMON-MIB"
+  },
+  {
+   "name": "panSessionActiveICMP",
+   "oid": "1.3.6.1.4.1.25461.2.1.2.3.6.0",
+   "mib": "PAN-COMMON-MIB"
+  },
+  {
+   "name": "panSessionActiveSslProxy",
+   "oid": "1.3.6.1.4.1.25461.2.1.2.3.7.0",
+   "mib": "PAN-COMMON-MIB"
+  },
+  {
+   "name": "panSessionSslProxyUtilization",
+   "oid": "1.3.6.1.4.1.25461.2.1.2.3.8.0",
+   "mib": "PAN-COMMON-MIB",
+   "units": "%"
+  },
+  {
+   "name": "panGPGWUtilizationPct",
+   "oid": "1.3.6.1.4.1.25461.2.1.2.5.1.1.0",
+   "mib": "PAN-COMMON-MIB",
+   "units": "%"
+  },
+  {
+   "name": "panGPGWUtilizationMaxTunnels",
+   "oid": "1.3.6.1.4.1.25461.2.1.2.5.1.2.0",
+   "mib": "PAN-COMMON-MIB"
+  },
+  {
+   "name": "panGPGWUtilizationActiveTunnels",
+   "oid": "1.3.6.1.4.1.25461.2.1.2.5.1.3.0",
+   "mib": "PAN-COMMON-MIB"
+  },
+  {
+   "name": "panEntityTotalPowerUsed",
+   "oid": "1.3.6.1.4.1.25461.1.1.7.1.1.2.0",
+   "mib": "PAN-ENTITY-EXT-MIB",
+   "units": "W"
+  },
+  {
+   "name": "panEntityTotalPowerAvail",
+   "oid": "1.3.6.1.4.1.25461.1.1.7.1.1.1.0",
+   "mib": "PAN-ENTITY-EXT-MIB",
+   "units": "W"
+  }
+ ],
+ "tables": [
+  {
+   "name": "panEntityFRUModuleTable",
+   "columns": [
+    {
+     "name": "panEntryFRUModulePowerUsed",
+     "oid": "1.3.6.1.4.1.25461.1.1.7.1.2.1.1.1",
+     "mib": "PAN-ENTITY-EXT-MIB",
+     "units": "W"
+    },
+    {
+     "name": "panEntryFRUModuleNumPorts",
+     "oid": "1.3.6.1.4.1.25461.1.1.7.1.2.1.1.2",
+     "mib": "PAN-ENTITY-EXT-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.47.1.1.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.25461.1.1.7.1.2.1.1.1"
+  },
+  {
+   "name": "panEntityFanTrayTable",
+   "columns": [
+    {
+     "name": "panEntryFanTrayPowerUsed",
+     "oid": "1.3.6.1.4.1.25461.1.1.7.1.3.1.1.1",
+     "mib": "PAN-ENTITY-EXT-MIB",
+     "units": "W"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.47.1.1.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.25461.1.1.7.1.3.1.1.1"
+  }
+ ],
+ "verification": {
+  "verified": 16,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

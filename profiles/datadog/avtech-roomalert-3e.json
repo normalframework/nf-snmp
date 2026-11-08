@@ -1,0 +1,85 @@
+{
+ "id": "dd/avtech-roomalert-3e",
+ "name": "Avtech Roomalert 3E (Datadog)",
+ "vendor": "AVTECH Software, Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/avtech-roomalert-3e.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/avtech"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.20916.1.9.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "digital-sen1-1",
+   "oid": "1.3.6.1.4.1.20916.1.9.1.1.1.1.0",
+   "mib": "ROOMALERT3E-MIB",
+   "description": "Datadog metric roomalert.3e.digital_sen1_1",
+   "units": "degC"
+  },
+  {
+   "name": "digital-sen1-2",
+   "oid": "1.3.6.1.4.1.20916.1.9.1.1.1.2.0",
+   "mib": "ROOMALERT3E-MIB",
+   "description": "Datadog metric roomalert.3e.digital_sen1_2",
+   "units": "degF"
+  },
+  {
+   "name": "digital-sen2-1",
+   "oid": "1.3.6.1.4.1.20916.1.9.1.1.2.1.0",
+   "mib": "ROOMALERT3E-MIB",
+   "description": "Datadog metric roomalert.3e.digital_sen2_1",
+   "units": "degC"
+  },
+  {
+   "name": "digital-sen2-2",
+   "oid": "1.3.6.1.4.1.20916.1.9.1.1.2.2.0",
+   "mib": "ROOMALERT3E-MIB",
+   "description": "Datadog metric roomalert.3e.digital_sen2_2",
+   "units": "degF"
+  },
+  {
+   "name": "digital-sen2-3",
+   "oid": "1.3.6.1.4.1.20916.1.9.1.1.2.3.0",
+   "mib": "ROOMALERT3E-MIB",
+   "description": "Datadog metric roomalert.3e.digital_sen2_3",
+   "units": "%"
+  },
+  {
+   "name": "digital-sen2-4",
+   "oid": "1.3.6.1.4.1.20916.1.9.1.1.2.4.0",
+   "mib": "ROOMALERT3E-MIB",
+   "description": "Datadog metric roomalert.3e.digital_sen2_4",
+   "units": "degF"
+  },
+  {
+   "name": "digital-sen2-5",
+   "oid": "1.3.6.1.4.1.20916.1.9.1.1.2.5.0",
+   "mib": "ROOMALERT3E-MIB",
+   "description": "Datadog metric roomalert.3e.digital_sen2_5",
+   "units": "degC"
+  },
+  {
+   "name": "switch-sen1",
+   "oid": "1.3.6.1.4.1.20916.1.9.1.2.1.0",
+   "mib": "ROOMALERT3E-MIB",
+   "description": "Datadog metric roomalert.3e.switch_sen1"
+  }
+ ],
+ "verification": {
+  "verified": 8,
+  "renamed": 0,
+  "dropped": 1,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

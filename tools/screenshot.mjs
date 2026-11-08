@@ -20,7 +20,7 @@ await send('Page.enable');
 await send('Page.navigate', { url });
 await sleep(Number(waitMs));
 if (click) { await send('Runtime.evaluate', { expression: `document.querySelector(${JSON.stringify(click)}).click()` }); await sleep(Number(waitMs)); }
-const shot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+const shot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: !process.env.VIEWPORT_ONLY });
 fs.writeFileSync(out, Buffer.from(shot.result.data, 'base64'));
 ws.close(); proc.kill();
 console.log('wrote', out);

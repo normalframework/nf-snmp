@@ -1,0 +1,59 @@
+{
+ "id": "dd/_f5-big-ip-cpu-memory",
+ "name": "F5 Big Ip Cpu Memory (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_f5-big-ip-cpu-memory.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "symbols": [
+  {
+   "name": "sysStatMemoryTotal",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.1.44.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "description": "Datadog metric memory.total",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "sysStatMemoryUsed",
+   "oid": "1.3.6.1.4.1.3375.2.1.1.2.1.45.0",
+   "mib": "F5-BIGIP-SYSTEM-MIB",
+   "description": "Datadog metric memory.used",
+   "type": "counter",
+   "units": "B"
+  }
+ ],
+ "tables": [
+  {
+   "name": "sysMultiHostCpuTable",
+   "columns": [
+    {
+     "name": "sysMultiHostCpuUsageRatio1m",
+     "oid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.27",
+     "mib": "F5-BIGIP-SYSTEM-MIB",
+     "description": "Datadog metric cpu.usage",
+     "units": "min"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.3375.2.1.7.5.2.1.27"
+  }
+ ],
+ "verification": {
+  "verified": 3,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

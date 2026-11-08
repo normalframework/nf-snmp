@@ -1,0 +1,369 @@
+{
+ "id": "dd/a10-thunder",
+ "name": "A10 Thunder (Datadog)",
+ "vendor": "A10 Networks (previously 'Raksha Networks Inc.')",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/a10-thunder.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/a10"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.22610.1.3.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "axSysMemoryTotal",
+   "oid": "1.3.6.1.4.1.22610.2.4.1.2.1.0",
+   "mib": "A10-AX-MIB",
+   "description": "Datadog metric memory.total"
+  },
+  {
+   "name": "axSysMemoryUsage",
+   "oid": "1.3.6.1.4.1.22610.2.4.1.2.2.0",
+   "mib": "A10-AX-MIB",
+   "description": "Datadog metric memory.used"
+  },
+  {
+   "name": "axSysAverageCpuUsage",
+   "oid": "1.3.6.1.4.1.22610.2.4.1.3.3.0",
+   "mib": "A10-AX-MIB",
+   "description": "Datadog metric cpu.usage",
+   "units": "s"
+  },
+  {
+   "name": "axSysDiskTotalSpace",
+   "oid": "1.3.6.1.4.1.22610.2.4.1.4.1.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSysDiskFreeSpace",
+   "oid": "1.3.6.1.4.1.22610.2.4.1.4.2.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSysHwPhySystemTemp",
+   "oid": "1.3.6.1.4.1.22610.2.4.1.5.1.0",
+   "mib": "A10-AX-MIB",
+   "units": "degC"
+  },
+  {
+   "name": "axPowerSupplyVoltageTotal",
+   "oid": "1.3.6.1.4.1.22610.2.4.1.5.10.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axAppGlobalTotalCurrentConnections",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.2.1.0",
+   "mib": "A10-AX-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "axAppGlobalTotalNewConnections",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.2.2.0",
+   "mib": "A10-AX-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "axAppGlobalTotalNewL4Connections",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.2.3.0",
+   "mib": "A10-AX-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "axAppGlobalTotalNewL7Connections",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.2.4.0",
+   "mib": "A10-AX-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "axAppGlobalTotalNewIPNatConnections",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.2.5.0",
+   "mib": "A10-AX-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "axAppGlobalTotalSSLConnections",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.2.6.0",
+   "mib": "A10-AX-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "axAppGlobalTotalL7Requests",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.2.7.0",
+   "mib": "A10-AX-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "axGlobalAppPacketDrop",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.2.8.0",
+   "mib": "A10-AX-MIB",
+   "units": "s"
+  },
+  {
+   "name": "axGlobalTotalAppPacketDrop",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.2.9.0",
+   "mib": "A10-AX-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "axGlobalTotalL4Session",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.2.10.0",
+   "mib": "A10-AX-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "axGlobalTotalThroughput",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.2.13.0",
+   "mib": "A10-AX-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "axAppGlobalBufferConfigLimit",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.3.1.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axAppGlobalBufferCurrentUsage",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.1.3.2.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axConnReuseStatTotalOpenPersist",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.5.1.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axConnReuseStatTotalActivePersist",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.5.2.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axConnReuseStatTotalEstablished",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.5.3.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axConnReuseStatTotalTerminated",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.5.4.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatTCPEstablished",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.1.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatTCPHalfOpen",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.2.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatUDP",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.3.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatNonTcpUdpIPSession",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.4.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatOther",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.5.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatReverseNATTCP",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.6.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatReverseNATUDP",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.7.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatFreeCurrentConns",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.9.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatConnCount",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.10.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatConnFree",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.11.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatTCPSynHalfOpen",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.12.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatConnSMPAllocated",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.13.0",
+   "mib": "A10-AX-MIB"
+  },
+  {
+   "name": "axSessionGlobalStatConnSMPFree",
+   "oid": "1.3.6.1.4.1.22610.2.4.3.19.1.14.0",
+   "mib": "A10-AX-MIB"
+  }
+ ],
+ "tables": [
+  {
+   "name": "axSysFanStatusTable",
+   "columns": [
+    {
+     "name": "axFanSpeed",
+     "oid": "1.3.6.1.4.1.22610.2.4.1.5.9.1.4",
+     "mib": "A10-AX-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.22610.2.4.1.5.9.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.22610.2.4.1.5.9.1.4"
+  },
+  {
+   "name": "axAppGlobalSystemResourceUsageTable",
+   "columns": [
+    {
+     "name": "axAppGlobalAllowedCurrentValue",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.1.1.1.1.3",
+     "mib": "A10-AX-MIB"
+    },
+    {
+     "name": "axAppGlobalAllowedMaxValue",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.1.1.1.1.6",
+     "mib": "A10-AX-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.22610.2.4.3.1.1.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.22610.2.4.3.1.1.1.1.3"
+  },
+  {
+   "name": "axServerStatTable",
+   "columns": [
+    {
+     "name": "axServerStatServerCurConns",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.2.2.2.1.8",
+     "mib": "A10-AX-MIB"
+    },
+    {
+     "name": "axServerStatServerTotalCurrL7Reqs",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.2.2.2.1.12",
+     "mib": "A10-AX-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.22610.2.4.3.2.2.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.22610.2.4.3.2.2.2.1.8"
+  },
+  {
+   "name": "axVirtualServerStatTable",
+   "columns": [
+    {
+     "name": "axVirtualServerStatPktsIn",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.4.2.1.1.3",
+     "mib": "A10-AX-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "axVirtualServerStatBytesIn",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.4.2.1.1.4",
+     "mib": "A10-AX-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "axVirtualServerStatPktsOut",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.4.2.1.1.5",
+     "mib": "A10-AX-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "axVirtualServerStatBytesOut",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.4.2.1.1.6",
+     "mib": "A10-AX-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "axVirtualServerStatPersistConns",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.4.2.1.1.7",
+     "mib": "A10-AX-MIB"
+    },
+    {
+     "name": "axVirtualServerStatTotConns",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.4.2.1.1.8",
+     "mib": "A10-AX-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "axVirtualServerStatCurConns",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.4.2.1.1.9",
+     "mib": "A10-AX-MIB"
+    },
+    {
+     "name": "axVirtualServerStatTotalL7Reqs",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.4.2.1.1.12",
+     "mib": "A10-AX-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "axVirtualServerStatTotalCurrL7Reqs",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.4.2.1.1.13",
+     "mib": "A10-AX-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "axVirtualServerStatTotalSuccL7Reqs",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.4.2.1.1.14",
+     "mib": "A10-AX-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.22610.2.4.3.4.2.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.22610.2.4.3.4.2.1.1.3"
+  },
+  {
+   "name": "axVirtualServerPortStatTable",
+   "columns": [
+    {
+     "name": "axVirtualServerPortStatCurConns",
+     "oid": "1.3.6.1.4.1.22610.2.4.3.4.4.1.1.12",
+     "mib": "A10-AX-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.22610.2.4.3.4.4.1.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.22610.2.4.3.4.4.1.1.12"
+  }
+ ],
+ "verification": {
+  "verified": 53,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

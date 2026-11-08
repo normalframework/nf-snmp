@@ -1,0 +1,92 @@
+{
+ "id": "dd/ubiquiti-unifi",
+ "name": "Ubiquiti Unifi (Datadog)",
+ "vendor": "Ubiquiti Networks, Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/ubiquiti-unifi.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if",
+  "dd/_ubiquiti"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.41112"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "memTotal",
+   "oid": "1.3.6.1.4.1.10002.1.1.1.1.1.0",
+   "mib": "FROGFOOT-RESOURCES-MIB",
+   "description": "Datadog metric memory.total"
+  },
+  {
+   "name": "memFree",
+   "oid": "1.3.6.1.4.1.10002.1.1.1.1.2.0",
+   "mib": "FROGFOOT-RESOURCES-MIB",
+   "description": "Datadog metric memory.free"
+  }
+ ],
+ "tables": [
+  {
+   "name": "unifiRadioTable",
+   "columns": [
+    {
+     "name": "unifiRadioRxPackets",
+     "oid": "1.3.6.1.4.1.41112.1.6.1.1.1.4",
+     "mib": "UBNT-UniFi-MIB",
+     "type": "counter",
+     "description": "Datadog metric ubiquiti.unifiRadioRxPackets"
+    },
+    {
+     "name": "unifiRadioTxPackets",
+     "oid": "1.3.6.1.4.1.41112.1.6.1.1.1.5",
+     "mib": "UBNT-UniFi-MIB",
+     "type": "counter",
+     "description": "Datadog metric ubiquiti.unifiRadioTxPackets"
+    },
+    {
+     "name": "unifiRadioCuTotal",
+     "oid": "1.3.6.1.4.1.41112.1.6.1.1.1.6",
+     "mib": "UBNT-UniFi-MIB",
+     "description": "Datadog metric ubiquiti.unifiRadioCuTotal"
+    },
+    {
+     "name": "unifiRadioCuSelfRx",
+     "oid": "1.3.6.1.4.1.41112.1.6.1.1.1.7",
+     "mib": "UBNT-UniFi-MIB",
+     "description": "Datadog metric ubiquiti.unifiRadioCuSelfRx"
+    },
+    {
+     "name": "unifiRadioCuSelfTx",
+     "oid": "1.3.6.1.4.1.41112.1.6.1.1.1.8",
+     "mib": "UBNT-UniFi-MIB",
+     "description": "Datadog metric ubiquiti.unifiRadioCuSelfTx"
+    },
+    {
+     "name": "unifiRadioOtherBss",
+     "oid": "1.3.6.1.4.1.41112.1.6.1.1.1.9",
+     "mib": "UBNT-UniFi-MIB",
+     "description": "Datadog metric ubiquiti.unifiRadioOtherBss"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.41112.1.6.1.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.41112.1.6.1.1.1.4"
+  }
+ ],
+ "verification": {
+  "verified": 8,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

@@ -1,0 +1,143 @@
+{
+ "id": "dd/mikrotik-router",
+ "name": "Mikrotik Router (Datadog)",
+ "vendor": "MikroTik",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/mikrotik-router.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.14988.1.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "mtxrHlCpuTemperature",
+   "oid": "1.3.6.1.4.1.14988.1.1.3.6.0",
+   "mib": "MIKROTIK-MIB",
+   "displayHint": "d-1"
+  },
+  {
+   "name": "mtxrHlTemperature",
+   "oid": "1.3.6.1.4.1.14988.1.1.3.10.0",
+   "mib": "MIKROTIK-MIB",
+   "displayHint": "d-1"
+  },
+  {
+   "name": "mtxrHlVoltage",
+   "oid": "1.3.6.1.4.1.14988.1.1.3.8.0",
+   "mib": "MIKROTIK-MIB",
+   "displayHint": "d-1"
+  },
+  {
+   "name": "cpu.usage",
+   "oid": "1.3.6.1.2.1.25.3.3.1.2.1",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrProcessorLoad row 1"
+  }
+ ],
+ "tables": [
+  {
+   "name": "mtxrOpticalTable",
+   "columns": [
+    {
+     "name": "mtxrOpticalTemperature",
+     "oid": "1.3.6.1.4.1.14988.1.1.19.1.1.6",
+     "mib": "MIKROTIK-MIB"
+    },
+    {
+     "name": "mtxrOpticalRxPower",
+     "oid": "1.3.6.1.4.1.14988.1.1.19.1.1.10",
+     "mib": "MIKROTIK-MIB",
+     "displayHint": "d-3"
+    },
+    {
+     "name": "mtxrOpticalSupplyVoltage",
+     "oid": "1.3.6.1.4.1.14988.1.1.19.1.1.7",
+     "mib": "MIKROTIK-MIB",
+     "displayHint": "d-3"
+    },
+    {
+     "name": "mtxrOpticalTxBiasCurrent",
+     "oid": "1.3.6.1.4.1.14988.1.1.19.1.1.8",
+     "mib": "MIKROTIK-MIB"
+    },
+    {
+     "name": "mtxrOpticalWavelength",
+     "oid": "1.3.6.1.4.1.14988.1.1.19.1.1.5",
+     "mib": "MIKROTIK-MIB",
+     "displayHint": "d-2"
+    },
+    {
+     "name": "mtxrOpticalTxPower",
+     "oid": "1.3.6.1.4.1.14988.1.1.19.1.1.9",
+     "mib": "MIKROTIK-MIB",
+     "displayHint": "d-3"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14988.1.1.19.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.14988.1.1.19.1.1.6"
+  },
+  {
+   "name": "mtxrPOETable",
+   "columns": [
+    {
+     "name": "mtxrPOEPower",
+     "oid": "1.3.6.1.4.1.14988.1.1.15.1.1.6",
+     "mib": "MIKROTIK-MIB",
+     "displayHint": "d-1"
+    },
+    {
+     "name": "mtxrPOEVoltage",
+     "oid": "1.3.6.1.4.1.14988.1.1.15.1.1.4",
+     "mib": "MIKROTIK-MIB",
+     "displayHint": "d-1"
+    },
+    {
+     "name": "mtxrPOECurrent",
+     "oid": "1.3.6.1.4.1.14988.1.1.15.1.1.5",
+     "mib": "MIKROTIK-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14988.1.1.15.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.14988.1.1.15.1.1.6"
+  },
+  {
+   "name": "hrStorageTable",
+   "columns": [
+    {
+     "name": "hrStorageSize",
+     "oid": "1.3.6.1.2.1.25.2.3.1.5",
+     "mib": "HOST-RESOURCES-MIB",
+     "description": "Datadog metric memory.total"
+    },
+    {
+     "name": "hrStorageUsed",
+     "oid": "1.3.6.1.2.1.25.2.3.1.6",
+     "mib": "HOST-RESOURCES-MIB",
+     "description": "Datadog metric memory.used"
+    }
+   ],
+   "indexOid": "1.3.6.1.2.1.25.2.3.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 15,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

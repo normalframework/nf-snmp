@@ -1,0 +1,266 @@
+{
+ "id": "dd/eaton-epdu",
+ "name": "Eaton Epdu (Datadog)",
+ "vendor": "Eaton Corporation",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/eaton-epdu.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.534.6.6.7"
+  }
+ ],
+ "tables": [
+  {
+   "name": "inputTable",
+   "columns": [
+    {
+     "name": "inputFrequency",
+     "oid": "1.3.6.1.4.1.534.6.6.7.3.1.1.3",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.inputFrequency",
+     "scale": 0.1,
+     "units": "Hz"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.534.6.6.7.3.1.1.10"
+   },
+   "indexOid": "1.3.6.1.4.1.534.6.6.7.3.1.1.3"
+  },
+  {
+   "name": "inputVoltageTable",
+   "columns": [
+    {
+     "name": "inputVoltage",
+     "oid": "1.3.6.1.4.1.534.6.6.7.3.2.1.3",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.inputVoltage",
+     "units": "mV"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.534.6.6.7.3.3.1.12"
+   },
+   "indexOid": "1.3.6.1.4.1.534.6.6.7.3.2.1.3"
+  },
+  {
+   "name": "inputCurrentTable",
+   "columns": [
+    {
+     "name": "inputCurrent",
+     "oid": "1.3.6.1.4.1.534.6.6.7.3.3.1.4",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.inputCurrent",
+     "units": "mA"
+    },
+    {
+     "name": "inputCurrentPercentLoad",
+     "oid": "1.3.6.1.4.1.534.6.6.7.3.3.1.11",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.inputCurrentPercentLoad",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.534.6.6.7.3.3.1.12"
+   },
+   "indexOid": "1.3.6.1.4.1.534.6.6.7.3.3.1.4"
+  },
+  {
+   "name": "inputPowerTable",
+   "columns": [
+    {
+     "name": "inputVA",
+     "oid": "1.3.6.1.4.1.534.6.6.7.3.4.1.3",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.inputVA",
+     "units": "VA"
+    },
+    {
+     "name": "inputWatts",
+     "oid": "1.3.6.1.4.1.534.6.6.7.3.4.1.4",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.inputWatts",
+     "units": "W"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.534.6.6.7.3.3.1.12"
+   },
+   "indexOid": "1.3.6.1.4.1.534.6.6.7.3.4.1.3"
+  },
+  {
+   "name": "groupVoltageTable",
+   "columns": [
+    {
+     "name": "groupVoltage",
+     "oid": "1.3.6.1.4.1.534.6.6.7.5.3.1.3",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.groupVoltage",
+     "units": "mV"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.534.6.6.7.5.1.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.534.6.6.7.5.3.1.3"
+  },
+  {
+   "name": "groupCurrentTable",
+   "columns": [
+    {
+     "name": "groupCurrent",
+     "oid": "1.3.6.1.4.1.534.6.6.7.5.4.1.3",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.groupCurrent",
+     "units": "mA"
+    },
+    {
+     "name": "groupCurrentPercentLoad",
+     "oid": "1.3.6.1.4.1.534.6.6.7.5.4.1.10",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.groupCurrentPercentLoad",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.534.6.6.7.5.1.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.534.6.6.7.5.4.1.3"
+  },
+  {
+   "name": "groupPowerTable",
+   "columns": [
+    {
+     "name": "groupVA",
+     "oid": "1.3.6.1.4.1.534.6.6.7.5.5.1.2",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.groupVA",
+     "units": "VA"
+    },
+    {
+     "name": "groupWatts",
+     "oid": "1.3.6.1.4.1.534.6.6.7.5.5.1.3",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.groupWatts",
+     "units": "W"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.534.6.6.7.5.1.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.534.6.6.7.5.5.1.2"
+  },
+  {
+   "name": "outletVoltageTable",
+   "columns": [
+    {
+     "name": "outletVoltage",
+     "oid": "1.3.6.1.4.1.534.6.6.7.6.3.1.2",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.outletVoltage",
+     "units": "mV"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.534.6.6.7.6.1.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.534.6.6.7.6.3.1.2"
+  },
+  {
+   "name": "outletCurrentTable",
+   "columns": [
+    {
+     "name": "outletCurrent",
+     "oid": "1.3.6.1.4.1.534.6.6.7.6.4.1.3",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.outletCurrent",
+     "units": "mA"
+    },
+    {
+     "name": "outletCurrentPercentLoad",
+     "oid": "1.3.6.1.4.1.534.6.6.7.6.4.1.10",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.outletCurrentPercentLoad",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.534.6.6.7.6.1.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.534.6.6.7.6.4.1.3"
+  },
+  {
+   "name": "outletPowerTable",
+   "columns": [
+    {
+     "name": "outletVA",
+     "oid": "1.3.6.1.4.1.534.6.6.7.6.5.1.2",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.outletVA",
+     "units": "VA"
+    },
+    {
+     "name": "outletWatts",
+     "oid": "1.3.6.1.4.1.534.6.6.7.6.5.1.3",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.outletWatts",
+     "units": "W"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.534.6.6.7.6.1.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.534.6.6.7.6.5.1.2"
+  },
+  {
+   "name": "temperatureTable",
+   "columns": [
+    {
+     "name": "temperatureValue",
+     "oid": "1.3.6.1.4.1.534.6.6.7.7.1.1.4",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.temperatureValue",
+     "scale": 0.1,
+     "units": "degF"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.534.6.6.7.7.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.534.6.6.7.7.1.1.4"
+  },
+  {
+   "name": "humidityTable",
+   "columns": [
+    {
+     "name": "humidityValue",
+     "oid": "1.3.6.1.4.1.534.6.6.7.7.2.1.4",
+     "mib": "EATON-EPDU-MIB",
+     "description": "Datadog metric eaton.epdu.humidityValue",
+     "scale": 0.1,
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.534.6.6.7.7.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.534.6.6.7.7.2.1.4"
+  }
+ ],
+ "verification": {
+  "verified": 18,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

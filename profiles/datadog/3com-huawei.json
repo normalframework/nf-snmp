@@ -1,0 +1,61 @@
+{
+ "id": "dd/3com-huawei",
+ "name": "3COM Huawei (Datadog)",
+ "vendor": "3Com",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/3com-huawei.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/3com"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.43.45.1.2.*"
+  }
+ ],
+ "tables": [
+  {
+   "name": "hwCpuTable",
+   "columns": [
+    {
+     "name": "hwCpuCostRatePer1Min",
+     "oid": "1.3.6.1.4.1.43.45.1.6.1.1.1.3",
+     "mib": "A3COM-HUAWEI-LswDEVM-MIB",
+     "description": "Datadog metric cpu.usage",
+     "units": "%"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.43.45.1.6.1.1.1.3"
+  },
+  {
+   "name": "hwMemTable",
+   "columns": [
+    {
+     "name": "hwMemSize",
+     "oid": "1.3.6.1.4.1.43.45.1.6.1.2.1.1.2",
+     "mib": "A3COM-HUAWEI-LswDEVM-MIB",
+     "description": "Datadog metric memory.total"
+    },
+    {
+     "name": "hwMemFree",
+     "oid": "1.3.6.1.4.1.43.45.1.6.1.2.1.1.3",
+     "mib": "A3COM-HUAWEI-LswDEVM-MIB",
+     "description": "Datadog metric memory.free"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.43.45.1.6.1.2.1.1.2"
+  }
+ ],
+ "verification": {
+  "verified": 3,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

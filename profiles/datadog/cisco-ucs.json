@@ -1,0 +1,195 @@
+{
+ "id": "dd/cisco-ucs",
+ "name": "Cisco Ucs (Datadog)",
+ "vendor": "ciscoSystems",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/cisco-ucs.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.1683"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2178"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.1.2492"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.9.12.3.1.3.1062"
+  }
+ ],
+ "tables": [
+  {
+   "name": "cucsComputeMbPowerStatsTable",
+   "columns": [
+    {
+     "name": "cucsComputeMbPowerStatsConsumedPower",
+     "oid": "1.3.6.1.4.1.9.9.719.1.9.14.1.4",
+     "mib": "CISCO-UNIFIED-COMPUTING-COMPUTE-MIB"
+    },
+    {
+     "name": "cucsComputeMbPowerStatsInputCurrent",
+     "oid": "1.3.6.1.4.1.9.9.719.1.9.14.1.8",
+     "mib": "CISCO-UNIFIED-COMPUTING-COMPUTE-MIB"
+    },
+    {
+     "name": "cucsComputeMbPowerStatsInputVoltage",
+     "oid": "1.3.6.1.4.1.9.9.719.1.9.14.1.12",
+     "mib": "CISCO-UNIFIED-COMPUTING-COMPUTE-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.719.1.9.14.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.719.1.9.14.1.4"
+  },
+  {
+   "name": "cucsComputeRackUnitTable",
+   "columns": [
+    {
+     "name": "cucsComputeRackUnitAvailableMemory",
+     "oid": "1.3.6.1.4.1.9.9.719.1.9.35.1.9",
+     "mib": "CISCO-UNIFIED-COMPUTING-COMPUTE-MIB",
+     "description": "Datadog metric memory.free"
+    },
+    {
+     "name": "cucsComputeRackUnitTotalMemory",
+     "oid": "1.3.6.1.4.1.9.9.719.1.9.35.1.49",
+     "mib": "CISCO-UNIFIED-COMPUTING-COMPUTE-MIB",
+     "description": "Datadog metric memory.total"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.719.1.9.35.1.33"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.719.1.9.35.1.9"
+  },
+  {
+   "name": "cucsComputeRackUnitMbTempStatsTable",
+   "columns": [
+    {
+     "name": "cucsComputeRackUnitMbTempStatsAmbientTemp",
+     "oid": "1.3.6.1.4.1.9.9.719.1.9.44.1.4",
+     "mib": "CISCO-UNIFIED-COMPUTING-COMPUTE-MIB"
+    },
+    {
+     "name": "cucsComputeRackUnitMbTempStatsFrontTemp",
+     "oid": "1.3.6.1.4.1.9.9.719.1.9.44.1.8",
+     "mib": "CISCO-UNIFIED-COMPUTING-COMPUTE-MIB"
+    },
+    {
+     "name": "cucsComputeRackUnitMbTempStatsIoh1Temp",
+     "oid": "1.3.6.1.4.1.9.9.719.1.9.44.1.13",
+     "mib": "CISCO-UNIFIED-COMPUTING-COMPUTE-MIB"
+    },
+    {
+     "name": "cucsComputeRackUnitMbTempStatsRearTemp",
+     "oid": "1.3.6.1.4.1.9.9.719.1.9.44.1.21",
+     "mib": "CISCO-UNIFIED-COMPUTING-COMPUTE-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.719.1.9.44.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.719.1.9.44.1.4"
+  },
+  {
+   "name": "cucsMemoryUnitTable",
+   "columns": [
+    {
+     "name": "cucsMemoryUnitCapacity",
+     "oid": "1.3.6.1.4.1.9.9.719.1.30.11.1.6",
+     "mib": "CISCO-UNIFIED-COMPUTING-MEMORY-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.719.1.30.11.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.719.1.30.11.1.6"
+  },
+  {
+   "name": "cucsMemoryUnitEnvStatsTable",
+   "columns": [
+    {
+     "name": "cucsMemoryUnitEnvStatsTemperature",
+     "oid": "1.3.6.1.4.1.9.9.719.1.30.12.1.6",
+     "mib": "CISCO-UNIFIED-COMPUTING-MEMORY-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.719.1.30.12.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.719.1.30.12.1.6"
+  },
+  {
+   "name": "cucsProcessorEnvStatsTable",
+   "columns": [
+    {
+     "name": "cucsProcessorEnvStatsTemperature",
+     "oid": "1.3.6.1.4.1.9.9.719.1.41.2.1.10",
+     "mib": "CISCO-UNIFIED-COMPUTING-PROCESSOR-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.719.1.41.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.719.1.41.2.1.10"
+  },
+  {
+   "name": "cucsStorageFlexFlashCardTable",
+   "columns": [
+    {
+     "name": "cucsStorageFlexFlashCardReadIOErrorCount",
+     "oid": "1.3.6.1.4.1.9.9.719.1.45.34.1.19",
+     "mib": "CISCO-UNIFIED-COMPUTING-STORAGE-MIB"
+    },
+    {
+     "name": "cucsStorageFlexFlashCardSize",
+     "oid": "1.3.6.1.4.1.9.9.719.1.45.34.1.22",
+     "mib": "CISCO-UNIFIED-COMPUTING-STORAGE-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cucsStorageFlexFlashCardWriteIOErrorCount",
+     "oid": "1.3.6.1.4.1.9.9.719.1.45.34.1.26",
+     "mib": "CISCO-UNIFIED-COMPUTING-STORAGE-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.719.1.45.34.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.719.1.45.34.1.19"
+  },
+  {
+   "name": "cucsStorageFlexFlashDriveTable",
+   "columns": [
+    {
+     "name": "cucsStorageFlexFlashDriveSize",
+     "oid": "1.3.6.1.4.1.9.9.719.1.45.36.1.18",
+     "mib": "CISCO-UNIFIED-COMPUTING-STORAGE-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.719.1.45.36.1.11"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.719.1.45.36.1.18"
+  }
+ ],
+ "verification": {
+  "verified": 16,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

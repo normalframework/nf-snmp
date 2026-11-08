@@ -1,0 +1,51 @@
+{
+ "id": "dd/alcatel-lucent-ind",
+ "name": "Alcatel Lucent Ind (Datadog)",
+ "vendor": "Alcatel-Lucent Enterprise",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/alcatel-lucent-ind.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/alcatel-lucent"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.6486.800.1.1.2.1.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "healthDeviceCpu1MinAvg",
+   "oid": "1.3.6.1.4.1.6486.800.1.2.1.16.1.1.1.14.0",
+   "mib": "ALCATEL-IND1-HEALTH-MIB",
+   "description": "Datadog metric cpu.usage",
+   "units": "%"
+  },
+  {
+   "name": "healthDeviceMemory1MinAvg",
+   "oid": "1.3.6.1.4.1.6486.800.1.2.1.16.1.1.1.10.0",
+   "mib": "ALCATEL-IND1-HEALTH-MIB",
+   "description": "Datadog metric memory.usage",
+   "units": "%"
+  },
+  {
+   "name": "healthDeviceTemperatureChas1MinAvg",
+   "oid": "1.3.6.1.4.1.6486.800.1.2.1.16.1.1.1.18.0",
+   "mib": "ALCATEL-IND1-HEALTH-MIB",
+   "description": "Datadog metric alcatel.ind.healthDeviceTemperatureChas1MinAvg",
+   "units": "%"
+  }
+ ],
+ "verification": {
+  "verified": 3,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

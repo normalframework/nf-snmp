@@ -1,0 +1,30 @@
+{
+ "id": "dd/ubiquiti-unifi-security-gateway",
+ "name": "Ubiquiti Unifi Security Gateway (Datadog)",
+ "vendor": "Ubiquiti Networks, Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/ubiquiti-unifi-security-gateway.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if",
+  "dd/_generic-ucd",
+  "dd/_ubiquiti"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.41112.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

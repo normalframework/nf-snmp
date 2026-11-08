@@ -1,0 +1,220 @@
+{
+ "id": "dd/checkpoint",
+ "name": "Checkpoint (Datadog)",
+ "vendor": "checkpoint",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/checkpoint.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if",
+  "dd/_generic-tcp",
+  "dd/_generic-udp",
+  "dd/_generic-ip",
+  "dd/_checkpoint-firewall-cpu-memory"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.2620.1.*"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "procNum",
+   "oid": "1.3.6.1.4.1.2620.1.6.7.2.7.0",
+   "mib": "CHECKPOINT-MIB"
+  },
+  {
+   "name": "memTotalReal64",
+   "oid": "1.3.6.1.4.1.2620.1.6.7.4.3.0",
+   "mib": "CHECKPOINT-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "memActiveReal64",
+   "oid": "1.3.6.1.4.1.2620.1.6.7.4.4.0",
+   "mib": "CHECKPOINT-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "memFreeReal64",
+   "oid": "1.3.6.1.4.1.2620.1.6.7.4.5.0",
+   "mib": "CHECKPOINT-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "memTotalVirtual64",
+   "oid": "1.3.6.1.4.1.2620.1.6.7.4.1.0",
+   "mib": "CHECKPOINT-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "memActiveVirtual64",
+   "oid": "1.3.6.1.4.1.2620.1.6.7.4.2.0",
+   "mib": "CHECKPOINT-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "fwAccepted",
+   "oid": "1.3.6.1.4.1.2620.1.1.4.0",
+   "mib": "CHECKPOINT-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "fwDropped",
+   "oid": "1.3.6.1.4.1.2620.1.1.6.0",
+   "mib": "CHECKPOINT-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "fwRejected",
+   "oid": "1.3.6.1.4.1.2620.1.1.5.0",
+   "mib": "CHECKPOINT-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "fwNumConn",
+   "oid": "1.3.6.1.4.1.2620.1.1.25.3.0",
+   "mib": "CHECKPOINT-MIB"
+  },
+  {
+   "name": "fwPeakNumConn",
+   "oid": "1.3.6.1.4.1.2620.1.1.25.4.0",
+   "mib": "CHECKPOINT-MIB"
+  },
+  {
+   "name": "haStatCode",
+   "oid": "1.3.6.1.4.1.2620.1.5.101.0",
+   "mib": "CHECKPOINT-MIB"
+  },
+  {
+   "name": "haClusterXLFailover",
+   "oid": "1.3.6.1.4.1.2620.1.5.17.0",
+   "mib": "CHECKPOINT-MIB",
+   "type": "counter"
+  }
+ ],
+ "tables": [
+  {
+   "name": "multiProcTable",
+   "columns": [
+    {
+     "name": "multiProcUserTime",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.5.1.2",
+     "mib": "CHECKPOINT-MIB"
+    },
+    {
+     "name": "multiProcSystemTime",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.5.1.3",
+     "mib": "CHECKPOINT-MIB"
+    },
+    {
+     "name": "multiProcIdleTime",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.5.1.4",
+     "mib": "CHECKPOINT-MIB"
+    },
+    {
+     "name": "multiProcUsage",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.5.1.5",
+     "mib": "CHECKPOINT-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2620.1.6.7.5.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.2620.1.6.7.5.1.2"
+  },
+  {
+   "name": "multiDiskTable",
+   "columns": [
+    {
+     "name": "multiDiskSize",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.6.1.3",
+     "mib": "CHECKPOINT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "multiDiskUsed",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.6.1.4",
+     "mib": "CHECKPOINT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "multiDiskFreeTotalBytes",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.6.1.5",
+     "mib": "CHECKPOINT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "multiDiskFreeAvailableBytes",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.6.1.7",
+     "mib": "CHECKPOINT-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "multiDiskFreeTotalPercent",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.6.1.6",
+     "mib": "CHECKPOINT-MIB"
+    },
+    {
+     "name": "multiDiskFreeAvailablePercent",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.6.1.8",
+     "mib": "CHECKPOINT-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2620.1.6.7.6.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.2620.1.6.7.6.1.3"
+  },
+  {
+   "name": "fanSpeedSensorTable",
+   "columns": [
+    {
+     "name": "fanSpeedSensorValue",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.8.2.1.3",
+     "mib": "CHECKPOINT-MIB"
+    },
+    {
+     "name": "fanSpeedSensorStatus",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.8.2.1.6",
+     "mib": "CHECKPOINT-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2620.1.6.7.8.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.2620.1.6.7.8.2.1.3"
+  },
+  {
+   "name": "tempertureSensorTable",
+   "columns": [
+    {
+     "name": "tempertureSensorValue",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.8.1.1.3",
+     "mib": "CHECKPOINT-MIB"
+    },
+    {
+     "name": "tempertureSensorStatus",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.8.1.1.6",
+     "mib": "CHECKPOINT-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2620.1.6.7.8.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.2620.1.6.7.8.1.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 27,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

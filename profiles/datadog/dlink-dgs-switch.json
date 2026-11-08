@@ -1,0 +1,109 @@
+{
+ "id": "dd/dlink-dgs-switch",
+ "name": "Dlink Dgs Switch (Datadog)",
+ "vendor": "D-Link Systems, Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/dlink-dgs-switch.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/dlink"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.171.10.137.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.171.10.137.1.1"
+  }
+ ],
+ "tables": [
+  {
+   "name": "dEntityExtCpuUtilTable",
+   "columns": [
+    {
+     "name": "dEntityExtCpuUtilFiveSeconds",
+     "oid": "1.3.6.1.4.1.171.14.5.1.7.1.3",
+     "mib": "DLINKSW-ENTITY-EXT-MIB",
+     "description": "Datadog metric cpu.usage",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.171.14.5.1.7.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.171.14.5.1.7.1.3"
+  },
+  {
+   "name": "dEntityExtMemoryUtilTable",
+   "columns": [
+    {
+     "name": "dEntityExtMemUtilTotal",
+     "oid": "1.3.6.1.4.1.171.14.5.1.4.1.3",
+     "mib": "DLINKSW-ENTITY-EXT-MIB",
+     "description": "Datadog metric memory.total"
+    },
+    {
+     "name": "dEntityExtMemUtilUsed",
+     "oid": "1.3.6.1.4.1.171.14.5.1.4.1.4",
+     "mib": "DLINKSW-ENTITY-EXT-MIB",
+     "description": "Datadog metric memory.used"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.171.14.5.1.4.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.171.14.5.1.4.1.3"
+  },
+  {
+   "name": "dEntityExtEnvTempTable",
+   "columns": [
+    {
+     "name": "dEntityExtEnvTempCurrent",
+     "oid": "1.3.6.1.4.1.171.14.5.1.1.1.1.4",
+     "mib": "DLINKSW-ENTITY-EXT-MIB",
+     "description": "Datadog metric dlink.dEntityExtEnvTempCurrent",
+     "units": "degC"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.171.14.5.1.1.1.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.171.14.5.1.1.1.1.4"
+  },
+  {
+   "name": "dEntityExtEnvPowerTable",
+   "columns": [
+    {
+     "name": "dEntityExtEnvPowerUsedPower",
+     "oid": "1.3.6.1.4.1.171.14.5.1.1.3.1.4",
+     "mib": "DLINKSW-ENTITY-EXT-MIB",
+     "description": "Datadog metric dlink.dEntityExtEnvPowerUsedPower",
+     "units": "W"
+    },
+    {
+     "name": "dEntityExtEnvPowerMaxPower",
+     "oid": "1.3.6.1.4.1.171.14.5.1.1.3.1.5",
+     "mib": "DLINKSW-ENTITY-EXT-MIB",
+     "description": "Datadog metric dlink.dEntityExtEnvPowerMaxPower",
+     "units": "W"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.171.14.5.1.1.3.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.171.14.5.1.1.3.1.4"
+  }
+ ],
+ "verification": {
+  "verified": 6,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

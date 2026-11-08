@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SHIP = ['app.json', 'logo.svg', 'LICENSE', 'README.md', 'hooks', 'hooks-update', 'lib', 'profiles', 'data', 'static', 'bin', 'local/.gitkeep'];
+const SHIP = ['app.json', 'logo.svg', 'LICENSE', 'NOTICE', 'README.md', 'hooks', 'hooks-update', 'lib', 'profiles', 'data', 'static', 'bin', 'local/.gitkeep'];
 
 export function shippableFiles() {
   const out = [];

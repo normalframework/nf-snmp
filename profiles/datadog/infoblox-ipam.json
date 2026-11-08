@@ -1,0 +1,286 @@
+{
+ "id": "dd/infoblox-ipam",
+ "name": "Infoblox Ipam (Datadog)",
+ "vendor": "InfoBlox Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/infoblox-ipam.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-host-resources-base",
+  "dd/_generic-if",
+  "dd/_generic-ucd-base"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1004"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1204"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1301"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1302"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1303"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1401"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1402"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1403"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1404"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1405"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1406"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1407"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1411"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1412"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1413"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1414"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1421"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1422"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1423"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1424"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1425"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1431"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1441"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1442"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1443"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1444"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1501"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1502"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1503"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1504"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1505"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1506"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1507"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1511"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1512"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1513"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1514"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1521"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1522"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1523"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1524"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1525"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1541"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1542"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1543"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.1.1544"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.2.2"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.2.4"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.3.4"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.7779.3.7"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "ibSystemMonitorCpuUsage",
+   "oid": "1.3.6.1.4.1.7779.3.1.1.2.1.8.1.1.0",
+   "mib": "IB-PLATFORMONE-MIB",
+   "description": "Datadog metric cpu.usage"
+  },
+  {
+   "name": "ibSystemMonitorMemUsage",
+   "oid": "1.3.6.1.4.1.7779.3.1.1.2.1.8.2.1.0",
+   "mib": "IB-PLATFORMONE-MIB",
+   "description": "Datadog metric memory.usage"
+  },
+  {
+   "name": "ibDhcpDeferredQueueSize",
+   "oid": "1.3.6.1.4.1.7779.3.1.1.4.1.4.0",
+   "mib": "IB-DHCPONE-MIB"
+  },
+  {
+   "name": "ibDDNSUpdateSuccess",
+   "oid": "1.3.6.1.4.1.7779.3.1.1.3.1.3.1.0",
+   "mib": "IB-DNSONE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "ibDDNSUpdateFailure",
+   "oid": "1.3.6.1.4.1.7779.3.1.1.3.1.3.2.0",
+   "mib": "IB-DNSONE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "ibDDNSUpdateReject",
+   "oid": "1.3.6.1.4.1.7779.3.1.1.3.1.3.3.0",
+   "mib": "IB-DNSONE-MIB",
+   "type": "counter"
+  },
+  {
+   "name": "ibDDNSUpdatePrerequisiteReject",
+   "oid": "1.3.6.1.4.1.7779.3.1.1.3.1.3.4.0",
+   "mib": "IB-DNSONE-MIB",
+   "type": "counter"
+  }
+ ],
+ "tables": [
+  {
+   "name": "ibZoneStatisticsTable",
+   "columns": [
+    {
+     "name": "ibBindZoneSuccess",
+     "oid": "1.3.6.1.4.1.7779.3.1.1.3.1.1.1.2",
+     "mib": "IB-DNSONE-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ibBindZoneReferral",
+     "oid": "1.3.6.1.4.1.7779.3.1.1.3.1.1.1.3",
+     "mib": "IB-DNSONE-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ibBindZoneNxRRset",
+     "oid": "1.3.6.1.4.1.7779.3.1.1.3.1.1.1.4",
+     "mib": "IB-DNSONE-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ibBindZoneNxDomain",
+     "oid": "1.3.6.1.4.1.7779.3.1.1.3.1.1.1.5",
+     "mib": "IB-DNSONE-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ibBindZoneRecursion",
+     "oid": "1.3.6.1.4.1.7779.3.1.1.3.1.1.1.6",
+     "mib": "IB-DNSONE-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "ibBindZoneFailure",
+     "oid": "1.3.6.1.4.1.7779.3.1.1.3.1.1.1.7",
+     "mib": "IB-DNSONE-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.7779.3.1.1.3.1.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.7779.3.1.1.3.1.1.1.2"
+  },
+  {
+   "name": "ibClusterReplicationStatusTable",
+   "columns": [
+    {
+     "name": "ibNodeQueueFromMaster",
+     "oid": "1.3.6.1.4.1.7779.3.1.1.2.1.2.1.3",
+     "mib": "IB-PLATFORMONE-MIB"
+    },
+    {
+     "name": "ibNodeQueueToMaster",
+     "oid": "1.3.6.1.4.1.7779.3.1.1.2.1.2.1.5",
+     "mib": "IB-PLATFORMONE-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.7779.3.1.1.2.1.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.7779.3.1.1.2.1.2.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 15,
+  "renamed": 0,
+  "dropped": 1,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

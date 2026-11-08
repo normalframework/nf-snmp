@@ -1,0 +1,57 @@
+{
+ "id": "dd/_fortinet-fortigate-vpn-tunnel",
+ "name": "Fortinet Fortigate VPN Tunnel (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_fortinet-fortigate-vpn-tunnel.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "fgVpnTunTable",
+   "columns": [
+    {
+     "name": "fgVpnTunEntInOctets",
+     "oid": "1.3.6.1.4.1.12356.101.12.2.2.1.18",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "fgVpnTunEntOutOctets",
+     "oid": "1.3.6.1.4.1.12356.101.12.2.2.1.19",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "fgVpnTunEntStatus",
+     "oid": "1.3.6.1.4.1.12356.101.12.2.2.1.20",
+     "mib": "FORTINET-FORTIGATE-MIB",
+     "enum": {
+      "1": "down",
+      "2": "up"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.12356.101.12.2.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.12356.101.12.2.2.1.18"
+  }
+ ],
+ "verification": {
+  "verified": 3,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

@@ -1,0 +1,380 @@
+{
+ "id": "dd/aruba-clearpass",
+ "name": "Aruba Clearpass (Datadog)",
+ "vendor": "Aruba, a Hewlett Packard Enterprise company",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/aruba-clearpass.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/aruba"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.6.1"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "cpu.usage",
+   "oid": "1.3.6.1.2.1.25.3.3.1.2.196608",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrProcessorLoad row 196608"
+  },
+  {
+   "name": "memTotalReal",
+   "oid": "1.3.6.1.4.1.2021.4.5.0",
+   "mib": "UCD-SNMP-MIB",
+   "description": "Datadog metric memory.total"
+  },
+  {
+   "name": "memAvailReal",
+   "oid": "1.3.6.1.4.1.2021.4.6.0",
+   "mib": "UCD-SNMP-MIB",
+   "description": "Datadog metric memory.free"
+  }
+ ],
+ "tables": [
+  {
+   "name": "cppmSystemTable",
+   "columns": [
+    {
+     "name": "cppmSystemMemoryTotal",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.1.1.1.12",
+     "mib": "CPPM-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "cppmSystemMemoryFree",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.1.1.1.13",
+     "mib": "CPPM-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "cppmSystemDiskSpaceTotal",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.1.1.1.14",
+     "mib": "CPPM-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "cppmSystemDiskSpaceFree",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.1.1.1.15",
+     "mib": "CPPM-MIB",
+     "type": "counter",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.1.6.1.1.1.1.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.1.6.1.1.1.1.1.12"
+  },
+  {
+   "name": "radiusServerTable",
+   "columns": [
+    {
+     "name": "radPolicyEvalTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.1.1.1",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "radAuthRequestTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.1.1.2",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "radServerCounterSuccess",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.1.1.3",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "radServerCounterFailure",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.1.1.4",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "radServerCounterCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.1.1.5",
+     "mib": "CPPM-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.1.6.1.1.1.1.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.1.6.1.1.2.1.1.1"
+  },
+  {
+   "name": "radiusServerAuthTable",
+   "columns": [
+    {
+     "name": "radAuthCounterSuccess",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.2.1.3",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "radAuthCounterFailure",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.2.1.4",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "radAuthCounterCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.2.1.5",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "radAuthCounterTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.2.1.6",
+     "mib": "CPPM-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.1.6.1.1.2.2.1.3"
+  },
+  {
+   "name": "policyServerTable",
+   "columns": [
+    {
+     "name": "psServicePolicyEvalCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.1",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psRolemappingPolicyEvalCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.2",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psPosturePolicyEvalCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.3",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psAuditPolicyEvalCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.4",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psRestrictionPolicyEvalCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.5",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psEnforcementPolicyEvalCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.6",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psServicePolicyEvalTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.7",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psRolemappingPolicyEvalTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.8",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psPosturePolicyEvalTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.9",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psAuditPolicyEvalTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.10",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psRestrictionPolicyEvalTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.11",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psEnforcementPolicyEvalTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.12",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psSessionlogTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.13",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psAuthCounterSuccess",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.14",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psAuthCounterFailure",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.15",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psAuthCounterTotal",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.16",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "dailySuccessAuthCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.17",
+     "mib": "CPPM-MIB",
+     "units": "h"
+    },
+    {
+     "name": "dailyFailedAuthCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.18",
+     "mib": "CPPM-MIB",
+     "units": "h"
+    },
+    {
+     "name": "dailyTotalAuthCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.19",
+     "mib": "CPPM-MIB",
+     "units": "h"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.1.6.1.1.1.1.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.1.6.1.1.2.3.1.1"
+  },
+  {
+   "name": "policyServerAutzTable",
+   "columns": [
+    {
+     "name": "psAutzCounterSuccess",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.5.1.3",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psAutzCounterFailure",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.5.1.4",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psAutzCounterCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.5.1.5",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "psAutzCounterTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.5.1.6",
+     "mib": "CPPM-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.5.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.1.6.1.1.2.5.1.3"
+  },
+  {
+   "name": "tacacsAuthTable",
+   "columns": [
+    {
+     "name": "tacAuthCounterSuccess",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.7.1.1",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "tacAuthCounterFailure",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.7.1.2",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "tacAuthCounterCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.7.1.3",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "tacAuthCounterTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.7.1.4",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "tacAuthCounterAuthTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.7.1.5",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "tacServicePolicyEvalTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.7.1.6",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "tacPolicyEvalTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.7.1.7",
+     "mib": "CPPM-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.1.6.1.1.1.1.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.1.6.1.1.2.7.1.1"
+  },
+  {
+   "name": "tacacsAutzTable",
+   "columns": [
+    {
+     "name": "tacAutzCounterSuccess",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.8.1.1",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "tacAutzCounterFailure",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.8.1.2",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "tacAutzCounterCount",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.8.1.3",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "tacAutzCounterTime",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.2.8.1.4",
+     "mib": "CPPM-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.1.6.1.1.1.1.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.1.6.1.1.2.8.1.1"
+  },
+  {
+   "name": "networkTrafficTable",
+   "columns": [
+    {
+     "name": "nwAppPort",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.3.1.1.3",
+     "mib": "CPPM-MIB"
+    },
+    {
+     "name": "nwTrafficTotal",
+     "oid": "1.3.6.1.4.1.14823.1.6.1.1.3.1.1.4",
+     "mib": "CPPM-MIB",
+     "type": "counter",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.1.6.1.1.3.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.1.6.1.1.3.1.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 52,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

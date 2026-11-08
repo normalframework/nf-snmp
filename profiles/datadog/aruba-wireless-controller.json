@@ -1,0 +1,417 @@
+{
+ "id": "dd/aruba-wireless-controller",
+ "name": "Aruba Wireless Controller (Datadog)",
+ "vendor": "Aruba, a Hewlett Packard Enterprise company",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/aruba-wireless-controller.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "dd/_aruba-base",
+  "_base/system",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.1"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.2"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.3"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.4"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.7"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.8"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.9"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.10"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.11"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.12"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.13"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.14"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.15"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.16"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.17"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.18"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.19"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.20"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.23"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.24"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.25"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.26"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.27"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.28"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.29"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.30"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.31"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.32"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.33"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.34"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.35"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.39"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.40"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.41"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.42"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.47"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.48"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.56"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "wlsxSysExtCpuUsedPercent",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.30.0",
+   "mib": "WLSX-SYSTEMEXT-MIB",
+   "description": "Datadog metric cpu.usage",
+   "units": "%"
+  },
+  {
+   "name": "wlsxSysExtMemoryUsedPercent",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.31.0",
+   "mib": "WLSX-SYSTEMEXT-MIB",
+   "description": "Datadog metric memory.usage",
+   "units": "%"
+  },
+  {
+   "name": "wlsxSysExtPacketLossPercent",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.2.1.32.0",
+   "mib": "WLSX-SYSTEMEXT-MIB"
+  },
+  {
+   "name": "wlsxNumOfUsers8021x",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.4.1.4.1.0",
+   "mib": "WLSX-USER-MIB"
+  },
+  {
+   "name": "wlsxNumOfUsersVPN",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.4.1.4.2.0",
+   "mib": "WLSX-USER-MIB"
+  },
+  {
+   "name": "wlsxNumOfUsersCP",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.4.1.4.3.0",
+   "mib": "WLSX-USER-MIB"
+  },
+  {
+   "name": "wlsxNumOfUsersMAC",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.4.1.4.4.0",
+   "mib": "WLSX-USER-MIB"
+  },
+  {
+   "name": "wlsxNumOfUsersStateful8021x",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.4.1.4.5.0",
+   "mib": "WLSX-USER-MIB"
+  },
+  {
+   "name": "haActiveAPs",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.20.1.2.1.1.0",
+   "mib": "WLSX-HA-MIB"
+  },
+  {
+   "name": "haStandbyAPs",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.20.1.2.1.2.0",
+   "mib": "WLSX-HA-MIB"
+  },
+  {
+   "name": "haTotalAPs",
+   "oid": "1.3.6.1.4.1.14823.2.2.1.20.1.2.1.3.0",
+   "mib": "WLSX-HA-MIB"
+  }
+ ],
+ "tables": [
+  {
+   "name": "wlsxSysXStorageTable",
+   "columns": [
+    {
+     "name": "sysXStorageSize",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.1.10.1.3",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "sysXStorageUsed",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.1.10.1.4",
+     "mib": "WLSX-SWITCH-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.2.2.1.1.1.10.1.5"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.1.1.10.1.3"
+  },
+  {
+   "name": "wlsxSwitchAccessPointTable",
+   "columns": [
+    {
+     "name": "apChannelNoise",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.3.1.13",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "apSignalToNoiseRatio",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.3.1.14",
+     "mib": "WLSX-SWITCH-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.3.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.1.3.3.1.13"
+  },
+  {
+   "name": "wlsxSwitchAccessPointStatsTable",
+   "columns": [
+    {
+     "name": "apChannelBwRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.2",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "apChannelFrameRetryRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.3",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "apChannelFrameLowSpeedRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.4",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "apChannelFrameNonUnicastRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.5",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "apChannelFrameFragmentationRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.6",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "apChannelFrameReceiveErrorRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.7",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "apBSSTxPackets",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.8",
+     "mib": "WLSX-SWITCH-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "apBSSTxBytes",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.9",
+     "mib": "WLSX-SWITCH-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "apBSSRxPackets",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.10",
+     "mib": "WLSX-SWITCH-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "apBSSRxBytes",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.11",
+     "mib": "WLSX-SWITCH-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "apBSSBwRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.12",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "apBSSFrameRetryRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.13",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "apBSSFrameLowSpeedRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.14",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "apBSSFrameNonUnicastRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.15",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "apBSSFrameFragmentationRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.16",
+     "mib": "WLSX-SWITCH-MIB"
+    },
+    {
+     "name": "apBSSFrameReceiveErrorRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.17",
+     "mib": "WLSX-SWITCH-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.1.3.5.1.2"
+  },
+  {
+   "name": "wlsxHighAvalabilityTunnelTable",
+   "columns": [
+    {
+     "name": "haActiveVapTunnels",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.20.1.5.1.1",
+     "mib": "WLSX-HA-MIB"
+    },
+    {
+     "name": "haStandbyVapTunnels",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.20.1.5.1.2",
+     "mib": "WLSX-HA-MIB"
+    },
+    {
+     "name": "haTotalVapTunnels",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.20.1.5.1.3",
+     "mib": "WLSX-HA-MIB"
+    },
+    {
+     "name": "haAPHbtTunnels",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.20.1.5.1.4",
+     "mib": "WLSX-HA-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.2.2.1.20.1.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.20.1.5.1.1"
+  },
+  {
+   "name": "wlsxWlanStationTable",
+   "columns": [
+    {
+     "name": "wlanStaTransmitRate",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.5.2.2.1.1.10",
+     "mib": "WLSX-WLAN-MIB"
+    },
+    {
+     "name": "wlanStaRSSI",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.5.2.2.1.1.14",
+     "mib": "WLSX-WLAN-MIB"
+    },
+    {
+     "name": "wlanStaUpTime",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.5.2.2.1.1.15",
+     "mib": "WLSX-WLAN-MIB"
+    },
+    {
+     "name": "wlanStaTransmitRateCode",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.5.2.2.1.1.17",
+     "mib": "WLSX-WLAN-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.2.2.1.5.2.2.1.1.12"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.5.2.2.1.1.10"
+  },
+  {
+   "name": "wlsxWlanStationStatsTable",
+   "columns": [
+    {
+     "name": "wlanStaTxBytes64",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.5.3.2.1.1.25",
+     "mib": "WLSX-WLAN-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "wlanStaRxBytes64",
+     "oid": "1.3.6.1.4.1.14823.2.2.1.5.3.2.1.1.26",
+     "mib": "WLSX-WLAN-MIB",
+     "type": "counter",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.14823.2.2.1.5.3.2.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.14823.2.2.1.5.3.2.1.1.25"
+  }
+ ],
+ "verification": {
+  "verified": 41,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

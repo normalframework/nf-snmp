@@ -1,0 +1,448 @@
+{
+ "id": "dd/dell-emc-data-domain",
+ "name": "Dell Emc Data Domain (Datadog)",
+ "vendor": "Data Domain, Inc",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/dell-emc-data-domain.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_dell",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.1"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.2"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.3"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.4"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.5"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.6"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.7"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.8"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.9"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.10"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.11"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.12"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.13"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.14"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.15"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.16"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.17"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.18"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.19"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.20"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.21"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.22"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.23"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.24"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.25"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.26"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.27"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.28"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.29"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.30"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.31"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.32"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.33"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.34"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.35"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.36"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.19746.3.1.37"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "memory.total",
+   "oid": "1.3.6.1.2.1.25.2.3.1.5.1",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageSize row 1"
+  },
+  {
+   "name": "memory.used",
+   "oid": "1.3.6.1.2.1.25.2.3.1.6.1",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageUsed row 1"
+  },
+  {
+   "name": "hrMemoryBuffers",
+   "oid": "1.3.6.1.2.1.25.2.3.1.6.6",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageUsed row 6"
+  },
+  {
+   "name": "hrCachedMemory",
+   "oid": "1.3.6.1.2.1.25.2.3.1.6.7",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageUsed row 7"
+  },
+  {
+   "name": "fileSystemVirtualSpace",
+   "oid": "1.3.6.1.4.1.19746.1.3.1.2.0",
+   "mib": "DATA-DOMAIN-MIB",
+   "description": "Datadog metric datadomain.fileSystemVirtualSpace"
+  }
+ ],
+ "tables": [
+  {
+   "name": "temperatureSensorTable",
+   "columns": [
+    {
+     "name": "tempSensorCurrentValue",
+     "oid": "1.3.6.1.4.1.19746.1.1.2.1.1.1.5",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.tempSensorCurrentValue"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.19746.1.1.2.1.1.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.19746.1.1.2.1.1.1.5"
+  },
+  {
+   "name": "fileSystemSpaceTable",
+   "columns": [
+    {
+     "name": "fileSystemSpaceSize",
+     "oid": "1.3.6.1.4.1.19746.1.3.2.1.1.4",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemSpaceSize"
+    },
+    {
+     "name": "fileSystemSpaceUsed",
+     "oid": "1.3.6.1.4.1.19746.1.3.2.1.1.5",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemSpaceUsed"
+    },
+    {
+     "name": "fileSystemSpaceAvail",
+     "oid": "1.3.6.1.4.1.19746.1.3.2.1.1.6",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemSpaceAvail"
+    },
+    {
+     "name": "fileSystemPercentUsed",
+     "oid": "1.3.6.1.4.1.19746.1.3.2.1.1.7",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemPercentUsed",
+     "units": "%"
+    },
+    {
+     "name": "fileSystemSpaceCleanable",
+     "oid": "1.3.6.1.4.1.19746.1.3.2.1.1.8",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemSpaceCleanable"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.19746.1.3.2.1.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.19746.1.3.2.1.1.4"
+  },
+  {
+   "name": "fileSystemCompressionTable",
+   "columns": [
+    {
+     "name": "fileSystemCompressionStartTime",
+     "oid": "1.3.6.1.4.1.19746.1.3.3.1.1.3",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemCompressionStartTime"
+    },
+    {
+     "name": "fileSystemCompressionEndTime",
+     "oid": "1.3.6.1.4.1.19746.1.3.3.1.1.4",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemCompressionEndTime"
+    },
+    {
+     "name": "fileSystemPreCompressionSize",
+     "oid": "1.3.6.1.4.1.19746.1.3.3.1.1.5",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemPreCompressionSize"
+    },
+    {
+     "name": "fileSystemPostCompressionSize",
+     "oid": "1.3.6.1.4.1.19746.1.3.3.1.1.6",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemPostCompressionSize"
+    },
+    {
+     "name": "fileSystemGlobalCompressionFactor",
+     "oid": "1.3.6.1.4.1.19746.1.3.3.1.1.7",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemGlobalCompressionFactor"
+    },
+    {
+     "name": "fileSystemLocalCompressionFactor",
+     "oid": "1.3.6.1.4.1.19746.1.3.3.1.1.8",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemLocalCompressionFactor"
+    },
+    {
+     "name": "fileSystemTotalCompressionFactor",
+     "oid": "1.3.6.1.4.1.19746.1.3.3.1.1.9",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemTotalCompressionFactor"
+    },
+    {
+     "name": "fileSystemReductionPercent1",
+     "oid": "1.3.6.1.4.1.19746.1.3.3.1.1.11",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.fileSystemReductionPercent1"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.19746.1.3.3.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.19746.1.3.3.1.1.3"
+  },
+  {
+   "name": "systemStatsTable",
+   "columns": [
+    {
+     "name": "cpuAvgPercentageBusy",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.2",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric cpu.usage",
+     "units": "%"
+    },
+    {
+     "name": "cpuMaxPercentageBusy",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.3",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.cpuMaxPercentageBusy",
+     "units": "%"
+    },
+    {
+     "name": "nfsOpsPerSecond",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.4",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.nfsOpsPerSecond",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "nfsIdlePercentage",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.5",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.nfsIdlePercentage",
+     "units": "%"
+    },
+    {
+     "name": "nfsProcPercentage",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.6",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.nfsProcPercentage",
+     "units": "%"
+    },
+    {
+     "name": "nfsSendPercentage",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.7",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.nfsSendPercentage",
+     "units": "%"
+    },
+    {
+     "name": "nfsReceivePercentage",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.8",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.nfsReceivePercentage",
+     "units": "%"
+    },
+    {
+     "name": "cifsOpsPerSecond",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.9",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.cifsOpsPerSecond",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "diskReadKBytesPerSecond",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.10",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.diskReadKBytesPerSecond",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "diskWriteKBytesPerSecond",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.11",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.diskWriteKBytesPerSecond",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "diskBusyPercentage",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.12",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.diskBusyPercentage",
+     "units": "%"
+    },
+    {
+     "name": "nvramReadKBytesPerSecond",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.13",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.nvramReadKBytesPerSecond",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "nvramWriteKBytesPerSecond",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.14",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.nvramWriteKBytesPerSecond",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "replInKBytesPerSecond",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.15",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.replInKBytesPerSecond",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "replOutKBytesPerSecond",
+     "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.16",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.replOutKBytesPerSecond",
+     "type": "counter",
+     "units": "s"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.19746.1.5.1.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.19746.1.5.1.1.1.2"
+  },
+  {
+   "name": "diskPerformanceTable",
+   "columns": [
+    {
+     "name": "diskSectorsRead",
+     "oid": "1.3.6.1.4.1.19746.1.6.2.1.1.3",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.diskSectorsRead",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "diskSectorsWritten",
+     "oid": "1.3.6.1.4.1.19746.1.6.2.1.1.4",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.diskSectorsWritten",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "diskTotalKBytes",
+     "oid": "1.3.6.1.4.1.19746.1.6.2.1.1.5",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.diskTotalKBytes",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "diskBusy",
+     "oid": "1.3.6.1.4.1.19746.1.6.2.1.1.6",
+     "mib": "DATA-DOMAIN-MIB",
+     "description": "Datadog metric datadomain.diskBusy",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.19746.1.6.2.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.19746.1.6.2.1.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 38,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

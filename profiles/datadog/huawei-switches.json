@@ -1,0 +1,56 @@
+{
+ "id": "dd/huawei-switches",
+ "name": "Huawei Switches (Datadog)",
+ "vendor": "HUAWEI Technology Co.,Ltd",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/huawei-switches.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/huawei"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.2011.2.23.343"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2011.2.23.606"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "hwStackReservedVlanId",
+   "oid": "1.3.6.1.4.1.2011.5.25.183.1.6.0",
+   "mib": "HUAWEI-STACK-MIB",
+   "description": "Datadog metric huawei.hwStackReservedVlanId"
+  }
+ ],
+ "tables": [
+  {
+   "name": "hwStackMemberInfoTable",
+   "columns": [
+    {
+     "name": "hwMemberStackPriority",
+     "oid": "1.3.6.1.4.1.2011.5.25.183.1.20.1.2",
+     "mib": "HUAWEI-STACK-MIB",
+     "description": "Datadog metric huawei.hwMemberStackPriority"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2011.5.25.183.1.20.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.2011.5.25.183.1.20.1.2"
+  }
+ ],
+ "verification": {
+  "verified": 2,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

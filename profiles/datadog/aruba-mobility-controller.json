@@ -1,0 +1,38 @@
+{
+ "id": "dd/aruba-mobility-controller",
+ "name": "Aruba Mobility Controller (Datadog)",
+ "vendor": "Aruba, a Hewlett Packard Enterprise company",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/aruba-mobility-controller.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "dd/_aruba-base",
+  "_base/system",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.50"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.53"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.54"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.14823.1.1.55"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

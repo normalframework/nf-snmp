@@ -1,0 +1,203 @@
+{
+ "id": "dd/brocade-fc-switch",
+ "name": "Brocade Fc Switch (Datadog)",
+ "vendor": "Brocade Communications Systems, Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/brocade-fc-switch.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/brocade"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.32"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.44"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.62"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.64"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.66"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.71"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.72"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.77"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.83"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.109"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.117"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.118"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.120"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.1.133"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.1588.2.1.3"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "cpu.usage",
+   "oid": "1.3.6.1.4.1.1588.2.1.1.1.26.1.0",
+   "mib": "RESOURCE-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "memory.usage",
+   "oid": "1.3.6.1.4.1.1588.2.1.1.1.26.6.0",
+   "mib": "RESOURCE-MIB",
+   "mibVerified": false
+  }
+ ],
+ "tables": [
+  {
+   "name": "swFCPortTable",
+   "columns": [
+    {
+     "name": "swFCPortTxFrames",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.13",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortRxFrames",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.14",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortRxC2Frames",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.15",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortRxC3Frames",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.16",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortRxLCs",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.17",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortTooManyRdys",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.19",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortNoTxCredits",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.20",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortRxEncInFrs",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.21",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortRxCrcs",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.22",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortRcTruncs",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.23",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortRxTooLongs",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.24",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortRxBadEofs",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.25",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortRxEncOutFrs",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.26",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortRxBadOs",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.27",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    },
+    {
+     "name": "swFCPortC3Discards",
+     "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.28",
+     "mib": "BROCADE-SYSTEM-MIB",
+     "type": "counter",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.36"
+   },
+   "indexOid": "1.3.6.1.4.1.1588.2.1.1.1.6.2.1.13"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 17,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

@@ -1,0 +1,157 @@
+{
+ "id": "dd/_cisco-ipsec-flow-monitor",
+ "name": "Cisco Ipsec Flow Monitor (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_cisco-ipsec-flow-monitor.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "cikeTunnelTable",
+   "columns": [
+    {
+     "name": "cikeTunLifeTime",
+     "oid": "1.3.6.1.4.1.9.9.171.1.2.3.1.15",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "units": "s"
+    },
+    {
+     "name": "cikeTunInOctets",
+     "oid": "1.3.6.1.4.1.9.9.171.1.2.3.1.19",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "cikeTunInPkts",
+     "oid": "1.3.6.1.4.1.9.9.171.1.2.3.1.20",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cikeTunInDropPkts",
+     "oid": "1.3.6.1.4.1.9.9.171.1.2.3.1.21",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cikeTunOutOctets",
+     "oid": "1.3.6.1.4.1.9.9.171.1.2.3.1.27",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "cikeTunOutPkts",
+     "oid": "1.3.6.1.4.1.9.9.171.1.2.3.1.28",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cikeTunOutDropPkts",
+     "oid": "1.3.6.1.4.1.9.9.171.1.2.3.1.29",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.171.1.2.3.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.171.1.2.3.1.15"
+  },
+  {
+   "name": "cipSecTunnelTable",
+   "columns": [
+    {
+     "name": "cipSecTunLifeTime",
+     "oid": "1.3.6.1.4.1.9.9.171.1.3.2.1.9",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "units": "s"
+    },
+    {
+     "name": "cipSecTunInOctets",
+     "oid": "1.3.6.1.4.1.9.9.171.1.3.2.1.26",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "cipSecTunHcInOctets",
+     "oid": "1.3.6.1.4.1.9.9.171.1.3.2.1.27",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "cipSecTunInPkts",
+     "oid": "1.3.6.1.4.1.9.9.171.1.3.2.1.32",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cipSecTunInAuthFails",
+     "oid": "1.3.6.1.4.1.9.9.171.1.3.2.1.36",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cipSecTunInDecryptFails",
+     "oid": "1.3.6.1.4.1.9.9.171.1.3.2.1.38",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cipSecTunOutOctets",
+     "oid": "1.3.6.1.4.1.9.9.171.1.3.2.1.39",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "cipSecTunHcOutOctets",
+     "oid": "1.3.6.1.4.1.9.9.171.1.3.2.1.40",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "cipSecTunOutPkts",
+     "oid": "1.3.6.1.4.1.9.9.171.1.3.2.1.45",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cipSecTunOutAuthFails",
+     "oid": "1.3.6.1.4.1.9.9.171.1.3.2.1.48",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cipSecTunOutEncryptFails",
+     "oid": "1.3.6.1.4.1.9.9.171.1.3.2.1.50",
+     "mib": "CISCO-IPSEC-FLOW-MONITOR-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.171.1.3.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.171.1.3.2.1.9"
+  }
+ ],
+ "verification": {
+  "verified": 18,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

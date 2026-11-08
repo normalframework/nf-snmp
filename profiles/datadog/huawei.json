@@ -1,0 +1,158 @@
+{
+ "id": "dd/huawei",
+ "name": "Huawei (Datadog)",
+ "vendor": "HUAWEI Technology Co.,Ltd",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/huawei.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_huawei"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.2011.2.*"
+  }
+ ],
+ "tables": [
+  {
+   "name": "hwEntityStateTable",
+   "columns": [
+    {
+     "name": "hwEntityTemperature",
+     "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.11",
+     "mib": "HUAWEI-ENTITY-EXTENT-MIB",
+     "description": "Datadog metric huawei.hwEntityTemperature",
+     "units": "degC"
+    },
+    {
+     "name": "hwEntityVoltage",
+     "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.13",
+     "mib": "HUAWEI-ENTITY-EXTENT-MIB",
+     "description": "Datadog metric huawei.hwEntityVoltage"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.43"
+   },
+   "indexOid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.11"
+  },
+  {
+   "name": "hwFanStatusTable",
+   "columns": [
+    {
+     "name": "hwEntityFanSpeed",
+     "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.5",
+     "mib": "HUAWEI-ENTITY-EXTENT-MIB",
+     "description": "Datadog metric huawei.hwEntityFanSpeed"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.5"
+  },
+  {
+   "name": "hwSystemPowerTable",
+   "columns": [
+    {
+     "name": "hwSystemPowerTotalPower",
+     "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.14.1.2",
+     "mib": "HUAWEI-ENTITY-EXTENT-MIB",
+     "description": "Datadog metric huawei.hwSystemPowerTotalPower"
+    },
+    {
+     "name": "hwSystemPowerUsedPower",
+     "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.14.1.3",
+     "mib": "HUAWEI-ENTITY-EXTENT-MIB",
+     "description": "Datadog metric huawei.hwSystemPowerUsedPower"
+    },
+    {
+     "name": "hwSystemPowerRemainPower",
+     "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.14.1.4",
+     "mib": "HUAWEI-ENTITY-EXTENT-MIB",
+     "description": "Datadog metric huawei.hwSystemPowerRemainPower"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.14.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.2011.5.25.31.1.1.14.1.2"
+  },
+  {
+   "name": "hwOspfv2NeighborTable",
+   "columns": [
+    {
+     "name": "hwOspfv2NbrPriority",
+     "oid": "1.3.6.1.4.1.2011.5.25.155.6.1.12",
+     "mib": "HUAWEI-OSPFV2-MIB",
+     "description": "Datadog metric huawei.hwOspfv2NbrPriority"
+    },
+    {
+     "name": "hwOspfv2NbrUpTime",
+     "oid": "1.3.6.1.4.1.2011.5.25.155.6.1.13",
+     "mib": "HUAWEI-OSPFV2-MIB",
+     "description": "Datadog metric huawei.hwOspfv2NbrUpTime",
+     "units": "s"
+    },
+    {
+     "name": "hwOspfv2NbrDeadTimeLeft",
+     "oid": "1.3.6.1.4.1.2011.5.25.155.6.1.15",
+     "mib": "HUAWEI-OSPFV2-MIB",
+     "description": "Datadog metric huawei.hwOspfv2NbrDeadTimeLeft",
+     "units": "s"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2011.5.25.155.6.1.5"
+   },
+   "indexOid": "1.3.6.1.4.1.2011.5.25.155.6.1.12"
+  },
+  {
+   "name": "hwCpuDevTable",
+   "columns": [
+    {
+     "name": "hwAvgDuty1min",
+     "oid": "1.3.6.1.4.1.2011.6.3.4.1.3",
+     "mib": "HUAWEI-DEVICE-MIB",
+     "description": "Datadog metric huawei.hwAvgDuty1min",
+     "units": "min"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.2011.6.3.4.1.3"
+  },
+  {
+   "name": "hwMemoryDevTable",
+   "columns": [
+    {
+     "name": "hwMemoryDevSize",
+     "oid": "1.3.6.1.4.1.2011.6.3.5.1.1.2",
+     "mib": "HUAWEI-DEVICE-MIB",
+     "type": "counter",
+     "description": "Datadog metric huawei.hwMemoryDevSize",
+     "units": "B"
+    },
+    {
+     "name": "hwMemoryDevFree",
+     "oid": "1.3.6.1.4.1.2011.6.3.5.1.1.3",
+     "mib": "HUAWEI-DEVICE-MIB",
+     "type": "counter",
+     "description": "Datadog metric huawei.hwMemoryDevFree",
+     "units": "B"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.2011.6.3.5.1.1.2"
+  }
+ ],
+ "verification": {
+  "verified": 12,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

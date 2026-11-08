@@ -67,8 +67,26 @@ UUIDs are deterministic (uuidv5 of `host:port`, and of `device/oid`) so delete +
   TimeTicks → seconds, per-row `unitsFrom`
 - `writable` + `setType` for SET; writes are inverse-scaled
 
-Built-in: APC Smart-UPS (PowerNet-MIB), RFC 1628 UPS-MIB, Raritan PX PDU2-MIB, Vertiv Liebert
-GP environmental, ENTITY-SENSOR-MIB, IF-MIB, generic switch.
+Built-in, hand-written and verified against independent device simulators (`sims/device`): APC
+Smart-UPS (PowerNet-MIB), RFC 1628 UPS-MIB, Raritan PX PDU2-MIB, Vertiv Liebert GP environmental,
+ENTITY-SENSOR-MIB, IF-MIB, generic switch.
+
+Plus **162 device profiles imported from Datadog** (`profiles/datadog/`, BSD-3-Clause; see NOTICE):
+UPSes and PDUs (APC, Eaton, ServerTech, Tripp Lite, CyberPower, Chatsworth, Raritan), cooling and
+environment (Vertiv/Liebert, NetBotz, Watchdog), network, server and storage gear. Import pipeline
+(`npm run profiles:import`):
+
+1. `tools/import-datadog.mjs` converts the pinned originals in `vendor/datadog-profiles/`
+   (wildcard sysObjectIDs, tables, cross-table labels, index transforms, counters) plus
+   `vendor/datadog-overrides.json` (e.g. RFC 3433 decoding for `entPhySensorValue`).
+2. `tools/fetch-mibs.mjs` pulls every referenced MIB and its imports from LibreNMS (pinned).
+3. `tools/verify-profiles.mjs` checks each symbol with net-snmp's `snmptranslate`: OID wins over a
+   wrong name (renamed), objects absent from the MIB are dropped (e.g. Datadog's BFD OIDs under
+   mib-2.223; RFC 7330 is .222), and — where Datadog leaves values raw — units, scaling ("0.1 Volt
+   DC", "tenths of degrees") and enum labels are taken from the MIB. Report:
+   `profiles/datadog/VERIFICATION.md`. SET is never enabled for imported profiles.
+
+Hand-written profiles outrank imported ones on equal matches; catch-all wildcards rank below a MIB probe.
 `test/unit/profiles-mib.test.js` checks every symbol name against the real MIB so a right-name /
 wrong-OID mistake cannot ship. `node tools/mib-oids.js <MODULE> <names…>` resolves names from `mibs/`.
 
@@ -95,6 +113,8 @@ node bin/nf-snmp.js get --json  <<< '{"target":{"host":"…"},"oids":["1.3.6.1.2
 node bin/nf-snmp.js identify --json <<< '{"target":{"host":"…"}}'
 node bin/nf-snmp.js profile-read --json <<< '{"target":{"host":"…"}}'
 sims/            synthetic devices (real net-snmp snmpd + models, quirk agent) — see sims/README.md
+sims/generated/  generated simulator: every profile served from its MIB facts (npm run profiles:smoke;
+                 report in sims/generated/REPORT.md)
 difftest/        differential tests against net-snmp, gosnmp and pysnmp — see difftest/README.md
 test/e2e/        full stack: NF + sims + this app
 ```

@@ -1,0 +1,56 @@
+{
+ "id": "dd/_checkpoint-firewall-cpu-memory",
+ "name": "Checkpoint Firewall Cpu Memory (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_checkpoint-firewall-cpu-memory.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "symbols": [
+  {
+   "name": "memTotalReal64",
+   "oid": "1.3.6.1.4.1.2620.1.6.7.4.3.0",
+   "mib": "CHECKPOINT-MIB",
+   "description": "Datadog metric memory.total",
+   "type": "counter"
+  },
+  {
+   "name": "memActiveReal64",
+   "oid": "1.3.6.1.4.1.2620.1.6.7.4.4.0",
+   "mib": "CHECKPOINT-MIB",
+   "description": "Datadog metric memory.used",
+   "type": "counter"
+  }
+ ],
+ "tables": [
+  {
+   "name": "multiProcTable",
+   "columns": [
+    {
+     "name": "multiProcUsage",
+     "oid": "1.3.6.1.4.1.2620.1.6.7.5.1.5",
+     "mib": "CHECKPOINT-MIB",
+     "description": "Datadog metric cpu.usage"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2620.1.6.7.5.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.2620.1.6.7.5.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 3,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

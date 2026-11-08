@@ -1,0 +1,91 @@
+{
+ "id": "dd/dell-os10",
+ "name": "Dell OS10 (Datadog)",
+ "vendor": "Dell Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/dell-os10.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_dell",
+  "dd/_generic-host-resources-base",
+  "dd/_generic-if",
+  "dd/_generic-ucd"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.11000.5000.100.2.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.11000.5000.100.2.1.1"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.11000.5000.100.2.1.9"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.11000.5000.100.2.1.20"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.11000.5000.100.2.1.21"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "memory.total",
+   "oid": "1.3.6.1.2.1.25.2.3.1.5.1",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageSize row 1"
+  },
+  {
+   "name": "memory.used",
+   "oid": "1.3.6.1.2.1.25.2.3.1.6.1",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageUsed row 1"
+  }
+ ],
+ "tables": [
+  {
+   "name": "hrProcessorTable",
+   "columns": [
+    {
+     "name": "hrProcessorLoad",
+     "oid": "1.3.6.1.2.1.25.3.3.1.2",
+     "mib": "HOST-RESOURCES-MIB",
+     "description": "Datadog metric cpu.usage",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.25.3.3.1.1"
+   },
+   "indexOid": "1.3.6.1.2.1.25.3.3.1.2"
+  },
+  {
+   "name": "os10CardTable",
+   "columns": [
+    {
+     "name": "os10CardTemp",
+     "oid": "1.3.6.1.4.1.674.11000.5000.100.4.1.1.4.1.5",
+     "mib": "DELLEMC-OS10-CHASSIS-MIB",
+     "description": "Datadog metric dell.os10CardTemp",
+     "units": "degC"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.11000.5000.100.4.1.1.4.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.674.11000.5000.100.4.1.1.4.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 4,
+  "renamed": 0,
+  "dropped": 1,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

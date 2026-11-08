@@ -1,0 +1,812 @@
+{
+ "id": "dd/dell-poweredge",
+ "name": "Dell Poweredge (Datadog)",
+ "vendor": "dell",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/dell-poweredge.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_dell",
+  "dd/_intel-lan-adapters",
+  "dd/_generic-tcp",
+  "dd/_generic-udp",
+  "dd/_generic-ip"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10892.1"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10892.1.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10892.6"
+  }
+ ],
+ "tables": [
+  {
+   "name": "systemStateTable",
+   "columns": [
+    {
+     "name": "systemStateChassisStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.4",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "systemStatePowerUnitStatusRedundancy",
+     "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.6",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "full",
+      "4": "degraded",
+      "5": "lost",
+      "6": "notRedundant",
+      "7": "redundancyOffline"
+     }
+    },
+    {
+     "name": "systemStatePowerSupplyStatusCombined",
+     "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.9",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "systemStateAmperageStatusCombined",
+     "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.15",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "systemStateCoolingUnitStatusRedundancy",
+     "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.18",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "full",
+      "4": "degraded",
+      "5": "lost",
+      "6": "notRedundant",
+      "7": "redundancyOffline"
+     }
+    },
+    {
+     "name": "systemStateCoolingDeviceStatusCombined",
+     "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.21",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "systemStateTemperatureStatusCombined",
+     "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.24",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "systemStateMemoryDeviceStatusCombined",
+     "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.27",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "systemStateChassisIntrusionStatusCombined",
+     "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.30",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "systemStatePowerUnitStatusCombined",
+     "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.42",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "systemStateCoolingUnitStatusCombined",
+     "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.44",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "systemStateProcessorDeviceStatusCombined",
+     "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.50",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.200.10.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.200.10.1.4"
+  },
+  {
+   "name": "operatingSystemMemoryTable",
+   "columns": [
+    {
+     "name": "operatingSystemMemoryAvailablePhysicalSize",
+     "oid": "1.3.6.1.4.1.674.10892.1.400.20.1.6",
+     "mib": "MIB-Dell-10892",
+     "units": "B"
+    },
+    {
+     "name": "operatingSystemMemoryTotalPageFileSize",
+     "oid": "1.3.6.1.4.1.674.10892.1.400.20.1.7",
+     "mib": "MIB-Dell-10892",
+     "units": "B"
+    },
+    {
+     "name": "operatingSystemMemoryAvailablePageFileSize",
+     "oid": "1.3.6.1.4.1.674.10892.1.400.20.1.8",
+     "mib": "MIB-Dell-10892",
+     "units": "B"
+    },
+    {
+     "name": "operatingSystemMemoryTotalVirtualSize",
+     "oid": "1.3.6.1.4.1.674.10892.1.400.20.1.9",
+     "mib": "MIB-Dell-10892",
+     "units": "B"
+    },
+    {
+     "name": "operatingSystemMemoryAvailableVirtualSize",
+     "oid": "1.3.6.1.4.1.674.10892.1.400.20.1.10",
+     "mib": "MIB-Dell-10892",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.400.20.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.400.20.1.6"
+  },
+  {
+   "name": "batteryTable",
+   "columns": [
+    {
+     "name": "batteryStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.600.50.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "batteryReading",
+     "oid": "1.3.6.1.4.1.674.10892.1.600.50.1.6",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "predictiveFailure",
+      "2": "failed",
+      "4": "presenceDetected"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.600.50.1.7"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.600.50.1.5"
+  },
+  {
+   "name": "pCIDeviceTable",
+   "columns": [
+    {
+     "name": "pCIDeviceStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.1100.80.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.1100.80.1.9"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.1100.80.1.5"
+  },
+  {
+   "name": "systemBIOSTable",
+   "columns": [
+    {
+     "name": "systemBIOSStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.300.50.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.300.50.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.300.50.1.5"
+  },
+  {
+   "name": "intrusionTable",
+   "columns": [
+    {
+     "name": "intrusionStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.300.70.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "intrusionReading",
+     "oid": "1.3.6.1.4.1.674.10892.1.300.70.1.6",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "chassisNotBreached",
+      "2": "chassisBreached",
+      "3": "chassisBreachedPrior",
+      "4": "chassisBreachSensorFailure",
+      "5": "driveBayOpen",
+      "6": "driveBayOpenExtended"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.300.70.1.8"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.300.70.1.5"
+  },
+  {
+   "name": "voltageProbeTable",
+   "columns": [
+    {
+     "name": "voltageProbeStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.600.20.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCriticalUpper",
+      "5": "criticalUpper",
+      "6": "nonRecoverableUpper",
+      "7": "nonCriticalLower",
+      "8": "criticalLower",
+      "9": "nonRecoverableLower",
+      "10": "failed"
+     }
+    },
+    {
+     "name": "voltageProbeReading",
+     "oid": "1.3.6.1.4.1.674.10892.1.600.20.1.6",
+     "mib": "MIB-Dell-10892"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.600.20.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.600.20.1.5"
+  },
+  {
+   "name": "amperageProbeTable",
+   "columns": [
+    {
+     "name": "amperageProbeStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.600.30.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCriticalUpper",
+      "5": "criticalUpper",
+      "6": "nonRecoverableUpper",
+      "7": "nonCriticalLower",
+      "8": "criticalLower",
+      "9": "nonRecoverableLower",
+      "10": "failed"
+     }
+    },
+    {
+     "name": "amperageProbeReading",
+     "oid": "1.3.6.1.4.1.674.10892.1.600.30.1.6",
+     "mib": "MIB-Dell-10892",
+     "scale": 0.1
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.600.30.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.600.30.1.5"
+  },
+  {
+   "name": "powerSupplyTable",
+   "columns": [
+    {
+     "name": "powerSupplyStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.600.12.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "powerSupplyOutputWatts",
+     "oid": "1.3.6.1.4.1.674.10892.1.600.12.1.6",
+     "mib": "MIB-Dell-10892",
+     "scale": 0.1,
+     "units": "W"
+    },
+    {
+     "name": "powerSupplyInputVoltage",
+     "oid": "1.3.6.1.4.1.674.10892.1.600.12.1.9",
+     "mib": "MIB-Dell-10892",
+     "units": "V"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.600.12.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.600.12.1.5"
+  },
+  {
+   "name": "powerUsageTable",
+   "columns": [
+    {
+     "name": "powerUsageStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.600.60.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.600.60.1.6"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.600.60.1.5"
+  },
+  {
+   "name": "coolingUnitTable",
+   "columns": [
+    {
+     "name": "coolingUnitRedundancyStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.700.10.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "full",
+      "4": "degraded",
+      "5": "lost",
+      "6": "notRedundant",
+      "7": "redundancyOffline"
+     }
+    },
+    {
+     "name": "coolingUnitStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.700.10.1.8",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.700.10.1.7"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.700.10.1.5"
+  },
+  {
+   "name": "coolingDeviceTable",
+   "columns": [
+    {
+     "name": "coolingDeviceStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.700.12.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCriticalUpper",
+      "5": "criticalUpper",
+      "6": "nonRecoverableUpper",
+      "7": "nonCriticalLower",
+      "8": "criticalLower",
+      "9": "nonRecoverableLower",
+      "10": "failed"
+     }
+    },
+    {
+     "name": "coolingDeviceReading",
+     "oid": "1.3.6.1.4.1.674.10892.1.700.12.1.6",
+     "mib": "MIB-Dell-10892"
+    },
+    {
+     "name": "coolingDeviceDiscreteReading",
+     "oid": "1.3.6.1.4.1.674.10892.1.700.12.1.18",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "coolingDeviceIsGood",
+      "2": "coolingDeviceIsBad"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.700.12.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.700.12.1.5"
+  },
+  {
+   "name": "temperatureProbeTable",
+   "columns": [
+    {
+     "name": "temperatureProbeStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.700.20.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCriticalUpper",
+      "5": "criticalUpper",
+      "6": "nonRecoverableUpper",
+      "7": "nonCriticalLower",
+      "8": "criticalLower",
+      "9": "nonRecoverableLower",
+      "10": "failed"
+     }
+    },
+    {
+     "name": "temperatureProbeReading",
+     "oid": "1.3.6.1.4.1.674.10892.1.700.20.1.6",
+     "mib": "MIB-Dell-10892",
+     "scale": 0.1
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.700.20.1.8"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.700.20.1.5"
+  },
+  {
+   "name": "processorDeviceTable",
+   "columns": [
+    {
+     "name": "processorDeviceStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.1100.30.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "processorDeviceThreadCount",
+     "oid": "1.3.6.1.4.1.674.10892.1.1100.30.1.19",
+     "mib": "MIB-Dell-10892"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.1100.30.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.1100.30.1.5"
+  },
+  {
+   "name": "processorDeviceStatusTable",
+   "columns": [
+    {
+     "name": "processorDeviceStatusStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.1100.32.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "processorDeviceStatusReading",
+     "oid": "1.3.6.1.4.1.674.10892.1.1100.32.1.6",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "internalError",
+      "2": "thermalTrip",
+      "32": "configurationError",
+      "128": "processorPresent",
+      "256": "processorDisabled",
+      "512": "terminatorPresent",
+      "1024": "processorThrottled"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.1100.32.1.7"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.1100.32.1.5"
+  },
+  {
+   "name": "cacheDeviceTable",
+   "columns": [
+    {
+     "name": "cacheDeviceStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.1100.40.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "cacheDeviceMaximumSize",
+     "oid": "1.3.6.1.4.1.674.10892.1.1100.40.1.12",
+     "mib": "MIB-Dell-10892",
+     "units": "B"
+    },
+    {
+     "name": "cacheDeviceCurrentSize",
+     "oid": "1.3.6.1.4.1.674.10892.1.1100.40.1.13",
+     "mib": "MIB-Dell-10892",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.1100.40.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.1100.40.1.5"
+  },
+  {
+   "name": "memoryDeviceTable",
+   "columns": [
+    {
+     "name": "memoryDeviceStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.1100.50.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    },
+    {
+     "name": "memoryDeviceFailureModes",
+     "oid": "1.3.6.1.4.1.674.10892.1.1100.50.1.20",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "eccSingleBitCorrectionWarningRate",
+      "2": "eccSingleBitCorrectionFailureRate",
+      "4": "eccMultiBitFault",
+      "8": "eccSingleBitCorrectionLoggingDisabled",
+      "16": "deviceDisabledBySpareActivation",
+      "32": "nvdimmNotReady",
+      "64": "nvdimmSaveError",
+      "128": "nvdimmRestoreErrorOrTimeout",
+      "256": "nvdimmIllegalConfiguration",
+      "512": "nvdimmNotResponding",
+      "1024": "nvdimmArmFailureOrTimeout",
+      "2048": "nvdimmsInWriteProtectMode",
+      "4096": "nvmLifetimeExpired",
+      "8192": "nvdimmPersistencyLost",
+      "16384": "nvdimmPersistencyRestored",
+      "32768": "nvmLifetimeLessThanFivePercent",
+      "65536": "aepUnCorrectableError",
+      "131072": "aepCorrectableError",
+      "262144": "aepOperatingNormally"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.1100.50.1.23"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.1100.50.1.5"
+  },
+  {
+   "name": "networkDeviceTable",
+   "columns": [
+    {
+     "name": "networkDeviceStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.1100.90.1.3",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.1100.90.1.11"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.1100.90.1.3"
+  },
+  {
+   "name": "systemSlotTable",
+   "columns": [
+    {
+     "name": "systemSlotStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.1200.10.1.5",
+     "mib": "MIB-Dell-10892",
+     "enum": {
+      "1": "other",
+      "2": "unknown",
+      "3": "ok",
+      "4": "nonCritical",
+      "5": "critical",
+      "6": "nonRecoverable",
+      "7": "absent"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.1200.10.1.8"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.1200.10.1.5"
+  },
+  {
+   "name": "fruTable",
+   "columns": [
+    {
+     "name": "fruInformationStatus",
+     "oid": "1.3.6.1.4.1.674.10892.1.2000.10.1.3",
+     "mib": "DCS3FRU-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10892.1.2000.10.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10892.1.2000.10.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 49,
+  "renamed": 1,
+  "dropped": 1,
+  "unverified": 1,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

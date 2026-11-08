@@ -1,0 +1,522 @@
+{
+ "id": "dd/_cisco-generic",
+ "name": "Cisco Generic (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_cisco-generic.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if",
+  "dd/_generic-tcp",
+  "dd/_generic-udp",
+  "dd/_generic-ospf",
+  "dd/_generic-bgp4",
+  "dd/_generic-bfd",
+  "dd/_generic-ip",
+  "dd/_cisco-cpu-memory",
+  "dd/_cisco-metadata"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "cefcFRUPowerStatusTable",
+   "columns": [
+    {
+     "name": "cefcFRUPowerAdminStatus",
+     "oid": "1.3.6.1.4.1.9.9.117.1.1.2.1.1",
+     "mib": "CISCO-ENTITY-FRU-CONTROL-MIB",
+     "enum": {
+      "1": "on",
+      "2": "off",
+      "3": "inlineAuto",
+      "4": "inlineOn",
+      "5": "powerCycle"
+     }
+    },
+    {
+     "name": "cefcFRUPowerOperStatus",
+     "oid": "1.3.6.1.4.1.9.9.117.1.1.2.1.2",
+     "mib": "CISCO-ENTITY-FRU-CONTROL-MIB",
+     "enum": {
+      "1": "offEnvOther",
+      "2": "on",
+      "3": "offAdmin",
+      "4": "offDenied",
+      "5": "offEnvPower",
+      "6": "offEnvTemp",
+      "7": "offEnvFan",
+      "8": "failed",
+      "9": "onButFanFail",
+      "10": "offCooling",
+      "11": "offConnectorRating",
+      "12": "onButInlinePowerFail"
+     }
+    },
+    {
+     "name": "cefcFRUCurrent",
+     "oid": "1.3.6.1.4.1.9.9.117.1.1.2.1.3",
+     "mib": "CISCO-ENTITY-FRU-CONTROL-MIB"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.9.9.117.1.1.2.1.1"
+  },
+  {
+   "name": "cpmCPUTotalTable",
+   "columns": [
+    {
+     "name": "cpmCPUTotalMonIntervalValue",
+     "oid": "1.3.6.1.4.1.9.9.109.1.1.1.1.10",
+     "mib": "CISCO-PROCESS-MIB",
+     "units": "%"
+    },
+    {
+     "name": "cpmCPUMemoryUsed",
+     "oid": "1.3.6.1.4.1.9.9.109.1.1.1.1.12",
+     "mib": "CISCO-PROCESS-MIB",
+     "units": "B"
+    },
+    {
+     "name": "cpmCPUMemoryFree",
+     "oid": "1.3.6.1.4.1.9.9.109.1.1.1.1.13",
+     "mib": "CISCO-PROCESS-MIB",
+     "units": "B"
+    },
+    {
+     "name": "cpmCPUTotal1minRev",
+     "oid": "1.3.6.1.4.1.9.9.109.1.1.1.1.7",
+     "mib": "CISCO-PROCESS-MIB",
+     "units": "%"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.9.9.109.1.1.1.1.10"
+  },
+  {
+   "name": "cieIfInterfaceTable",
+   "columns": [
+    {
+     "name": "cieIfResetCount",
+     "oid": "1.3.6.1.4.1.9.9.276.1.1.2.1.1",
+     "mib": "CISCO-IF-EXTENSION-MIB",
+     "type": "counter"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.31.1.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.276.1.1.2.1.1"
+  },
+  {
+   "name": "ciscoEnvMonTemperatureStatusTable",
+   "columns": [
+    {
+     "name": "ciscoEnvMonTemperatureStatusValue",
+     "oid": "1.3.6.1.4.1.9.9.13.1.3.1.3",
+     "mib": "CISCO-ENVMON-MIB",
+     "units": "degC"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.9.9.13.1.3.1.3"
+  },
+  {
+   "name": "ciscoEnvMonSupplyStatusTable",
+   "columns": [
+    {
+     "name": "ciscoEnvMonSupplyState",
+     "oid": "1.3.6.1.4.1.9.9.13.1.5.1.3",
+     "mib": "CISCO-ENVMON-MIB",
+     "enum": {
+      "1": "normal",
+      "2": "warning",
+      "3": "critical",
+      "4": "shutdown",
+      "5": "notPresent",
+      "6": "notFunctioning"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.13.1.5.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.13.1.5.1.3"
+  },
+  {
+   "name": "ciscoEnvMonFanStatusTable",
+   "columns": [
+    {
+     "name": "ciscoEnvMonFanState",
+     "oid": "1.3.6.1.4.1.9.9.13.1.4.1.3",
+     "mib": "CISCO-ENVMON-MIB",
+     "enum": {
+      "1": "normal",
+      "2": "warning",
+      "3": "critical",
+      "4": "shutdown",
+      "5": "notPresent",
+      "6": "notFunctioning"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.13.1.4.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.13.1.4.1.3"
+  },
+  {
+   "name": "cswStackPortInfoTable",
+   "columns": [
+    {
+     "name": "cswStackPortOperStatus",
+     "oid": "1.3.6.1.4.1.9.9.500.1.2.2.1.1",
+     "mib": "CISCO-STACKWISE-MIB",
+     "enum": {
+      "1": "up",
+      "2": "down",
+      "3": "forcedDown"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.31.1.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.500.1.2.2.1.1"
+  },
+  {
+   "name": "cswSwitchInfoTable",
+   "columns": [
+    {
+     "name": "cswSwitchState",
+     "oid": "1.3.6.1.4.1.9.9.500.1.2.1.1.6",
+     "mib": "CISCO-STACKWISE-MIB",
+     "enum": {
+      "1": "waiting",
+      "2": "progressing",
+      "3": "added",
+      "4": "ready",
+      "5": "sdmMismatch",
+      "6": "verMismatch",
+      "7": "featureMismatch",
+      "8": "newMasterInit",
+      "9": "provisioned",
+      "10": "invalid",
+      "11": "removed"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.47.1.1.1.1.7"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.500.1.2.1.1.6"
+  },
+  {
+   "name": "cefcFanTrayStatusTable",
+   "columns": [
+    {
+     "name": "cefcFanTrayOperStatus",
+     "oid": "1.3.6.1.4.1.9.9.117.1.4.1.1.1",
+     "mib": "CISCO-ENTITY-FRU-CONTROL-MIB",
+     "enum": {
+      "1": "unknown",
+      "2": "up",
+      "3": "down",
+      "4": "warning"
+     }
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.9.9.117.1.4.1.1.1"
+  },
+  {
+   "name": "ciscoMemoryPoolTable",
+   "columns": [
+    {
+     "name": "ciscoMemoryPoolUsed",
+     "oid": "1.3.6.1.4.1.9.9.48.1.1.1.5",
+     "mib": "CISCO-MEMORY-POOL-MIB",
+     "units": "B"
+    },
+    {
+     "name": "ciscoMemoryPoolFree",
+     "oid": "1.3.6.1.4.1.9.9.48.1.1.1.6",
+     "mib": "CISCO-MEMORY-POOL-MIB",
+     "units": "B"
+    },
+    {
+     "name": "ciscoMemoryPoolLargestFree",
+     "oid": "1.3.6.1.4.1.9.9.48.1.1.1.7",
+     "mib": "CISCO-MEMORY-POOL-MIB",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.48.1.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.48.1.1.1.5"
+  },
+  {
+   "name": "cfwConnectionStatTable",
+   "columns": [
+    {
+     "name": "cfwConnectionStatCount",
+     "oid": "1.3.6.1.4.1.9.9.147.1.2.2.2.1.4",
+     "mib": "CISCO-FIREWALL-MIB",
+     "type": "counter"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.9.9.147.1.2.2.2.1.4"
+  },
+  {
+   "name": "cfwHardwareStatusTable",
+   "columns": [
+    {
+     "name": "cfwHardwareStatusValue",
+     "oid": "1.3.6.1.4.1.9.9.147.1.2.1.1.1.3",
+     "mib": "CISCO-FIREWALL-MIB",
+     "enum": {
+      "1": "other",
+      "2": "up",
+      "3": "down",
+      "4": "error",
+      "5": "overTemp",
+      "6": "busy",
+      "7": "noMedia",
+      "8": "backup",
+      "9": "active",
+      "10": "standby"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.147.1.2.1.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.147.1.2.1.1.1.3"
+  },
+  {
+   "name": "cvsChassisTable",
+   "columns": [
+    {
+     "name": "cvsChassisUpTime",
+     "oid": "1.3.6.1.4.1.9.9.388.1.2.2.1.3",
+     "mib": "CISCO-VIRTUAL-SWITCH-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.388.1.2.2.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.388.1.2.2.1.3"
+  },
+  {
+   "name": "rttMonLatestRttOperTable",
+   "columns": [
+    {
+     "name": "rttMonLatestRttOperCompletionTime",
+     "oid": "1.3.6.1.4.1.9.9.42.1.2.10.1.1",
+     "mib": "CISCO-RTTMON-MIB"
+    },
+    {
+     "name": "rttMonLatestRttOperSense",
+     "oid": "1.3.6.1.4.1.9.9.42.1.2.10.1.2",
+     "mib": "CISCO-RTTMON-MIB",
+     "enum": {
+      "0": "other",
+      "1": "ok",
+      "2": "disconnected",
+      "3": "overThreshold",
+      "4": "timeout",
+      "5": "busy",
+      "6": "notConnected",
+      "7": "dropped",
+      "8": "sequenceError",
+      "9": "verifyError",
+      "10": "applicationSpecific",
+      "11": "dnsServerTimeout",
+      "12": "tcpConnectTimeout",
+      "13": "httpTransactionTimeout",
+      "14": "dnsQueryError",
+      "15": "httpError",
+      "16": "error",
+      "17": "mplsLspEchoTxError",
+      "18": "mplsLspUnreachable",
+      "19": "mplsLspMalformedReq",
+      "20": "mplsLspReachButNotFEC",
+      "21": "enableOk",
+      "22": "enableNoConnect",
+      "23": "enableVersionFail",
+      "24": "enableInternalError",
+      "25": "enableAbort",
+      "26": "enableFail",
+      "27": "enableAuthFail",
+      "28": "enableFormatError",
+      "29": "enablePortInUse",
+      "30": "statsRetrieveOk",
+      "31": "statsRetrieveNoConnect",
+      "32": "statsRetrieveVersionFail",
+      "33": "statsRetrieveInternalError",
+      "34": "statsRetrieveAbort",
+      "35": "statsRetrieveFail",
+      "36": "statsRetrieveAuthFail",
+      "37": "statsRetrieveFormatError",
+      "38": "statsRetrievePortInUse"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.42.1.2.2.1.6"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.42.1.2.10.1.1"
+  },
+  {
+   "name": "rttMonCtrlOperTable",
+   "columns": [
+    {
+     "name": "rttMonCtrlOperTimeoutOccurred",
+     "oid": "1.3.6.1.4.1.9.9.42.1.2.9.1.6",
+     "mib": "CISCO-RTTMON-MIB",
+     "enum": {
+      "1": "true",
+      "2": "false"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.42.1.2.2.1.6"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.42.1.2.9.1.6"
+  },
+  {
+   "name": "cbgpPeer3Table",
+   "columns": [
+    {
+     "name": "cbgpPeer3AdminStatus",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.6",
+     "mib": "CISCO-BGP4-MIB",
+     "enum": {
+      "1": "stop",
+      "2": "start"
+     }
+    },
+    {
+     "name": "cbgpPeer3NegotiatedVersion",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.7",
+     "mib": "CISCO-BGP4-MIB"
+    },
+    {
+     "name": "cbgpPeer3RemoteAs",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.13",
+     "mib": "CISCO-BGP4-MIB"
+    },
+    {
+     "name": "cbgpPeer3LocalAs",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.10",
+     "mib": "CISCO-BGP4-MIB"
+    },
+    {
+     "name": "cbgpPeer3State",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.5",
+     "mib": "CISCO-BGP4-MIB",
+     "enum": {
+      "1": "idle",
+      "2": "connect",
+      "3": "active",
+      "4": "opensent",
+      "5": "openconfirm",
+      "6": "established"
+     }
+    },
+    {
+     "name": "cbgpPeer3InUpdates",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.15",
+     "mib": "CISCO-BGP4-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cbgpPeer3OutUpdates",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.16",
+     "mib": "CISCO-BGP4-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cbgpPeer3InTotalMessages",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.17",
+     "mib": "CISCO-BGP4-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cbgpPeer3OutTotalMessages",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.18",
+     "mib": "CISCO-BGP4-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cbgpPeer3FsmEstablishedTransitions",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.20",
+     "mib": "CISCO-BGP4-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "cbgpPeer3FsmEstablishedTime",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.21",
+     "mib": "CISCO-BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "cbgpPeer3ConnectRetryInterval",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.22",
+     "mib": "CISCO-BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "cbgpPeer3HoldTime",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.23",
+     "mib": "CISCO-BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "cbgpPeer3KeepAlive",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.24",
+     "mib": "CISCO-BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "cbgpPeer3HoldTimeConfigured",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.25",
+     "mib": "CISCO-BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "cbgpPeer3KeepAliveConfigured",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.26",
+     "mib": "CISCO-BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "cbgpPeer3MinASOriginationInterval",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.27",
+     "mib": "CISCO-BGP4-MIB",
+     "units": "s"
+    },
+    {
+     "name": "cbgpPeer3MinRouteAdvertisementInterval",
+     "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.28",
+     "mib": "CISCO-BGP4-MIB",
+     "units": "s"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.187.1.2.9.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.187.1.2.9.1.6"
+  }
+ ],
+ "verification": {
+  "verified": 40,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 1,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

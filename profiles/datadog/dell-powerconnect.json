@@ -1,0 +1,319 @@
+{
+ "id": "dd/dell-powerconnect",
+ "name": "Dell Powerconnect (Datadog)",
+ "vendor": "Dell Inc.",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/dell-powerconnect.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_dell",
+  "dd/_generic-if"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3008"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3009"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3010"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3011"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3012"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3013"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3014"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3015"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3017"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3018"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3019"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3020"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3022"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3023"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3024"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3025"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3034"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3035"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3036"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3037"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3038"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3039"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3040"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3041"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3042"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3044"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3045"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3046"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3053"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3054"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3055"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3056"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3057"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3058"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3059"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3060"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3061"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3063"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3064"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3065"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3066"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3076"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3077"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3078"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3079"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3080"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3081"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3082"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3083"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3084"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3085"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3086"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3087"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3088"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3089"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3090"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3091"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3092"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3093"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3094"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3095"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3096"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3097"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3098"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3099"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3100"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3104"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3105"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3106"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3107"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3109"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3110"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3111"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3112"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3113"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3114"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.674.10895.3115"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "cpu.usage",
+   "oid": "1.3.6.1.4.1.674.10895.5000.2.6132.1.1.1.1.4.9.0",
+   "mib": "DNOS-SWITCHING-MIB",
+   "regex": "/60 Secs.*?(\\d+[.]?\\d+)/",
+   "mibVerified": false
+  },
+  {
+   "name": "memory.free",
+   "oid": "1.3.6.1.4.1.674.10895.5000.2.6132.1.1.1.1.4.1.0",
+   "mib": "DNOS-SWITCHING-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "memory.total",
+   "oid": "1.3.6.1.4.1.674.10895.5000.2.6132.1.1.1.1.4.2.0",
+   "mib": "DNOS-SWITCHING-MIB",
+   "mibVerified": false
+  }
+ ],
+ "tables": [
+  {
+   "name": "envMonFanStatusTable",
+   "columns": [
+    {
+     "name": "envMonFanSpeed",
+     "oid": "1.3.6.1.4.1.674.10895.3000.1.2.110.7.1.1.4",
+     "mib": "Dell-Vendor-MIB",
+     "description": "Datadog metric dell.envMonFanSpeed"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10895.3000.1.2.110.7.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10895.3000.1.2.110.7.1.1.4"
+  },
+  {
+   "name": "envMonSupplyStatusTable",
+   "columns": [
+    {
+     "name": "envMonSupplyCurrentPower",
+     "oid": "1.3.6.1.4.1.674.10895.3000.1.2.110.7.2.1.5",
+     "mib": "Dell-Vendor-MIB",
+     "description": "Datadog metric dell.envMonSupplyCurrentPower"
+    },
+    {
+     "name": "envMonSupplyAveragePower",
+     "oid": "1.3.6.1.4.1.674.10895.3000.1.2.110.7.2.1.6",
+     "mib": "Dell-Vendor-MIB",
+     "description": "Datadog metric dell.envMonSupplyAveragePower"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.674.10895.3000.1.2.110.7.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.674.10895.3000.1.2.110.7.2.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 3,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 3,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

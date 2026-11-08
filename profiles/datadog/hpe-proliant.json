@@ -1,0 +1,294 @@
+{
+ "id": "dd/hpe-proliant",
+ "name": "Hpe Proliant (Datadog)",
+ "vendor": "hp",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/hpe-proliant.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_hp",
+  "dd/_hp-base",
+  "dd/_hp-compaq-health",
+  "dd/_hp-driver-stats",
+  "dd/_generic-tcp",
+  "dd/_generic-udp",
+  "dd/_generic-ip"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.232.*"
+  }
+ ],
+ "tables": [
+  {
+   "name": "cpqSeCpuTable",
+   "columns": [
+    {
+     "name": "cpqSeCpuSlot",
+     "oid": "1.3.6.1.4.1.232.1.2.2.1.1.2",
+     "mib": "CPQSTDEQ-MIB"
+    },
+    {
+     "name": "cpqSeCpuSpeed",
+     "oid": "1.3.6.1.4.1.232.1.2.2.1.1.4",
+     "mib": "CPQSTDEQ-MIB",
+     "units": "Hz"
+    },
+    {
+     "name": "cpqSeCpuStatus",
+     "oid": "1.3.6.1.4.1.232.1.2.2.1.1.6",
+     "mib": "CPQSTDEQ-MIB",
+     "enum": {
+      "1": "unknown",
+      "2": "ok",
+      "3": "degraded",
+      "4": "failed",
+      "5": "disabled"
+     }
+    },
+    {
+     "name": "cpqSeCpuExtSpeed",
+     "oid": "1.3.6.1.4.1.232.1.2.2.1.1.7",
+     "mib": "CPQSTDEQ-MIB",
+     "units": "Hz"
+    },
+    {
+     "name": "cpqSeCpuCore",
+     "oid": "1.3.6.1.4.1.232.1.2.2.1.1.15",
+     "mib": "CPQSTDEQ-MIB"
+    },
+    {
+     "name": "cpqSeCPUCoreMaxThreads",
+     "oid": "1.3.6.1.4.1.232.1.2.2.1.1.25",
+     "mib": "CPQSTDEQ-MIB"
+    },
+    {
+     "name": "cpqSeCpuPrimary",
+     "oid": "1.3.6.1.4.1.232.1.2.2.1.1.27",
+     "mib": "CPQSTDEQ-MIB",
+     "enum": {
+      "1": "unknown",
+      "2": "false",
+      "3": "true"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.1.2.2.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.232.1.2.2.1.1.2"
+  },
+  {
+   "name": "cpqHoCpuUtilTable",
+   "columns": [
+    {
+     "name": "cpqHoCpuUtilMin",
+     "oid": "1.3.6.1.4.1.232.11.2.3.1.1.2",
+     "mib": "CPQHOST-MIB",
+     "units": "%"
+    },
+    {
+     "name": "cpqHoCpuUtilFiveMin",
+     "oid": "1.3.6.1.4.1.232.11.2.3.1.1.3",
+     "mib": "CPQHOST-MIB",
+     "units": "%"
+    },
+    {
+     "name": "cpqHoCpuUtilThirtyMin",
+     "oid": "1.3.6.1.4.1.232.11.2.3.1.1.4",
+     "mib": "CPQHOST-MIB",
+     "units": "%"
+    },
+    {
+     "name": "cpqHoCpuUtilHour",
+     "oid": "1.3.6.1.4.1.232.11.2.3.1.1.5",
+     "mib": "CPQHOST-MIB",
+     "units": "%"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.11.2.3.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.232.11.2.3.1.1.2"
+  },
+  {
+   "name": "cpqHoFileSysTable",
+   "columns": [
+    {
+     "name": "cpqHoFileSysSpaceTotal",
+     "oid": "1.3.6.1.4.1.232.11.2.4.1.1.3",
+     "mib": "CPQHOST-MIB",
+     "units": "B"
+    },
+    {
+     "name": "cpqHoFileSysSpaceUsed",
+     "oid": "1.3.6.1.4.1.232.11.2.4.1.1.4",
+     "mib": "CPQHOST-MIB",
+     "units": "B"
+    },
+    {
+     "name": "cpqHoFileSysPercentSpaceUsed",
+     "oid": "1.3.6.1.4.1.232.11.2.4.1.1.5",
+     "mib": "CPQHOST-MIB",
+     "units": "%"
+    },
+    {
+     "name": "cpqHoFileSysAllocUnitsTotal",
+     "oid": "1.3.6.1.4.1.232.11.2.4.1.1.6",
+     "mib": "CPQHOST-MIB"
+    },
+    {
+     "name": "cpqHoFileSysAllocUnitsUsed",
+     "oid": "1.3.6.1.4.1.232.11.2.4.1.1.7",
+     "mib": "CPQHOST-MIB"
+    },
+    {
+     "name": "cpqHoFileSysStatus",
+     "oid": "1.3.6.1.4.1.232.11.2.4.1.1.8",
+     "mib": "CPQHOST-MIB",
+     "enum": {
+      "1": "unknown",
+      "2": "ok",
+      "3": "degraded",
+      "4": "failed"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.11.2.4.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.232.11.2.4.1.1.3"
+  },
+  {
+   "name": "cpqSiMemModuleTable",
+   "columns": [
+    {
+     "name": "cpqSiMemModuleSize",
+     "oid": "1.3.6.1.4.1.232.2.2.4.5.1.3",
+     "mib": "CPQSINFO-MIB",
+     "units": "B"
+    },
+    {
+     "name": "cpqSiMemModuleType",
+     "oid": "1.3.6.1.4.1.232.2.2.4.5.1.4",
+     "mib": "CPQSINFO-MIB",
+     "enum": {
+      "1": "other",
+      "2": "board",
+      "3": "cpqSingleWidthModule",
+      "4": "cpqDoubleWidthModule",
+      "5": "simm",
+      "6": "pcmcia",
+      "7": "compaq-specific",
+      "8": "dimm",
+      "9": "smallOutlineDimm",
+      "10": "rimm",
+      "11": "srimm",
+      "12": "fb-dimm"
+     }
+    },
+    {
+     "name": "cpqSiMemModuleSpeed",
+     "oid": "1.3.6.1.4.1.232.2.2.4.5.1.5",
+     "mib": "CPQSINFO-MIB"
+    },
+    {
+     "name": "cpqSiMemModuleTechnology",
+     "oid": "1.3.6.1.4.1.232.2.2.4.5.1.6",
+     "mib": "CPQSINFO-MIB",
+     "enum": {
+      "1": "other",
+      "2": "fastPageMode",
+      "3": "edoPageMode",
+      "4": "burstEdoPageMode",
+      "5": "synchronous",
+      "6": "rdram"
+     }
+    },
+    {
+     "name": "cpqSiMemModuleECCStatus",
+     "oid": "1.3.6.1.4.1.232.2.2.4.5.1.11",
+     "mib": "CPQSINFO-MIB",
+     "enum": {
+      "1": "other",
+      "2": "ok",
+      "3": "degraded",
+      "4": "degradedModuleIndexUnknown"
+     }
+    },
+    {
+     "name": "cpqSiMemModuleFrequency",
+     "oid": "1.3.6.1.4.1.232.2.2.4.5.1.13",
+     "mib": "CPQSINFO-MIB"
+    },
+    {
+     "name": "cpqSiMemModuleCellStatus",
+     "oid": "1.3.6.1.4.1.232.2.2.4.5.1.15",
+     "mib": "CPQSINFO-MIB",
+     "enum": {
+      "1": "other",
+      "2": "ok",
+      "3": "deconfigured"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.2.2.4.5.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.232.2.2.4.5.1.3"
+  },
+  {
+   "name": "cpqNicIfPhysAdapterTable",
+   "columns": [
+    {
+     "name": "cpqNicIfPhysAdapterState",
+     "oid": "1.3.6.1.4.1.232.18.2.3.1.1.13",
+     "mib": "CPQNIC-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cpqNicIfPhysAdapterStatus",
+     "oid": "1.3.6.1.4.1.232.18.2.3.1.1.14",
+     "mib": "CPQNIC-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.18.2.3.1.1.39"
+   },
+   "indexOid": "1.3.6.1.4.1.232.18.2.3.1.1.13"
+  },
+  {
+   "name": "cpqDaCntlrTable",
+   "columns": [
+    {
+     "name": "cpqDaCntlrCondition",
+     "oid": "1.3.6.1.4.1.232.3.2.2.1.1.6",
+     "mib": "CPQIDA-MIB",
+     "enum": {
+      "1": "other",
+      "2": "ok",
+      "3": "degraded",
+      "4": "failed"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.232.3.2.2.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.232.3.2.2.1.1.6"
+  }
+ ],
+ "verification": {
+  "verified": 25,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 2,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

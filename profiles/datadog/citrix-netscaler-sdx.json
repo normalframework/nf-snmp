@@ -1,0 +1,171 @@
+{
+ "id": "dd/citrix-netscaler-sdx",
+ "name": "Citrix Netscaler Sdx (Datadog)",
+ "vendor": "Netscaler",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/citrix-netscaler-sdx.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/citrix"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.5951.6"
+  }
+ ],
+ "tables": [
+  {
+   "name": "srTable",
+   "columns": [
+    {
+     "name": "netscaler.sdx.srUtilized",
+     "oid": "1.3.6.1.4.1.5951.6.2.1000.4.1.5",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netscaler.sdx.srSize",
+     "oid": "1.3.6.1.4.1.5951.6.2.1000.4.1.6",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5951.6.2.1000.4.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.5951.6.2.1000.4.1.5"
+  },
+  {
+   "name": "interfaceTable",
+   "columns": [
+    {
+     "name": "netscaler.sdx.interfaceRxPackets",
+     "oid": "1.3.6.1.4.1.5951.6.2.1000.5.1.5",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netscaler.sdx.interfaceTxPackets",
+     "oid": "1.3.6.1.4.1.5951.6.2.1000.5.1.6",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netscaler.sdx.interfaceRxBytes",
+     "oid": "1.3.6.1.4.1.5951.6.2.1000.5.1.7",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netscaler.sdx.interfaceTxBytes",
+     "oid": "1.3.6.1.4.1.5951.6.2.1000.5.1.8",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netscaler.sdx.interfaceRxErrors",
+     "oid": "1.3.6.1.4.1.5951.6.2.1000.5.1.9",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netscaler.sdx.interfaceTxErrors",
+     "oid": "1.3.6.1.4.1.5951.6.2.1000.5.1.10",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5951.6.2.1000.5.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.5951.6.2.1000.5.1.5"
+  },
+  {
+   "name": "healthMonitoringTable",
+   "columns": [
+    {
+     "name": "netscaler.sdx.hmCurrentValue",
+     "oid": "1.3.6.1.4.1.5951.6.2.1000.6.1.7",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5951.6.2.1000.6.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.5951.6.2.1000.6.1.7"
+  },
+  {
+   "name": "xenTable",
+   "columns": [
+    {
+     "name": "cpu.usage",
+     "oid": "1.3.6.1.4.1.5951.6.3.1.1.8",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "memory.usage",
+     "oid": "1.3.6.1.4.1.5951.6.3.1.1.11",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5951.6.3.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.5951.6.3.1.1.8"
+  },
+  {
+   "name": "netscalerTable",
+   "columns": [
+    {
+     "name": "netscaler.sdx.nsNsCPUUsage",
+     "oid": "1.3.6.1.4.1.5951.6.3.2.1.33",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netscaler.sdx.nsNsMemoryUsage",
+     "oid": "1.3.6.1.4.1.5951.6.3.2.1.35",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netscaler.sdx.nsNsTx",
+     "oid": "1.3.6.1.4.1.5951.6.3.2.1.36",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netscaler.sdx.nsNsRx",
+     "oid": "1.3.6.1.4.1.5951.6.3.2.1.37",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "netscaler.sdx.nsHttpReq",
+     "oid": "1.3.6.1.4.1.5951.6.3.2.1.38",
+     "mib": "SDX-ROOT-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.5951.6.3.2.1.5"
+   },
+   "indexOid": "1.3.6.1.4.1.5951.6.3.2.1.33"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 16,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

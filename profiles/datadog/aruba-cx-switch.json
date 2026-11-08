@@ -1,0 +1,136 @@
+{
+ "id": "dd/aruba-cx-switch",
+ "name": "Aruba Cx Switch (Datadog)",
+ "vendor": "Hewlett Packard Enterprise",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/aruba-cx-switch.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/aruba"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.1"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.2"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.3"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.5"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.50"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.70"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.101"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.103"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.104"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.150"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.304"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.47196.4.1.1.1.405"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "memory.total",
+   "oid": "1.3.6.1.2.1.25.2.3.1.5.1",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageSize row 1"
+  },
+  {
+   "name": "memory.used",
+   "oid": "1.3.6.1.2.1.25.2.3.1.6.1",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrStorageUsed row 1"
+  },
+  {
+   "name": "cpu.usage",
+   "oid": "1.3.6.1.2.1.25.3.3.1.2.196608",
+   "mib": "HOST-RESOURCES-MIB",
+   "description": "hrProcessorLoad row 196608"
+  }
+ ],
+ "tables": [
+  {
+   "name": "arubaWiredTempSensorTable",
+   "columns": [
+    {
+     "name": "arubaWiredTempSensorTemperature",
+     "oid": "1.3.6.1.4.1.47196.4.1.1.3.11.3.1.1.7",
+     "mib": "ARUBAWIRED-TEMPSENSOR-MIB",
+     "units": "degC"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.47196.4.1.1.3.11.3.1.1.5"
+   },
+   "indexOid": "1.3.6.1.4.1.47196.4.1.1.3.11.3.1.1.7"
+  },
+  {
+   "name": "arubaWiredPowerSupplyTable",
+   "columns": [
+    {
+     "name": "arubaWiredPSUInstantaneousPower",
+     "oid": "1.3.6.1.4.1.47196.4.1.1.3.11.2.1.1.7",
+     "mib": "ARUBAWIRED-POWERSUPPLY-MIB",
+     "units": "W"
+    },
+    {
+     "name": "arubaWiredPSUNumberFailures",
+     "oid": "1.3.6.1.4.1.47196.4.1.1.3.11.2.1.1.9",
+     "mib": "ARUBAWIRED-POWERSUPPLY-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.47196.4.1.1.3.11.2.1.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.47196.4.1.1.3.11.2.1.1.7"
+  },
+  {
+   "name": "arubaWiredFanTable",
+   "columns": [
+    {
+     "name": "arubaWiredFanRPM",
+     "oid": "1.3.6.1.4.1.47196.4.1.1.3.11.5.1.1.8",
+     "mib": "ARUBAWIRED-FAN-MIB",
+     "units": "rpm"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.47196.4.1.1.3.11.5.1.1.4"
+   },
+   "indexOid": "1.3.6.1.4.1.47196.4.1.1.3.11.5.1.1.8"
+  }
+ ],
+ "verification": {
+  "verified": 7,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

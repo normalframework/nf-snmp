@@ -1,0 +1,170 @@
+{
+ "id": "dd/juniper-ex",
+ "name": "Juniper EX (Datadog)",
+ "vendor": "juniper-networks",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/juniper-ex.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-if",
+  "dd/_generic-ip",
+  "dd/_generic-tcp",
+  "dd/_generic-udp",
+  "dd/_generic-bgp4",
+  "dd/_generic-bfd",
+  "dd/_generic-ospf",
+  "dd/_generic-host-resources",
+  "dd/_juniper-virtualchassis",
+  "dd/_juniper-dcu",
+  "dd/_juniper-cos",
+  "dd/_juniper-firewall",
+  "dd/_juniper-junos-generic",
+  "dd/_juniper"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.30"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.30.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.31"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.31.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.32"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.32.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.33"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.33.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.43"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.43.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.44"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.44.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.59"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.59.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.63"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.63.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.74"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.74.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.76"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.76.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.92"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.92.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.102"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.102.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.103"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.103.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.104"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.104.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.109"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.109.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.131"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.131.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.132"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.132.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.151"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.151.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.156"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.156.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.165"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.165.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.169"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.169.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.2.508"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.2636.1.1.1.4.508.*"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

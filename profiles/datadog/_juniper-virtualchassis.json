@@ -1,0 +1,124 @@
+{
+ "id": "dd/_juniper-virtualchassis",
+ "name": "Juniper Virtualchassis (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_juniper-virtualchassis.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "tables": [
+  {
+   "name": "jnxVirtualChassisPortTable",
+   "columns": [
+    {
+     "name": "jnxVirtualChassisPortInPkts",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.5",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxVirtualChassisPortOutPkts",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.6",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxVirtualChassisPortInOctets",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.7",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxVirtualChassisPortOutOctets",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.8",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxVirtualChassisPortInMcasts",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.9",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxVirtualChassisPortOutMcasts",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.10",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxVirtualChassisPortCarrierTrans",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.15",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxVirtualChassisPortInCRCAlignErrors",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.16",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxVirtualChassisPortUndersizePkts",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.17",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxVirtualChassisPortCollisions",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.18",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "jnxVirtualChassisPortInPkts1secRate",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.11",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxVirtualChassisPortOutPkts1secRate",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.12",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter",
+     "units": "s"
+    },
+    {
+     "name": "jnxVirtualChassisPortInOctets1secRate",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.13",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "jnxVirtualChassisPortOutOctets1secRate",
+     "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.14",
+     "mib": "JUNIPER-VIRTUALCHASSIS-MIB",
+     "type": "counter",
+     "units": "s"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.2636.3.40.1.4.1.2.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 14,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

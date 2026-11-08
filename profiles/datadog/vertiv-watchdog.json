@@ -1,0 +1,72 @@
+{
+ "id": "dd/vertiv-watchdog",
+ "name": "Vertiv Watchdog (Datadog)",
+ "vendor": "Vertiv (formerly 'Geist Manufacturing, Inc')",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/vertiv-watchdog.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_vertiv"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.21239.5.1"
+  }
+ ],
+ "tables": [
+  {
+   "name": "internalTable",
+   "columns": [
+    {
+     "name": "vertiv.internalTemp",
+     "oid": "1.3.6.1.4.1.21239.5.1.2.1.5",
+     "mib": "VERTIV-BB-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "vertiv.internalHumidity",
+     "oid": "1.3.6.1.4.1.21239.5.1.2.1.6",
+     "mib": "VERTIV-BB-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "vertiv.internalDewPoint",
+     "oid": "1.3.6.1.4.1.21239.5.1.2.1.7",
+     "mib": "VERTIV-BB-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.21239.5.1.2.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.21239.5.1.2.1.5"
+  },
+  {
+   "name": "tempSensorTable",
+   "columns": [
+    {
+     "name": "vertiv.tempSensorTemp",
+     "oid": "1.3.6.1.4.1.21239.5.1.4.1.5",
+     "mib": "VERTIV-BB-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.21239.5.1.4.1.3"
+   },
+   "indexOid": "1.3.6.1.4.1.21239.5.1.4.1.5"
+  }
+ ],
+ "verification": {
+  "verified": 0,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 4,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

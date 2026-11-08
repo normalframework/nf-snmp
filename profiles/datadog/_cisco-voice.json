@@ -1,0 +1,253 @@
+{
+ "id": "dd/_cisco-voice",
+ "name": "Cisco Voice (Datadog)",
+ "vendor": "",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/_cisco-voice.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system"
+ ],
+ "abstract": true,
+ "symbols": [
+  {
+   "name": "ccvpLicAggMaxPortsInUse",
+   "oid": "1.3.6.1.4.1.9.9.590.1.2.12.0",
+   "mib": "CISCO-CVP-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "ccvpLicRtPortsInUse",
+   "oid": "1.3.6.1.4.1.9.9.590.1.2.2.0",
+   "mib": "CISCO-CVP-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "ccmRegisteredGateways",
+   "oid": "1.3.6.1.4.1.9.9.156.1.5.8.0",
+   "mib": "CISCO-CCM-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "ccmRegisteredPhones",
+   "oid": "1.3.6.1.4.1.9.9.156.1.5.5.0",
+   "mib": "CISCO-CCM-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "ccmRejectedPhones",
+   "oid": "1.3.6.1.4.1.9.9.156.1.5.7.0",
+   "mib": "CISCO-CCM-MIB",
+   "mibVerified": false
+  },
+  {
+   "name": "ccmUnregisteredPhones",
+   "oid": "1.3.6.1.4.1.9.9.156.1.5.6.0",
+   "mib": "CISCO-CCM-MIB",
+   "mibVerified": false
+  }
+ ],
+ "tables": [
+  {
+   "name": "hrSWRunPerfTable",
+   "columns": [
+    {
+     "name": "hrSWRunPerfMem",
+     "oid": "1.3.6.1.2.1.25.5.1.1.2",
+     "mib": "HOST-RESOURCES-MIB",
+     "units": "B"
+    },
+    {
+     "name": "hrSWRunPerfCPU",
+     "oid": "1.3.6.1.2.1.25.5.1.1.1",
+     "mib": "HOST-RESOURCES-MIB",
+     "units": "s"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.25.4.2.1.1"
+   },
+   "indexOid": "1.3.6.1.2.1.25.5.1.1.2"
+  },
+  {
+   "name": "hrSWRunTable",
+   "columns": [
+    {
+     "name": "hrSWRunStatus",
+     "oid": "1.3.6.1.2.1.25.4.2.1.7",
+     "mib": "HOST-RESOURCES-MIB",
+     "enum": {
+      "1": "running",
+      "2": "runnable",
+      "3": "notRunnable",
+      "4": "invalid"
+     }
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.25.4.2.1.1"
+   },
+   "indexOid": "1.3.6.1.2.1.25.4.2.1.7"
+  },
+  {
+   "name": "ccvpSipTable",
+   "columns": [
+    {
+     "name": "ccvpSipIntAvgLatency1",
+     "oid": "1.3.6.1.4.1.9.9.590.1.6.1.1.5",
+     "mib": "CISCO-CVP-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "ccvpSipIntAvgLatency2",
+     "oid": "1.3.6.1.4.1.9.9.590.1.6.1.1.6",
+     "mib": "CISCO-CVP-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "ccvpSipIntConnectsRcv",
+     "oid": "1.3.6.1.4.1.9.9.590.1.6.1.1.4",
+     "mib": "CISCO-CVP-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "ccvpSipIntNewCalls",
+     "oid": "1.3.6.1.4.1.9.9.590.1.6.1.1.3",
+     "mib": "CISCO-CVP-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "ccvpSipRtActiveCalls",
+     "oid": "1.3.6.1.4.1.9.9.590.1.6.1.1.1",
+     "mib": "CISCO-CVP-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "ccvpSipRtTotalCallLegs",
+     "oid": "1.3.6.1.4.1.9.9.590.1.6.1.1.2",
+     "mib": "CISCO-CVP-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.590.1.5.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.590.1.6.1.1.5"
+  },
+  {
+   "name": "cvCallVolIfTable",
+   "columns": [
+    {
+     "name": "cvCallVolMediaIncomingCalls",
+     "oid": "1.3.6.1.4.1.9.9.63.1.3.8.5.1.1",
+     "mib": "CISCO-VOICE-DIAL-CONTROL-MIB"
+    },
+    {
+     "name": "cvCallVolMediaOutgoingCalls",
+     "oid": "1.3.6.1.4.1.9.9.63.1.3.8.5.1.2",
+     "mib": "CISCO-VOICE-DIAL-CONTROL-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.2.1.31.1.1.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.63.1.3.8.5.1.1"
+  },
+  {
+   "name": "cvCallVolPeerTable",
+   "columns": [
+    {
+     "name": "cvCallVolPeerIncomingCalls",
+     "oid": "1.3.6.1.4.1.9.9.63.1.3.8.4.1.1",
+     "mib": "CISCO-VOICE-DIAL-CONTROL-MIB"
+    },
+    {
+     "name": "cvCallVolPeerOutgoingCalls",
+     "oid": "1.3.6.1.4.1.9.9.63.1.3.8.4.1.2",
+     "mib": "CISCO-VOICE-DIAL-CONTROL-MIB"
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.9.9.63.1.3.8.4.1.1"
+  },
+  {
+   "name": "dialCtlPeerStatsTable",
+   "columns": [
+    {
+     "name": "dialCtlPeerStatsAcceptCalls",
+     "oid": "1.3.6.1.2.1.10.21.1.2.2.1.5",
+     "mib": "DIAL-CONTROL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "dialCtlPeerStatsFailCalls",
+     "oid": "1.3.6.1.2.1.10.21.1.2.2.1.4",
+     "mib": "DIAL-CONTROL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "dialCtlPeerStatsRefuseCalls",
+     "oid": "1.3.6.1.2.1.10.21.1.2.2.1.6",
+     "mib": "DIAL-CONTROL-MIB",
+     "type": "counter"
+    },
+    {
+     "name": "dialCtlPeerStatsSuccessCalls",
+     "oid": "1.3.6.1.2.1.10.21.1.2.2.1.3",
+     "mib": "DIAL-CONTROL-MIB",
+     "type": "counter"
+    }
+   ],
+   "indexOid": "1.3.6.1.2.1.10.21.1.2.2.1.5"
+  },
+  {
+   "name": "cccaPimTable",
+   "columns": [
+    {
+     "name": "cccaPimStatus",
+     "oid": "1.3.6.1.4.1.9.9.473.1.3.6.1.4",
+     "mib": "CISCO-CONTACT-CENTER-APPS-MIB",
+     "mibVerified": false
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.9.9.473.1.3.6.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.9.9.473.1.3.6.1.4"
+  },
+  {
+   "name": "cccaRouterTable",
+   "columns": [
+    {
+     "name": "cccaRouterAgentsLoggedOn",
+     "oid": "1.3.6.1.4.1.9.9.473.1.3.1.1.3",
+     "mib": "CISCO-CONTACT-CENTER-APPS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cccaRouterCallsInProgress",
+     "oid": "1.3.6.1.4.1.9.9.473.1.3.1.1.4",
+     "mib": "CISCO-CONTACT-CENTER-APPS-MIB",
+     "mibVerified": false
+    },
+    {
+     "name": "cccaRouterCallsInQueue",
+     "oid": "1.3.6.1.4.1.9.9.473.1.3.1.1.8",
+     "mib": "CISCO-CONTACT-CENTER-APPS-MIB",
+     "mibVerified": false
+    }
+   ],
+   "indexOid": "1.3.6.1.4.1.9.9.473.1.3.1.1.3"
+  }
+ ],
+ "verification": {
+  "verified": 11,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 16,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}

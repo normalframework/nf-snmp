@@ -1,0 +1,199 @@
+{
+ "id": "dd/isilon",
+ "name": "Isilon (Datadog)",
+ "vendor": "dell",
+ "source": {
+  "from": "datadog/integrations-core",
+  "file": "snmp/datadog_checks/snmp/data/default_profiles/isilon.yaml",
+  "commit": "a9b9e42b7e484861ecbd1f5919da7c52a694b74d",
+  "license": "BSD-3-Clause"
+ },
+ "priority": -5,
+ "extends": [
+  "_base/system",
+  "dd/_generic-ip",
+  "dd/_generic-tcp",
+  "dd/_generic-udp"
+ ],
+ "match": [
+  {
+   "sysObjectID": "1.3.6.1.4.1.12124.*"
+  },
+  {
+   "sysObjectID": "1.3.6.1.4.1.12325.1.1.2.1.1"
+  }
+ ],
+ "symbols": [
+  {
+   "name": "clusterHealth",
+   "oid": "1.3.6.1.4.1.12124.1.1.2.0",
+   "mib": "ISILON-MIB",
+   "enum": {
+    "0": "ok",
+    "1": "attn",
+    "2": "down",
+    "3": "invalid"
+   }
+  },
+  {
+   "name": "clusterIfsInBytes",
+   "oid": "1.3.6.1.4.1.12124.1.2.1.1.0",
+   "mib": "ISILON-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "clusterIfsOutBytes",
+   "oid": "1.3.6.1.4.1.12124.1.2.1.3.0",
+   "mib": "ISILON-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "ifsUsedBytes",
+   "oid": "1.3.6.1.4.1.12124.1.3.2.0",
+   "mib": "ISILON-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "ifsTotalBytes",
+   "oid": "1.3.6.1.4.1.12124.1.3.1.0",
+   "mib": "ISILON-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "nodeHealth",
+   "oid": "1.3.6.1.4.1.12124.2.1.2.0",
+   "mib": "ISILON-MIB",
+   "enum": {
+    "0": "ok",
+    "1": "attn",
+    "2": "down",
+    "3": "invalid"
+   }
+  },
+  {
+   "name": "nodeIfsInBytes",
+   "oid": "1.3.6.1.4.1.12124.2.2.1.1.0",
+   "mib": "ISILON-MIB",
+   "type": "counter",
+   "units": "B"
+  },
+  {
+   "name": "nodeIfsOutBytes",
+   "oid": "1.3.6.1.4.1.12124.2.2.1.3.0",
+   "mib": "ISILON-MIB",
+   "type": "counter",
+   "units": "B"
+  }
+ ],
+ "tables": [
+  {
+   "name": "fanTable",
+   "columns": [
+    {
+     "name": "fanSpeed",
+     "oid": "1.3.6.1.4.1.12124.2.53.1.4",
+     "mib": "ISILON-MIB",
+     "units": "min"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.12124.2.53.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.12124.2.53.1.4"
+  },
+  {
+   "name": "diskTable",
+   "columns": [
+    {
+     "name": "diskSizeBytes",
+     "oid": "1.3.6.1.4.1.12124.2.52.1.9",
+     "mib": "ISILON-MIB",
+     "type": "counter",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.12124.2.52.1.5"
+   },
+   "indexOid": "1.3.6.1.4.1.12124.2.52.1.9"
+  },
+  {
+   "name": "nodeProtocolPerfTable",
+   "columns": [
+    {
+     "name": "protocolOpsPerSecond",
+     "oid": "1.3.6.1.4.1.12124.2.2.10.1.3",
+     "mib": "ISILON-MIB",
+     "units": "s"
+    },
+    {
+     "name": "latencyMin",
+     "oid": "1.3.6.1.4.1.12124.2.2.10.1.14",
+     "mib": "ISILON-MIB"
+    },
+    {
+     "name": "latencyMax",
+     "oid": "1.3.6.1.4.1.12124.2.2.10.1.15",
+     "mib": "ISILON-MIB"
+    },
+    {
+     "name": "latencyAverage",
+     "oid": "1.3.6.1.4.1.12124.2.2.10.1.16",
+     "mib": "ISILON-MIB"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.12124.2.2.10.1.1"
+   },
+   "indexOid": "1.3.6.1.4.1.12124.2.2.10.1.3"
+  },
+  {
+   "name": "quotaTable",
+   "columns": [
+    {
+     "name": "quotaHardThreshold",
+     "oid": "1.3.6.1.4.1.12124.1.12.1.1.7",
+     "mib": "ISILON-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "quotaSoftThreshold",
+     "oid": "1.3.6.1.4.1.12124.1.12.1.1.9",
+     "mib": "ISILON-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "quotaUsage",
+     "oid": "1.3.6.1.4.1.12124.1.12.1.1.13",
+     "mib": "ISILON-MIB",
+     "type": "counter",
+     "units": "B"
+    },
+    {
+     "name": "quotaAdvisoryThreshold",
+     "oid": "1.3.6.1.4.1.12124.1.12.1.1.11",
+     "mib": "ISILON-MIB",
+     "type": "counter",
+     "units": "B"
+    }
+   ],
+   "label": {
+    "oid": "1.3.6.1.4.1.12124.1.12.1.1.2"
+   },
+   "indexOid": "1.3.6.1.4.1.12124.1.12.1.1.7"
+  }
+ ],
+ "verification": {
+  "verified": 18,
+  "renamed": 0,
+  "dropped": 0,
+  "unverified": 0,
+  "tool": "tools/verify-profiles.mjs (net-snmp snmptranslate)"
+ }
+}
