@@ -1,0 +1,8 @@
+{
+  "id": "_base/system",
+  "abstract": true,
+  "mib": "SNMPv2-MIB",
+  "symbols": [
+    {"name": "sysUpTime", "oid": "1.3.6.1.2.1.1.3.0", "units": "s", "description": "Agent uptime (TimeTicks, decoded to seconds)"}
+  ]
+}

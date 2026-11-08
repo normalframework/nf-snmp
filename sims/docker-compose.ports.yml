@@ -1,0 +1,17 @@
+# Optional override: expose the sims on the host loopback.
+#   docker compose -f sims/docker-compose.yml -f sims/docker-compose.ports.yml up -d
+# HTTP truth API: 127.0.0.1:180NN -> :8000, SNMP: 127.0.0.1:161NN/udp -> :161
+# (NN = last octet of the sim's static IP).
+services:
+  sim-apc-ups:
+    ports: ["127.0.0.1:18011:8000", "127.0.0.1:16111:161/udp"]
+  sim-ups-rfc1628:
+    ports: ["127.0.0.1:18012:8000", "127.0.0.1:16112:161/udp"]
+  sim-raritan-pdu:
+    ports: ["127.0.0.1:18013:8000", "127.0.0.1:16113:161/udp"]
+  sim-liebert-crac:
+    ports: ["127.0.0.1:18014:8000", "127.0.0.1:16114:161/udp"]
+  sim-switch:
+    ports: ["127.0.0.1:18015:8000", "127.0.0.1:16115:161/udp"]
+  sim-quirky:
+    ports: ["127.0.0.1:18016:8000", "127.0.0.1:16116:161/udp"]

@@ -1,0 +1,15 @@
+{
+  "id": "_generic/switch",
+  "name": "Network switch (IF-MIB + ENTITY-SENSOR-MIB)",
+  "vendor": "Generic",
+  "priority": 2,
+  "extends": [
+    "_generic/if-mib",
+    "_generic/entity-sensor"
+  ],
+  "match": [
+    {
+      "sysObjectID": "1.3.6.1.4.1.9.1"
+    }
+  ]
+}

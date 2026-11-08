@@ -1,0 +1,19 @@
+# Throwaway NF + spike SNMP agent to verify the plugin path (HTTP driver layer, polled) on nf-full.
+name: nfsnmp-spike
+services:
+  redis:
+    image: normalframework.azurecr.io/normalframework/redis:${NF_TAG:-3.10}
+    command: redis-server /etc/redis.conf
+  nf:
+    image: normalframework.azurecr.io/normalframework/nf-full:${NF_TAG:-3.10}
+    depends_on: [redis]
+    environment:
+      REDIS_ADDRESS: redis:6379
+      PORT: "8080"
+      S6_CMD_WAIT_FOR_SERVICES_MAXTIME: "0"
+    ports: ["18080:8080"]
+  agent:
+    image: node:22-slim
+    working_dir: /a
+    command: sh -c "npm i --silent --no-audit --no-fund net-snmp@3.29.2 >/dev/null && node spike-agent.js"
+    volumes: ["./spike-agent.js:/a/spike-agent.js:ro"]

@@ -1,0 +1,29 @@
+{
+  "id": "vertiv/liebert-gp-env",
+  "name": "Vertiv Liebert cooling unit (LIEBERT-GP-ENVIRONMENTAL-MIB)",
+  "vendor": "Vertiv",
+  "mib": "LIEBERT-GP-ENVIRONMENTAL-MIB",
+  "extends": ["_base/system"],
+  "equipType": "crac",
+  "match": [{"sysObjectID": "1.3.6.1.4.1.476.1.42"}],
+  "symbols": [
+    {"name": "lgpEnvTemperatureSettingDegC", "oid": "1.3.6.1.4.1.476.1.42.3.4.1.3.1.0", "units": "degC", "writable": true, "setType": "Integer", "class": "zone-air-temp-sp"},
+    {"name": "lgpEnvTemperatureToleranceDegC", "oid": "1.3.6.1.4.1.476.1.42.3.4.1.3.2.0", "scale": 0.1, "units": "degC"},
+    {"name": "lgpEnvHumiditySettingRel", "oid": "1.3.6.1.4.1.476.1.42.3.4.2.2.1.0", "units": "%RH", "writable": true, "setType": "Integer"},
+    {"name": "lgpEnvStateSystem", "oid": "1.3.6.1.4.1.476.1.42.3.4.3.1.0", "enum": {"1": "on", "2": "off", "3": "standby"}},
+    {"name": "lgpEnvStateCooling", "oid": "1.3.6.1.4.1.476.1.42.3.4.3.2.0", "enum": {"1": "on", "2": "off"}},
+    {"name": "lgpEnvStateHeating", "oid": "1.3.6.1.4.1.476.1.42.3.4.3.3.0", "enum": {"1": "on", "2": "off"}},
+    {"name": "lgpEnvStateHumidifying", "oid": "1.3.6.1.4.1.476.1.42.3.4.3.4.0", "enum": {"1": "on", "2": "off"}},
+    {"name": "lgpEnvStateDehumidifying", "oid": "1.3.6.1.4.1.476.1.42.3.4.3.5.0", "enum": {"1": "on", "2": "off"}},
+    {"name": "lgpEnvStateFan", "oid": "1.3.6.1.4.1.476.1.42.3.4.3.7.0", "enum": {"1": "on", "2": "off"}},
+    {"name": "lgpEnvStateCoolingCapacity", "oid": "1.3.6.1.4.1.476.1.42.3.4.3.9.0", "units": "%"}
+  ],
+  "tables": [
+    {"name": "temperature", "indexOid": "1.3.6.1.4.1.476.1.42.3.4.1.3.3.1.3", "columns": [
+      {"name": "lgpEnvTemperatureMeasurementDegC", "oid": "1.3.6.1.4.1.476.1.42.3.4.1.3.3.1.3", "units": "degC"}
+    ]},
+    {"name": "humidity", "indexOid": "1.3.6.1.4.1.476.1.42.3.4.2.2.3.1.3", "columns": [
+      {"name": "lgpEnvHumidityMeasurementRel", "oid": "1.3.6.1.4.1.476.1.42.3.4.2.2.3.1.3", "units": "%RH"}
+    ]}
+  ]
+}

@@ -1,0 +1,36 @@
+{
+ "_doc": "Known, documented divergences of the reference clients. Fields (all optional; strings are anchored regexes): impl target case cred op kind; oid (prefix); baseType otherType baseError otherError. Every entry needs a reason. Do NOT allowlist 'ours' bugs here unless the behaviour is a deliberate, documented choice.",
+ "entries": [
+  {
+   "id": "gosnmp-empty-opaque-decode",
+   "impl": "gosnmp",
+   "target": "edge-agent",
+   "kind": "error",
+   "otherError": "decodeError",
+   "reason": "gosnmp v1.47.0 parseOpaque() returns ErrZeroByteBuffer for a zero-length Opaque (edge-agent 1.3.6.1.4.1.99997.1.19.0), so the whole response PDU fails to decode. Upstream bug; net-snmp and pysnmp return Opaque \"\"."
+  },
+  {
+   "id": "gosnmp-empty-opaque-lost-varbinds",
+   "impl": "gosnmp",
+   "target": "edge-agent",
+   "kind": "missing",
+   "oid": "1.3.6.1.4.1.99997",
+   "reason": "Consequence of gosnmp-empty-opaque-decode: every varbind in (and after) the undecodable response is missing."
+  },
+  {
+   "id": "pysnmp-late-response",
+   "impl": "pysnmp",
+   "case": "get-late-response",
+   "kind": "error|missing",
+   "reason": "pysnmp 7.1 retransmits with a new message handle and drops the pending state of the first transmission, so a reply to the original request that arrives during the retry window is discarded -> timeout. net-snmp and gosnmp accept it."
+  },
+  {
+   "id": "ours-bulkwalk-toobig-adaptive",
+   "impl": "ours",
+   "kind": "extra|error",
+   "reason": "Deliberate (docs/internals.md \u00a71): on tooBig during a GETBULK walk, nf-snmp halves max-repetitions and continues from the same OID instead of stopping, so it completes walks of agents with small PDU limits. The references stop with the tooBig error.",
+   "target": "sim-quirky\\+tooBigAboveN",
+   "case": "enterprise-bulk/.*"
+  }
+ ]
+}

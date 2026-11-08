@@ -1,0 +1,9 @@
+{
+  "name": "engine",
+  "entryPoint": "/hooks/engine.js",
+  "points": { "noPoints": true },
+  "schedule": { "rrule": "RRULE:FREQ=MINUTELY;INTERVAL=1" },
+  "mode": "MODE_SCHEDULED",
+  "invokeTimeout": "60s",
+  "runtimeConfig": { "memoryLimit": 512, "minInstances": 1, "maxInstances": 1 }
+}

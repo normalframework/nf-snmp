@@ -1,0 +1,24 @@
+{
+  "name": "nf-snmp",
+  "version": "0.1.0",
+  "description": "SNMP driver plugin for Normal Framework: device profiles, discovery, polling via NF's poll service, traps and SET.",
+  "type": "commonjs",
+  "main": "lib/engine/index.js",
+  "bin": { "nf-snmp": "bin/nf-snmp.js" },
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "vitest run test/unit",
+    "test:e2e": "vitest run test/e2e",
+    "check:syntax": "find lib hooks bin tools -name '*.js' -print0 | xargs -0 -n1 node --check",
+    "validate": "node bin/nf-snmp.js validate-profiles",
+    "install:nf": "node tools/install.mjs"
+  },
+  "dependencies": {
+    "net-snmp": "3.29.2"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  },
+  "license": "GPL-3.0-or-later",
+  "private": true
+}

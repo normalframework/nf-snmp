@@ -1,0 +1,43 @@
+{
+  "name": "SNMP",
+  "description": "SNMP driver for Normal Framework: poll and trend UPS, PDU, cooling and network devices with built-in device profiles, discovery, traps and SET. GPL-3.0-or-later.",
+  "runtime": "RUNTIME_NODE_JS",
+  "minNfVersion": "3.10.9-0",
+  "layer": {
+    "name": "snmp",
+    "description": "SNMP devices and points (nf-snmp)",
+    "indexed": true,
+    "structuredComponents": [
+      { "name": "device", "type": "TAG" },
+      { "name": "device_uuid", "type": "TAG" },
+      { "name": "device_address", "type": "TAG" },
+      { "name": "profile", "type": "TAG" },
+      { "name": "oid", "type": "TAG" },
+      { "name": "symbol", "type": "TEXT" },
+      { "name": "class_hint", "type": "TAG" },
+      { "name": "vendor", "type": "TAG" }
+    ],
+    "defaultDisplayAttrs": ["device", "symbol", "oid"],
+    "defaultGroupingAttrs": ["device"],
+    "driver": {
+      "url": {
+        "read": "http://127.0.0.1:47081/driver/read",
+        "write": "http://127.0.0.1:47081/driver/write",
+        "status": "http://127.0.0.1:47081/driver/status"
+      },
+      "polled": true,
+      "concurrency": 4
+    }
+  },
+  "auth": {
+    "apiKey": {
+      "scopes": ["normalgw.hpl.v1.readonly", "normalgw.hpl.v1.readwrite", "normalgw.hpl.v2.readonly", "normalgw.hpl.v2.readwrite", "normalgw.automation.v1.readonly", "normalgw.automation.v1.readwrite"]
+    }
+  },
+  "options": [
+    { "name": "enabled", "description": "Run the SNMP engine.", "optionType": "TYPE_BOOLEAN", "defaultValue": { "boolean": true } },
+    { "name": "logLevel", "description": "Engine log level", "optionType": "TYPE_STRING", "choices": [{ "string": "debug" }, { "string": "info" }, { "string": "warn" }, { "string": "error" }], "defaultValue": { "string": "info" } },
+    { "name": "adminPort", "description": "Localhost port of the engine's driver/admin API. Must match the port in the layer driver URL in app.json (47081); change both together.", "optionType": "TYPE_SIGNED", "defaultValue": { "signed": 47081 }, "validators": [{ "signedValidator": { "minValue": 1024, "maxValue": 65535 } }] },
+    { "name": "trapPort", "description": "UDP port for SNMP traps/informs (162 needs privileges or a port mapping; 0 disables the receiver).", "optionType": "TYPE_SIGNED", "defaultValue": { "signed": 162 }, "validators": [{ "signedValidator": { "minValue": 0, "maxValue": 65535 } }] }
+  ]
+}

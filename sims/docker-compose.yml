@@ -1,0 +1,113 @@
+# nf-snmp synthetic SNMP device simulators.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+#   docker compose -f sims/docker-compose.yml up -d --build --wait
+#   docker run --rm --network snmpnet nfsnmp-sim-device:latest \
+#       snmpget -v2c -c public 172.31.161.11 1.3.6.1.2.1.1.2.0
+#
+# Nothing is published on the host; add docker-compose.ports.yml for
+# 127.0.0.1 port mappings. Static IPs live in 172.31.161.10-.29; addresses
+# .128-.254 are left for dynamically attached clients (docker run --network snmpnet).
+name: nfsnmp-sims
+
+x-device: &device
+  image: nfsnmp-sim-device:latest
+  build:
+    context: ./device
+  restart: unless-stopped
+  environment: &device-env
+    SIM_STEP_MS: ${SIM_STEP_MS:-10000}
+  healthcheck:
+    test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2)"]
+    interval: 5s
+    timeout: 3s
+    retries: 10
+    start_period: 2s
+
+services:
+  sim-apc-ups:
+    <<: *device
+    container_name: nfsnmp-sim-apc-ups
+    hostname: sim-apc-ups
+    environment:
+      <<: *device-env
+      SIM_MODEL: apc-ups
+    networks:
+      snmpnet:
+        ipv4_address: 172.31.161.11
+
+  sim-ups-rfc1628:
+    <<: *device
+    container_name: nfsnmp-sim-ups-rfc1628
+    hostname: sim-ups-rfc1628
+    environment:
+      <<: *device-env
+      SIM_MODEL: ups-rfc1628
+    networks:
+      snmpnet:
+        ipv4_address: 172.31.161.12
+
+  sim-raritan-pdu:
+    <<: *device
+    container_name: nfsnmp-sim-raritan-pdu
+    hostname: sim-raritan-pdu
+    environment:
+      <<: *device-env
+      SIM_MODEL: raritan-pdu
+    networks:
+      snmpnet:
+        ipv4_address: 172.31.161.13
+
+  sim-liebert-crac:
+    <<: *device
+    container_name: nfsnmp-sim-liebert-crac
+    hostname: sim-liebert-crac
+    environment:
+      <<: *device-env
+      SIM_MODEL: liebert-crac
+    networks:
+      snmpnet:
+        ipv4_address: 172.31.161.14
+
+  sim-switch:
+    <<: *device
+    container_name: nfsnmp-sim-switch
+    hostname: sim-switch
+    environment:
+      <<: *device-env
+      SIM_MODEL: switch
+    networks:
+      snmpnet:
+        ipv4_address: 172.31.161.15
+
+  sim-quirky:
+    image: nfsnmp-sim-quirky:latest
+    build:
+      context: .
+      dockerfile: quirky/Dockerfile
+    container_name: nfsnmp-sim-quirky
+    hostname: sim-quirky
+    restart: unless-stopped
+    environment:
+      SIM_STEP_MS: ${SIM_STEP_MS:-10000}
+      # e.g. '{"delayMs": 50, "noSuchInstanceGaps": true}' or 'delayMs=50,noSuchInstanceGaps'
+      SIM_FAULTS: ${SIM_QUIRKY_FAULTS:-}
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 2s
+    networks:
+      snmpnet:
+        ipv4_address: 172.31.161.16
+
+networks:
+  snmpnet:
+    name: snmpnet
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.161.0/24
+          ip_range: 172.31.161.128/25
+          gateway: 172.31.161.1

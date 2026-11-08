@@ -1,0 +1,8 @@
+node_modules/
+coverage/
+*.log
+.DS_Store
+# runtime state written on the NF site (devices incl. credentials, points, traps, user profiles)
+local/*
+!local/.gitkeep
+difftest/out/

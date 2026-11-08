@@ -1,0 +1,73 @@
+{
+  "id": "_generic/entity-sensor",
+  "name": "Hardware sensors (ENTITY-SENSOR-MIB, RFC 3433)",
+  "vendor": "Generic",
+  "priority": 1,
+  "mib": "ENTITY-SENSOR-MIB",
+  "abstract": false,
+  "extends": [
+    "_base/system"
+  ],
+  "match": [
+    {
+      "probe": "1.3.6.1.2.1.99.1.1.1.4"
+    }
+  ],
+  "tables": [
+    {
+      "name": "entPhySensor",
+      "indexOid": "1.3.6.1.2.1.99.1.1.1.4",
+      "label": {
+        "oid": "1.3.6.1.2.1.47.1.1.1.1.7"
+      },
+      "columns": [
+        {
+          "name": "entPhySensorValue",
+          "oid": "1.3.6.1.2.1.99.1.1.1.4",
+          "entitySensor": {
+            "scaleOid": "1.3.6.1.2.1.99.1.1.1.2",
+            "precisionOid": "1.3.6.1.2.1.99.1.1.1.3",
+            "statusOid": "1.3.6.1.2.1.99.1.1.1.5"
+          },
+          "unitsFrom": {
+            "oid": "1.3.6.1.2.1.99.1.1.1.1",
+            "map": {
+              "1": {},
+              "2": {},
+              "3": {
+                "units": "V"
+              },
+              "4": {
+                "units": "V"
+              },
+              "5": {
+                "units": "A"
+              },
+              "6": {
+                "units": "W"
+              },
+              "7": {
+                "units": "Hz"
+              },
+              "8": {
+                "units": "degC"
+              },
+              "9": {
+                "units": "%RH"
+              },
+              "10": {
+                "units": "rpm"
+              },
+              "11": {
+                "units": "m3/min"
+              },
+              "12": {
+                "units": ""
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

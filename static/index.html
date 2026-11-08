@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SNMP</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2320144C'/%3E%3Cpath d='M8 22V10M14 22V14M20 22V8M26 22V17' stroke='%23ABDFE7' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">SNMP</div>
+      <nav id="tabs">
+        <button data-tab="devices" class="active">Devices</button>
+        <button data-tab="discover">Discover</button>
+        <button data-tab="explore">Explore</button>
+        <button data-tab="traps">Traps</button>
+        <button data-tab="profiles">Profiles</button>
+      </nav>
+      <div id="engine" class="pill muted">…</div>
+    </header>
+    <main id="view"></main>
+    <div id="toast" class="toast hidden"></div>
+    <script type="module" src="./js/main.mjs"></script>
+  </body>
+</html>

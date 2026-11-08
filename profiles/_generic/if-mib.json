@@ -1,0 +1,17 @@
+{
+  "id": "_generic/if-mib",
+  "name": "Network interfaces (IF-MIB)",
+  "vendor": "Generic",
+  "mib": "IF-MIB",
+  "extends": ["_base/system"],
+  "match": [{"probe": "1.3.6.1.2.1.31.1.1.1.6"}],
+  "tables": [
+    {"name": "interface", "indexOid": "1.3.6.1.2.1.2.2.1.1", "maxRows": 64,
+     "label": {"oid": "1.3.6.1.2.1.31.1.1.1.1"},
+     "columns": [
+       {"name": "ifOperStatus", "oid": "1.3.6.1.2.1.2.2.1.8", "enum": {"1": "up", "2": "down", "3": "testing", "4": "unknown", "5": "dormant", "6": "notPresent", "7": "lowerLayerDown"}},
+       {"name": "ifHCInOctets", "oid": "1.3.6.1.2.1.31.1.1.1.6", "type": "counter", "units": "B"},
+       {"name": "ifHCOutOctets", "oid": "1.3.6.1.2.1.31.1.1.1.10", "type": "counter", "units": "B"}
+     ]}
+  ]
+}
